@@ -1,0 +1,29 @@
+// main: ../semantic.less
+
+
+// *** Articles Variables ***
+
+//  Magic Grid Variables
+
+@magicGridGutter: 40px;
+
+@magicGridLabelFontSize: @fontSize;
+@magicGridLabelFontFamily: @pageFont;
+@magicGridLabelFontWeight: normal;
+
+@magicGridTitleFontSize: @h4;
+@magicGridTitleFontFamily: @headerFont;
+@magicGridTitleFontWeight: @boldHeaderFont;
+
+@magicGridCategoryTitleFontSize: @h5;
+
+//  Articles Grid Variables
+
+@articleGridGutter: @magicGridGutter;
+@articleGridPostRatio: 163.157%;
+@articleGridTypoHeight: 240px;
+
+//  Blog Article Variables
+
+@articleFontSizeMobile: 2.375em;
+@articleParagraphFontSize: 18px; //or em

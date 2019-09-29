@@ -1,0 +1,18 @@
+// main: ../../semantic.less
+
+
+/*-------------------------------------
+    Top Header Sidemenu
+--------------------------------------*/
+
+.header-modal-burger(ths,"topHeaderSection");
+
+
+.menu-default.burger-modal-styles.search-visible.modal-is-visible > *:not(.modal-trigger) {
+	@media @upto-mobile {
+		margin-top: @topHeaderSectionHeightResized;
+	}
+	@media @tablet {
+		margin-top: @topHeaderSectionHeight;
+	}
+}

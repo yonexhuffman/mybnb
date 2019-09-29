@@ -1,0 +1,538 @@
+
+// -- MIXINS
+
+// Clearing
+.clearfix() {
+  &:before,
+  &:after {
+    content:"";
+    display:table;
+  }
+  &:after {
+    clear:both;
+  }
+}
+
+// Fonts
+.font-smoothing(@value) {
+  & when (@value = off) {
+    -webkit-font-smoothing: subpixel-antialiased;
+    -moz-osx-font-smoothing: auto;
+  }
+  & when (@value = on) {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+
+.loadFonts() when (@importGoogleFonts) {
+  @import url('@{googleProtocol}fonts.googleapis.com/css?family=@{googleFontRequest}');
+}
+
+// -- FLEXBOX
+.flex() {
+  display: -webkit-box;
+  display: -moz-box;
+  display:-webkit-flex;
+  display: -ms-flexbox;
+  display:flex;
+}
+
+.flex(inline) {
+	display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+}
+.flex("important") {
+    display: -webkit-box !important;
+  display: -moz-box !important;
+  display:-webkit-flex !important;
+  display: -ms-flexbox !important;
+  display:flex !important;
+}
+
+.flex-justify(@justifyStyle) {
+  .ms-flex-justify(@justifyStyle);
+  -webkit-justify-content: @justifyStyle;
+  justify-content: @justifyStyle;
+}
+
+.flex-direction(@direction) {
+  -ms-flex-direction:@direction;
+  -webkit-flex-direction:@direction;
+  flex-direction:@direction;
+}
+
+.flex-align-items(@alignStyle) {
+  -ms-flex-align:@alignStyle;
+  -webkit-align-items:@alignStyle;
+  align-items: @alignStyle;
+}
+
+.flex-align-content(@alignStyle) {
+  -webkit-align-content:@alignStyle;
+  align-content: @alignStyle;
+}
+
+.flex-align-self(@selfAlignStyle) {
+  .ms-flex-align-self(@selfAlignStyle);
+  -webkit-align-self:@selfAlignStyle;
+  align-self: @selfAlignStyle;
+}
+
+.flex-order(@order) {
+  -webkit-box-ordinal-group: @order;   //OLD - iOS 6-, Safari 3.1-6
+  -moz-box-ordinal-group: @order;
+  -ms-flex-order:@order;
+  -webkit-order:@order;
+  order:@order;
+}
+
+.flex-grow(@grow) {
+	-webkit-box-flex: @grow;
+    -webkit-flex-grow: @grow;
+    flex-grow: @grow;
+}
+
+.flex-shrink(@shrink) {
+    -webkit-flex-shrink: @shrink;
+    flex-shrink: @shrink;
+}
+
+.flex-wrap(@wrap) {
+  -ms-flex-wrap:@wrap;
+  -webkit-flex-wrap:@wrap;
+  flex-wrap:@wrap;
+}
+
+// These are the conditional mixins for the different syntax for IE10 Flexbox
+.ms-flex-justify(@msJustify) {
+  & when (@msJustify = space-between) {
+    -ms-flex-pack: justify;
+  }
+  & when (@msJustify = space-around) {
+    -ms-flex-pack: distribute;
+  }
+  & when (@msJustify = flex-end) {
+    -ms-flex-pack: end;
+  }
+  & when (@msJustify = flex-start) {
+    -ms-flex-pack: start;
+  }
+  & when (@msJustify = center) {
+    -ms-flex-pack: center;
+  }
+}
+
+.ms-flex-align-self(@msSelfAlign) {
+  & when (@msSelfAlign = flex-end) {
+    -ms-flex-item-align: end;
+  }
+  & when (@msSelfAlign = flex-start) {
+    -ms-flex-item-align: start;
+  }
+  & when (@msSelfAlign = auto),
+  (@msSelfAlign = center),
+  (@msSelfAlign = baseline),
+  (@msSelfAlign = stretch) {
+    -ms-flex-item-align: @msSelfAlign;
+  }
+}
+
+// Some Flex Shorthand
+.flex-short(@flex-grow:0,  @flex-shrink:1, @flex-basis:auto) {
+  -ms-flex: @flex-grow @flex-shrink @flex-basis;
+  -webkit-flex: @flex-grow @flex-shrink @flex-basis;
+  flex: @flex-grow @flex-shrink @flex-basis;
+}
+
+.flex-basis(@flex-basis) {
+	  -ms-flex-basis: @flex-basis;
+  -webkit-flex-basis: @flex-basis;
+  flex-basis: @flex-basis;
+}
+
+
+// -- Border radius
+.border-radius(@radius: 0.25em) {
+  -webkit-border-radius: @radius;
+  -moz-border-radius: @radius;
+  border-radius: @radius;
+}
+
+.border-radius(@one, @two, @three, @four) {
+    -webkit-border-top-left-radius: @one;
+    -webkit-border-top-right-radius: @two;
+    -webkit-border-bottom-right-radius: @three;
+    -webkit-border-bottom-left-radius: @four;
+    
+    -moz-border-radius-topleft: @one;
+    -moz-border-radius-topright: @two;
+    -moz-border-radius-bottomright: @three;
+    -moz-border-radius-bottomleft: @four;
+    
+    border-top-left-radius: @one;
+    border-top-right-radius: @two;
+    border-bottom-right-radius: @three;
+    border-bottom-left-radius: @four;
+}
+
+.rounded(@size: 50%) {
+  //.size(@size; @size);
+  -webkit-border-radius: @size;
+  -moz-border-radius: @size;
+  border-radius: @size;
+}
+
+// -- Transitions
+.transform(@transform){
+  -webkit-transform: @transform;
+  -moz-transform: @transform;
+  -ms-transform: @transform;
+  -o-transform: @transform;
+  transform: @transform;
+}
+.transform-translate(@transition-x, @transition-y) {
+  -webkit-transform: -webkit-translate(@transition-x, @transition-y);
+  -moz-transform: -moz-translate(@transition-x, @transition-y);
+  -o-transform: -o-translate(@transition-x, @transition-y);
+  transform: translate(@transition-x, @transition-y);
+}
+
+.transition(@transition) {
+    -webkit-transition: @transition;
+    -moz-transition: @transition;
+    -o-transition: @transition;
+    -ms-transition: @transition;
+    transition: @transition;
+}
+.transition() {
+    -webkit-transition: all 1s linear;
+    -moz-transition: all 1s linear;
+    -o-transition: all 1s linear;
+    -ms-transition: all 1s linear;
+    transition: all 1s linear;
+}
+
+.transition-transform(@transition) {
+  -webkit-transition: -webkit-transform @transition;
+  -moz-transition: -moz-transform @transition;
+  -o-transition: -o-transform @transition;
+  transition: transform @transition;
+}
+
+.transform-origin(@x:center, @y:center) {
+  -webkit-transform-origin: @x @y;
+  -moz-transform-origin:    @x @y;
+  -ms-transform-origin:     @x @y;
+  -o-transform-origin:      @x @y;
+  transform-origin:         @x @y;
+}
+.preseve-3d(@string-3d:preserve-3d) {
+  -webkit-transform-style: @string-3d;
+  -moz-transform-style: @string-3d;
+  transform-style: @string-3d;
+}
+
+// -- Opacity
+.opacity(@opacity) {
+  opacity: (@opacity / 100);
+}
+
+.opacity(@opacity) when (@support-ie8 = true) {
+  .@{ie8-class} & {
+    filter: ~"alpha(opacity=@{opacity})";
+  }
+}
+
+// -- Resize
+.scale(@scale) {
+  -webkit-transform: scale(@scale);
+  -moz-transform:    scale(@scale);
+  -ms-transform:     scale(@scale);
+  -o-transform:      scale(@scale);
+  transform:         scale(@scale);
+}
+.scale-factor (@ratio_x:1.5, @ratio_y:@ratio_x){
+  .transform(scale(@ratio_x, @ratio_y));
+}
+
+
+// -- MISC
+// Backface visibility
+// Prevent browsers from flickering when using CSS 3D transforms.
+// Default value is `visible`, but can be changed to `hidden`
+// See git pull https://github.com/dannykeane/bootstrap.git backface-visibility for examples
+.backface-visibility(@visibility) {
+  -webkit-backface-visibility: @visibility;
+  -moz-backface-visibility: @visibility;
+  -ms-backface-visibility: @visibility;
+  backface-visibility: @visibility;
+}
+
+// Useful for tags, tabs, users, etc.
+.user-select(@val) {
+  -webkit-touch-callout:  @val;
+  -webkit-user-select:    @val;
+  -moz-user-select:       @val;
+  -ms-user-select:        @val;
+  user-select:            @val;
+}
+
+// Box shadow
+.box-shadow(@shadow) {
+  -webkit-box-shadow: @shadow; // iOS <4.3 & Android <4.1
+  -moz-box-shadow: @shadow;
+  box-shadow: @shadow;
+}
+
+// A mixin which helps you to add depth to elements according to the Google Material Design spec:
+//   http://www.google.com/design/spec/layout/layout-principles.html#layout-principles-dimensionality
+.md-box-shadow(@level: 1){
+  & when (@level = 1) {
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.4);
+  }
+  & when (@level = 2) {
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  }
+  & when (@level = 3) {
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  }
+  & when (@level = 4) {
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  }
+  & when (@level = 5) {
+    box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+  }
+}
+
+// -- Font Family
+.font() {
+    font-family: @fontName;
+}
+
+// Placeholders
+.placeholder-color(@color: @input-color-placeholder) {
+  &::-moz-placeholder {
+      color: @color;
+      opacity: 1;
+      .transition(color .3s ease-out);
+  } // See https://github.com/twbs/bootstrap/pull/11526
+    
+  &:-ms-input-placeholder {
+      color: @color;
+      .transition(color .3s ease-out);
+  } // Internet Explorer 10+
+    
+  &::-webkit-input-placeholder {
+      color: @color;
+      .transition(color .3s ease-out);
+  } // Safari and Chrome
+}
+
+// -- Columns Mixin
+.columns-mixin(@gutter, @columns) {
+    width: ~"calc((100% - @{gutter}*(@{columns} - 1))/@{columns})";
+    margin-right: @gutter;
+}
+
+.div-c-mixin-general(@padding) {
+    .flex();
+    .flex-justify(flex-start);
+    .flex-align-items(flex-start);
+    .flex-direction(row);
+    .flex-wrap(wrap);
+    
+    .div-c {
+        width: 100%;
+    }
+
+    &.one-label {
+        label {
+            width: 100%;
+        }
+    }
+    
+    // 2 columns
+    &.inline-2 {
+        .divided-column {
+            width: 100%;
+            margin-right: 0;
+        }
+    }
+    
+    // 3 columns
+    &.inline-3 {
+        .divided-column {
+            width: 100%;
+            margin-right: 0;
+        }
+    }
+    
+    // 4 columns
+    &.inline-4 {
+        .divided-column {
+            width: 100%;
+            margin-right: 0;
+        }
+    }
+}
+
+.div-c-mixin-from-tablet(@padding) {
+    
+    .divided-column {
+        select,
+        .ui.dropdown.selection,
+        input[type="text"],
+        textarea {
+          width: 100%;  
+        }
+    }
+    
+    // 2 columns
+    &.inline-2 {
+        .divided-column {
+            .columns-mixin(@padding,2);
+            &:nth-child(2n) {
+                margin-right: 0;
+            }
+        }
+        
+        &.one-label {
+            .divided-column {
+                margin-right: @padding;
+                &:nth-child(2n+1) { //i count the label
+                    margin-right: 0;
+                }
+            }
+        }
+        
+        &.no-padding {
+            .divided-column {
+                width: ~"calc(100%/2)";
+                margin-right: 0;
+            }
+        }
+    }
+    
+    // 3 columns
+    &.inline-3 {
+        .divided-column {
+            .columns-mixin(@padding,3);
+            &:nth-child(3n) { 
+                margin-right: 0;
+            }
+        }
+        
+        &.one-label {
+            .divided-column {
+                margin-right: @padding;
+                &:nth-child(3n+1) { //i count the label
+                    margin-right: 0;
+                }
+            }
+        }
+        
+        &.no-padding {
+            .divided-column {
+                width: ~"calc(100%/3)";
+                margin-right: 0;
+            }
+        }
+        
+        &.sizes-1-3 {
+            .divided-column {
+                &:nth-child(2n+1) {
+                    margin-right: @padding;
+                    width: ~"calc((100% - (@{padding}*2))/3)";
+                        
+                }
+                &:nth-child(2n) {
+                    width: ~"calc((200% - @{padding})/3)";
+                    margin-right: 0;
+                }
+            }
+        }
+    }
+    
+    // 4 columns
+    &.inline-4 {
+        .divided-column {
+            .columns-mixin(@padding,4);
+            &:nth-child(4n) { 
+                margin-right: 0;
+            }
+        }
+        
+        &.one-label {
+            .divided-column {
+                margin-right: @padding;
+                &:nth-child(4n+1) { //i count the label
+                    margin-right: 0;
+                }
+            }
+        }
+        
+        &.no-padding {
+            .divided-column {
+                width: ~"calc(100%/4)";
+                margin-right: 0;
+            }
+        }
+    }
+    
+}
+
+.megamenu-columns-mixin(@variable) {
+    width: ~"calc((100% - @{gridGutterWidth}*@{variable})/@{variable})";
+}
+
+// -- Keyframes
+.keyframes(@name, @arguments) {
+	@-moz-keyframes @name { @arguments(); }
+	@-webkit-keyframes @name { @arguments(); }
+	@keyframes @name { @arguments(); }
+	@-o-keyframes @name { @arguments(); }
+}
+
+// -- Text Ellipsis
+@base : unit(@fontSize);
+@baseEm: 1;
+
+
+// mixin for converting EM to PX
+.emtoPx( @em: @baseEm ) {
+	@return: ((unit(@em) / @baseEm) * @base) + 0px;
+}
+
+.textEllipsisProperties(@fontSizeSQ, @lineHeightSQ, @lines) {
+	font-size: @fontSizeSQ;
+	display: block;
+	height: @fontSizeSQ * unit(@lineHeightSQ) * @lines;
+	display: -webkit-box;
+	-webkit-line-clamp: @lines;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	line-height: unit(@lineHeightSQ);
+}
+
+
+.textEllipsis(@fontSizeSQ, @lineHeightSQ, @lines) {
+	
+	& when (isunit(@fontSizeSQ, em) = true) {
+		@value: return;
+		.emtoPx(unit(@fontSizeSQ));
+		.textEllipsisProperties(@@value, @lineHeightSQ, @lines);
+	}
+	
+	& when (isunit(@fontSizeSQ, px) = true) {
+		.textEllipsisProperties(@fontSizeSQ, @lineHeightSQ, @lines);
+	}
+	
+}
+
+
+
+

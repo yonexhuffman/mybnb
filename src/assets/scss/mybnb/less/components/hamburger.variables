@@ -1,0 +1,10 @@
+// main: ../semantic.less
+
+// *** Hamburger ***
+
+@hamburgerSliceHeight: 1px; //4px;
+@hamburgerSliceWidth: 22px; //40px;
+@hamburgerSliceBorderRadius: 0px; //4px;
+@hamburgerSliceGap:5px; //6px;
+
+@hamburgerSliceGapSum:@hamburgerSliceHeight + @hamburgerSliceGap;

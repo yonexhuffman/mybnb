@@ -1,0 +1,59 @@
+ /*
+ * # Mybnb - 1.0.0
+ * http://www.seventhqueen.com/
+ *
+ *
+ * Copyright 2012 SeventhQueen
+ * Released under the MIT license
+ * http://opensource.org/licenses/MIT
+ *
+ */
+
+
+// Importing module specific variables
+@import (multiple) "../variables.less";
+@import (less) "./progressbar.variables";
+@import (multiple) "../mixins.less";
+
+
+
+
+// *** Theme ***
+
+
+
+
+
+/*******************************
+        Basic Progressbar
+*******************************/
+
+.basic-progressbar {
+    height: @progressbarHeight;
+    background: @strongTransparentBlack;
+    border-radius: 6px;
+
+    .inner {
+        background: #1FCB41;
+        width: 0%;
+        height: 100%;
+        border-radius: 6px;
+    }
+}
+
+
+.completed-percentage {
+    width: 100%;
+    @media @tablet {
+        width: ~"calc((100% - 60px)/3)";
+    }
+    p {
+        font-size: 0.875em;
+        strong {
+            font-size: 1.375em;
+            margin-right: 5px;
+        }
+    }
+}
+
+

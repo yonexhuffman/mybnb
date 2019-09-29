@@ -1,0 +1,489 @@
+// main: ../../semantic.less
+
+
+/* Used Classes */
+
+/* 
+.burger-sidemenu
+.burger-mbile-sidemenu
+.burger-tablet-sidemenu
+.burger-desktop-sidemenu
+.burger-large-desktop-sidemenu
+
+.sidemenu-open-left
+.sidemenu-open-right
+
+.profile-priority
+.dimmed
+
+.push-sq
+.uncover-sq
+.slide-along-sq
+.slide-out-sq
+
+
+*/
+
+/*-----------------------------
+    Burger Sidemenu 
+------------------------------*/
+
+// Responsive options
+
+.menu-default.burger-sidemenu {
+	position: fixed;
+}
+
+@media @upto-mobile {
+	.menu-default.burger-mobile-sidemenu {
+		position: fixed;
+	}
+}
+
+@media @tablet-strict {
+	.menu-default.burger-tablet-sidemenu {
+		position: fixed;
+	}
+}
+
+@media @desktop-strict {
+	.menu-default.burger-desktop-sidemenu {
+		position: fixed;
+	}
+}
+
+@media @large-desktop {
+	.menu-default.burger-large-desktop-sidemenu {
+		position: fixed;
+	}
+}
+
+
+
+// Default Settings
+
+.menu-default.burger-sidemenu-styles {
+	display: block;
+	overflow: hidden;
+	height: 100%;
+	top: 0;
+	bottom: 0;
+	z-index: 111;
+	transition: all @sidemenuDuration @sidemenuEasing;
+	background: @sidemenuBackgroundColor;
+}
+
+@media @upto-mobile {
+	.menu-default.burger-sidemenu-styles {
+		width: @sidemenuWidthMobile;
+	}
+}
+@media @tablet {
+	.menu-default.burger-sidemenu-styles {
+		width: @sidemenuWidth;
+	}
+}
+
+.menu-default.burger-sidemenu-styles > ul {
+	list-style: none;
+	position: absolute;
+	.flex-direction(row);
+	.flex-align-items(flex-start);
+	.flex-align-content(flex-start);
+
+	top: 0;
+	left: 0;
+	margin: 0;
+	padding: @sidemenuPadding;
+	z-index: 1;
+	background: @sidemenuBackgroundColor; 
+	width: 100%;
+	height: 100%;
+
+	overflow: auto;
+	-webkit-overflow-scrolling: touch;
+
+	/* no scrollbar on chromes*/
+	 &::-webkit-scrollbar {
+		display: none;
+	}
+	
+	li {
+		height: auto;
+		width: 100%;
+	}
+	
+	// Items
+	
+	.item:not(.icon),
+	.ui.selection.dropdown {
+		width: 100%;
+		min-width: inherit;
+	}
+	.item {
+		margin: @sidemenuItemPadding 0;
+		
+	}
+	.item.check-radio-container {
+		.flex();
+		.flex-direction(column);
+		.flex-align-items(flex-start);
+	}
+	
+	.has-submenu > .submenu .item {
+		padding: 0;
+	}
+	
+	> li.has-submenu {
+		.flex-direction(column);
+		.flex-align-items(flex-start);
+	}
+	
+	> li.has-submenu:after {
+		display: none;
+	}
+	
+	> li.has-submenu .item:after {
+		.flex-grow(1);
+		//.flex-align-self(flex-start);
+		text-align: right;
+	}
+	
+	> li.has-submenu .submenu {
+		position: static;
+		border: none;
+		background: transparent;
+		box-shadow: none;
+		padding-right: 0;
+		padding-bottom: 20px;
+		margin-bottom: 20px;
+		border-bottom: 1px solid @menuDropdownBorderColor;
+		//width: ~"calc(100% + @{sidemenuPadding})";
+		max-height: 100%;
+		min-width: 100%;
+	}
+	
+}
+
+
+/*-----------------------------
+    Sidemenu Trigger Inside
+------------------------------*/
+
+.menu-default.burger-sidemenu-styles .sidemenu-trigger {
+	position: absolute;
+	display: block;
+	top: 20px;
+	z-index: 2;
+	opacity: .2;
+
+	&.active {
+		opacity: .8;
+	}
+}
+
+
+/*-----------------------------
+    Options 
+------------------------------*/
+
+
+// Profile Priority
+.menu-default.burger-sidemenu-styles.profile-priority > ul > li {
+	.flex-order(2);
+}
+.menu-default.burger-sidemenu-styles.profile-priority .profile-item {
+	.flex-order(1);
+	padding-bottom: 20px;
+	margin-bottom: 20px;
+	border-bottom: 1px solid @menuDropdownBorderColor;
+	width: ~"calc(100% + @{sidemenuPadding})";
+}
+
+
+/*---------------------
+		Dimmed
+----------------------*/
+
+// z-index
+.header-section.header-sticky.is-sticky.dimmed .header-content {
+	z-index: 103;
+}
+
+.header-item:after {
+	content: '';
+	left: 0;
+	right: 0;
+}
+.header-item.dimmed:after {
+	content: '';
+	display: block;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: @dimmerColor;
+	z-index: @dimmerLayer;
+	visibility: hidden;
+	opacity: 0;
+	transition: all @sidemenuDuration @sidemenuEasing;
+}
+
+body.burger-sidemenu-styles.sidemenu-is-open .header-item.dimmed:after {
+	visibility: visible;
+	opacity: 1;
+}
+
+// For Open Left and Right
+
+
+@media @upto-tablet {
+	body.burger-sidemenu-styles.sidemenu-is-open.sidemenu-left .header-item.dimmed:after {
+		left: inherit;
+		right: -@sidemenuWidthMobile;
+	}
+	body.burger-sidemenu-styles.sidemenu-is-open.sidemenu-right .header-item.dimmed:after {
+		right: inherit;
+		left: -@sidemenuWidthMobile;
+	}
+}
+
+@media @tablet {
+	body.burger-sidemenu-styles.sidemenu-is-open.sidemenu-left .header-item.dimmed:after {
+		left: inherit;
+		right: -@sidemenuWidth;
+	}
+	body.burger-sidemenu-styles.sidemenu-is-open.sidemenu-right .header-item.dimmed:after {
+		left: -@sidemenuWidth;
+		right: inherit;
+	}
+}
+
+
+.header-section .header-item.dimmed .item.hamburger {
+	z-index: @dimmerLayer + 1;
+}
+
+
+
+/*-----------------------------
+    Direction
+------------------------------*/
+
+
+.menu-default.burger-sidemenu-styles.sidemenu-open-left {
+	right: inherit;
+}
+.menu-default.burger-sidemenu-styles.sidemenu-open-right {
+	left: inherit;
+}
+
+@media @upto-mobile {
+	.menu-default.burger-sidemenu-styles.sidemenu-open-left {
+		left: -@sidemenuWidthMobile;
+	}
+	.menu-default.burger-sidemenu-styles.sidemenu-open-right {
+		right: -@sidemenuWidthMobile;
+	}
+}
+
+@media @tablet {
+	.menu-default.burger-sidemenu-styles.sidemenu-open-left {
+		left: -@sidemenuWidth;
+	}
+	.menu-default.burger-sidemenu-styles.sidemenu-open-right {
+		right: -@sidemenuWidth;
+	}
+}
+
+
+.menu-default.burger-sidemenu-styles.sidemenu-open-left > ul > li.has-submenu .submenu {
+	padding-left: @sidemenuPadding;
+	margin-left: -@sidemenuPadding;
+}
+
+.menu-default.burger-sidemenu-styles.sidemenu-open-right > ul > li.has-submenu .submenu {
+	padding-left: 0;
+}
+
+
+// Transition
+.menu-default.burger-sidemenu-styles > ul {
+	transition: left @sidemenuDuration @sidemenuEasing;
+}
+
+
+// Animations
+
+.menu-default.burger-sidemenu-styles.push-sq > ul, 
+.menu-default.burger-sidemenu-styles.uncover-sq > ul,
+.menu-default.burger-sidemenu-styles.slide-along-sq > ul,
+.menu-default.burger-sidemenu-styles.slide-out-sq > ul {
+	right: inherit;
+}
+
+
+// Push
+
+.menu-default.burger-sidemenu-styles.sidemenu-open-left.push-sq > ul,
+.menu-default.burger-sidemenu-styles.sidemenu-open-right.push-sq > ul{
+	left: 0;
+}
+
+// Uncover
+
+@media @upto-mobile {
+	.menu-default.burger-sidemenu-styles.sidemenu-open-left.uncover-sq > ul {
+		left: @sidemenuWidthMobile;
+	}
+	.menu-default.burger-sidemenu-styles.sidemenu-open-right.uncover-sq > ul {
+		left: -@sidemenuWidthMobile;
+	}
+}
+
+@media @tablet {
+	.menu-default.burger-sidemenu-styles.sidemenu-open-left.uncover-sq > ul {
+		left: @sidemenuWidth;
+	}
+	.menu-default.burger-sidemenu-styles.sidemenu-open-right.uncover-sq > ul {
+		left: -@sidemenuWidth;
+	}
+}
+
+
+// Slide Along
+@media @upto-mobile {
+	.menu-default.burger-sidemenu-styles.sidemenu-open-left.slide-along-sq > ul {
+		left: (@sidemenuWidthMobile/2);
+	}
+	.menu-default.burger-sidemenu-styles.sidemenu-open-right.slide-along-sq > ul {
+		left: -(@sidemenuWidthMobile/2);
+	}
+}
+
+@media @tablet {
+	.menu-default.burger-sidemenu-styles.sidemenu-open-left.slide-along-sq > ul {
+		left: (@sidemenuWidth/2);
+	}
+	.menu-default.burger-sidemenu-styles.sidemenu-open-right.slide-along-sq > ul {
+		left: -(@sidemenuWidth/2);
+	}
+}
+
+// Slide Out
+
+@media @upto-mobile {
+	.menu-default.burger-sidemenu-styles.sidemenu-open-left.slide-out-sq > ul {
+		left:(@sidemenuWidthMobile + (@sidemenuWidthMobile/2));
+	}
+	.menu-default.burger-sidemenu-styles.sidemenu-open-right.slide-out-sq > ul {
+		left:-(@sidemenuWidthMobile + (@sidemenuWidthMobile/2));
+	}
+}
+
+@media @tablet {
+	.menu-default.burger-sidemenu-styles.sidemenu-open-left.slide-out-sq > ul {
+		left:(@sidemenuWidth + (@sidemenuWidth/2));
+	}
+	.menu-default.burger-sidemenu-styles.sidemenu-open-right.slide-out-sq > ul {
+		left:-(@sidemenuWidth + (@sidemenuWidth/2));
+	}
+}
+
+.menu-default.burger-sidemenu-styles.sidemenu-open-left.sidemenu-is-visible {
+	left: 0;
+}
+
+.menu-default.burger-sidemenu-styles.sidemenu-open-right.sidemenu-is-visible {
+	right: 0;
+}
+
+.menu-default.burger-sidemenu-styles.sidemenu-is-visible > ul {
+	left: 0 !important;
+}
+
+
+.menu-default.burger-sidemenu-styles.sidemenu-open-left.profile-priority .profile-item {
+	padding-left: @sidemenuPadding;
+	margin-left: -@sidemenuPadding;
+}
+
+.menu-default.burger-sidemenu-styles.sidemenu-open-right.profile-priority .profile-item .submenu {
+	border-bottom: none;
+	padding-bottom: 0;
+}
+
+.menu-default.burger-sidemenu-styles.sidemenu-open-left .sidemenu-trigger {
+	right: 20px;
+}
+
+.menu-default.burger-sidemenu-styles.sidemenu-open-right .sidemenu-trigger {
+	left: 20px;
+}
+
+
+// Body movement
+
+body {
+	position: relative;
+	left: 0;
+	.transition(left @sidemenuDuration @sidemenuEasing);
+}
+
+@media @upto-mobile {
+	body.sidemenu-is-open.sidemenu-left.burger-sidemenu-styles {
+		left: @sidemenuWidthMobile;
+		
+		.header-section.header-sticky.is-sticky .header-content {
+			left: @sidemenuWidthMobile;
+		}
+		.mobile-fixed-trigger,
+		.sticky-elemnt.is-sticky {
+			right: -@sidemenuWidthMobile;
+		}
+	}
+	
+	body.sidemenu-is-open.sidemenu-right.burger-sidemenu-styles {
+		left: -@sidemenuWidthMobile;
+		
+		.header-section.header-sticky.is-sticky .header-content {
+			left: -@sidemenuWidthMobile;
+		}
+		.mobile-fixed-trigger,
+		.sticky-elemnt.is-sticky {
+			right: @sidemenuWidthMobile;
+		}
+	}
+}
+
+@media @tablet {
+	body.sidemenu-is-open.sidemenu-left.burger-sidemenu-styles {
+		left: @sidemenuWidth;
+		
+		.header-section.header-sticky.is-sticky .header-content {
+			left: @sidemenuWidth;
+		}
+		.mobile-fixed-trigger,
+		.sticky-elemnt.is-sticky {
+			right: -@sidemenuWidth;
+		}
+	}
+	
+	body.sidemenu-is-open.sidemenu-right.burger-sidemenu-styles {
+		left: -@sidemenuWidth;
+		
+		.header-section.header-sticky.is-sticky .header-content {
+			left: -@sidemenuWidth;
+		}
+		.mobile-fixed-trigger,
+		.sticky-elemnt.is-sticky {
+			right: @sidemenuWidth;
+		}
+	}
+}
+
+
+.mobile-fixed-trigger.modal-trigger {
+    .transition(right @sidemenuDuration @sidemenuEasing);
+}

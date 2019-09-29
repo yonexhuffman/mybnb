@@ -1,0 +1,246 @@
+ /*
+ * # Mybnb - 1.0.0
+ * http://www.seventhqueen.com/
+ *
+ *
+ * Copyright 2012 SeventhQueen
+ * Released under the MIT license
+ * http://opensource.org/licenses/MIT
+ *
+ */
+
+
+// Importing module specific variables
+@import (multiple) "../variables.less";
+@import (less) "./reviews.variables";
+@import (multiple) "../mixins.less";
+
+
+
+
+// *** Theme ***
+
+
+
+
+
+/*-------------------------------------------------
+        Reviews Header - Rating & Progressbar
+--------------------------------------------------*/
+
+.reviews-header {
+    .flex();
+    .flex-direction(column);
+    border-bottom: 1px solid @strongTransparentBlack;
+    
+    @media @tablet {
+        .flex-direction(row);
+    }
+    
+    
+    .rating-big {
+        .flex-grow(0);
+        .flex-shrink(0);
+        padding-bottom: 30px;
+        
+        @media @tablet {
+             border-right: 1px solid @strongTransparentBlack;
+        }
+        
+        .rating-badge {
+            border: 1px solid @borderColor;
+            border-radius: 8px;
+            margin:0 0px 20px 0;
+            .flex();
+            .flex-direction(row);
+            .flex-align-content(center);
+            .flex-align-items(center);
+            .flex-justify(flex-start);
+            
+            @media @tablet {
+                margin:0 40px 20px 0;
+            }
+            
+            > span {
+                font-size: 24px;
+                font-weight: 900;
+                padding: 20px;
+                display: block;
+                border-right: 1px solid @borderColor;
+                .flex-grow(1);
+                text-align: center;
+            }
+            
+            .icon {
+                font-size: 24px;
+                display: inline-block;
+                color: @accentColor;
+                margin: 0 20px;
+                .flex-grow(1);
+                &:before {
+                    display: inline-block;
+                }
+                
+            }
+        }
+        .rating-info {
+            font-size: 12px;
+            line-height: 14px;
+            
+            @media @tablet {
+                max-width: 150px;
+            }
+            
+        }
+    }
+    .rating-percentage {
+        width: 100%;
+        
+        .flex();
+        .flex-direction(row);
+        .flex-justify(flex-start);
+        .flex-align-items(flex-start);
+        .flex-align-content(flex-start);
+        .flex-wrap(wrap);
+        padding-bottom: 30px;
+        
+        @media @tablet {
+            .flex-grow(1);
+            width: auto;
+        }
+        
+        .rating-column {
+            width: 100%;
+            margin-bottom: 20px;
+            
+            @media @tablet {
+                width: 50%;
+                padding-left: 40px;
+            }
+        }
+        
+        .rating-label {
+            margin-bottom: 15px;
+        }
+    }
+    
+    
+}
+
+
+/*-------------------------------------------------
+        Reviews Search
+--------------------------------------------------*/
+
+.reviews-search {
+    padding: 15px 0;
+    border-bottom: 1px solid @strongTransparentBlack;
+    
+    input[type="text"] {
+        border: none;
+        padding-left: 80px;
+    }
+    label {
+        position: absolute;
+        left: 15px;
+        top: 50%;
+        margin-top: -10px;
+        .transition(color .3s ease);
+        
+        .icon {
+            font-size: 20px;
+        }
+    }
+    
+    input[type="text"]:focus + label {
+        color: @focusedFormBorderColor;
+        .icon {
+            font-weight: 600;
+        }
+    }
+    
+}
+
+/*-------------------------------------------------
+        Reviews Feed - Comments
+--------------------------------------------------*/
+
+.reviews-feed {
+    @media @tablet {
+        margin-left: 40px;
+    }
+}
+
+.reviews-row {
+    .flex();
+    .flex-direction(column);
+    position: relative;
+
+    padding: 30px 0;
+    border-bottom: 1px solid @strongTransparentBlack;
+
+    @media @tablet {
+        .flex-direction(row);
+    }
+
+    &:last-child {
+        border-bottom: none;
+		padding-bottom: 0;
+    }
+    .review-meta {
+        .flex-grow(0);
+        .flex-shrink(0);
+        text-align: center;
+        padding: 0 10px;
+
+
+        @media @tablet {
+            width: 150px;
+        }
+
+        .name-sq {
+            font-weight: @boldPageFont;
+            color: @textColor;
+        }
+    }
+    .avatar-sq {
+        margin: 0 auto 20px auto;
+
+        &.my-avatar-sq {
+            //width: 66px;
+            //height: 66px;
+			
+            img {
+                //border-radius: 0;
+            }
+
+            &.verified-sq {
+                &:after {
+                    //right: -26px;
+                }
+            }
+        }
+    }
+    .comment-sq {
+
+        @media @tablet {
+            padding-left: @gridGutterWidth;
+            .flex-grow(1);
+        }
+
+        .date-sq {
+            display: block;
+            font-size: 0.750em;
+            opacity: .5;
+            margin-bottom: 10px;
+            text-align: center;
+
+            @media @tablet {
+                text-align: left;
+            }
+        }
+        p {
+            text-align: justify;
+        }
+    }
+}

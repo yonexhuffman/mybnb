@@ -1,0 +1,171 @@
+ /*
+ * # Mybnb - 1.0.0
+ * http://www.seventhqueen.com/
+ *
+ *
+ * Copyright 2012 SeventhQueen
+ * Released under the MIT license
+ * http://opensource.org/licenses/MIT
+ *
+ */
+
+
+// Importing module specific variables
+@import (multiple) "../variables.less";
+@import (less) "./button-sq.variables";
+@import (multiple) "../mixins.less";
+
+
+
+
+
+// *** Theme ***
+
+
+
+
+/*******************************
+          Button SQ
+*******************************/
+
+.button-sq,
+button,
+input[type="button"],
+input[type="submit"] {
+    //display: inline-block;
+	.flex(inline);
+	.flex-direction(row);
+	.flex-justify(center);
+	.flex-align-items(center);
+	.flex-wrap(wrap);
+	
+    cursor: pointer;
+    min-height: 1em;
+    outline: none;
+    font-style: normal;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: baseline;
+    line-height: 1em;
+    //margin: @buttonVerticalMargin @buttonHorizontalMargin;
+    margin: 0;
+	border-radius: 0;
+    padding: @buttonVerticalPadding @buttonHorizontalPadding;
+    letter-spacing: @buttonLetterSpacing;
+    border: none;
+	font-size: 1em;
+    
+    user-select: none;
+    transition: opacity @defaultDuration @defaultEasing,
+        background-color @defaultDuration @defaultEasing,
+        color @defaultDuration @defaultEasing,
+        box-shadow @defaultDuration @defaultEasing,
+        background @defaultDuration @defaultEasing;
+    will-change: '';
+
+    -webkit-tap-highlight-color: transparent;
+    background: @buttonBackgroundColor;
+    color: @buttonColor;
+    
+    &:hover,
+    &:focus {
+        color: @buttonColor;
+        background-color: darken(saturate(@buttonBackgroundColor, 5), 10, relative);
+    }
+}
+
+
+.button-sq,
+button {
+	span {
+		display: inline-block;
+	}
+	span + .icon {
+		margin-left: 15px;
+	}
+	.icon + span {
+		padding-left: 15px;
+	}
+    .icon {
+        //font-size: inherit;
+    }
+}
+
+.button-sq.small-sq {
+    font-size: 0.813em;
+    padding: .7em 1.2em;
+}
+
+.button-sq.see-through-sq {
+    border-radius: 3px;
+    border: 1px solid @borderColor;
+    background: transparent;
+    color: @textColor;
+    
+    &:hover,
+    &:focus {
+        border-color:@linkColor;
+        color:@linkColor;
+    }
+}
+
+.button-sq.link-sq {
+    background: transparent;
+    border: none;
+    color: @textColor;
+    
+}
+
+.button-sq.cancel-sq {
+    background: @cancelButtonBackground;
+    color: fade(contrast(@cancelButtonBackground, black, white, 54%),40%);
+    
+    &:hover,
+    &:active {
+        background: darken(@cancelButtonBackground, 5%);
+        color: contrast(darken(@cancelButtonBackground, 5%), black, white, 54%);
+    }
+}
+
+.button-sq {
+    &.facebook-button {
+        border:1px solid @facebookColor;
+        color: @facebookColor;
+        background:transparent;
+    }
+    &.google-button {
+        border:1px solid  @googlePlusColor;
+        color: @googlePlusColor;
+        background: transparent;
+    }
+}
+
+
+/* Clipboard Copy */
+.clipboad-copy-sq {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 5px 10px;
+    border-radius: 3px;
+    font-size: 12px;
+    color: @textColor;
+    margin: 0;
+    .transition(~"color .2s ease-in, background .2s ease-in");
+    
+    &:hover,
+    &:focus {
+        background: @linkColor;
+        color: #fff;
+    }
+}
+
+.button-sq {
+	&.fullwidth-sq {
+		> span {
+			.flex-grow(1);
+		}
+	}
+}
+
+// *** Theme Overrides ***

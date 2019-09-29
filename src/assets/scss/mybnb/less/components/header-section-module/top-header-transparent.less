@@ -1,0 +1,23 @@
+// main: ../../semantic.less
+
+
+/*-------------------------------------
+    Top Header Transparent
+--------------------------------------*/
+
+.header-transparent-mixin(ths,"topHeaderSection");
+
+//Top Header Section + ui layout 
+@media @upto-mobile {
+	.header-section.ths.header-transparent + .ui.layout,
+	.header-section.ths.header-transparent + .next-sq {
+		margin-top: -@topHeaderSectionHeightMobile;
+	}
+}
+
+@media @tablet {
+	.header-section.ths.header-transparent + .ui.layout,
+	.header-section.ths.header-transparent + .next-sq {
+		margin-top: -@topHeaderSectionHeight;
+	}
+}

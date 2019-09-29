@@ -1,0 +1,1041 @@
+// main: ../../semantic.less
+
+/* Used Classes */
+
+/*
+
+on .header-item:
+
+.flex-align-left 
+
+.flex-align-mobile-left 
+.flex-align-tablet-left 
+.flex-align-desktop-left 
+.flex-align-large-desktop-left
+
+.flex-align-right
+
+.flex-align-mobile-right 
+.flex-align-tablet-right 
+.flex-align-desktop-right 
+.flex-align-large-desktop-right
+
+.flex-order-mobile-first
+.flex-order-mobile-second
+.flex-order-mobile-third
+
+.flex-order-tablet-first
+.flex-order-tablet-second
+.flex-order-tablet-third
+
+.flex-order-desktop-first
+.flex-order-desktop-second
+.flex-order-desktop-third
+
+.flex-order-large-desktop-first
+.flex-order-large-desktop-second
+.flex-order-large-desktop-third
+
+
+.special.mobile-big-sq
+
+*/
+
+/*-------------------------------
+    Header Section Default 
+--------------------------------*/
+
+.header-section {
+    position: relative;
+    .header-content > .ui.container { 
+		height: 100%;
+		.flex-wrap(nowrap);
+    }
+	.header-content {
+		position: relative;
+		z-index: 1;
+	}
+}
+
+.header-item {
+	.flex();
+	//.flex-shrink(0); 
+	.flex-align-items(center);
+	.flex-justify(center); 
+	height: 100%;
+	padding: 0px !important;
+}
+
+.header-item .item {
+	min-width: inherit;
+	padding-top: 0 !important;
+	padding-bottom: 0 !important;
+	.flex-shrink(0);
+	width: auto;
+	
+	&.ui.dropdown .menu > .item,
+	.ui.dropdown .menu > .item {
+		margin: 0;
+		height: auto;
+		line-height: 1em;
+	}
+	
+	&.ui.dropdown .text,
+	.ui.dropdown .text {
+		min-width: 40px;
+	}
+}
+
+.header-item {
+	.price-range-slider {
+		margin: 0;
+	}
+	input[type="checkbox"] + label, input[type="radio"] + label {
+		display: inline-block;
+	}
+	.logo > a,
+	.logo img {
+		.transition(~"height @{scrollupDuration} @{scrollupEasing} 0s, opacity @{scrollupDuration} @{scrollupEasing}");
+	}
+}
+
+body.modal-is-open.search-visible .header-section.mhs.has-modal .burger-modal-styles.modal-is-visible {
+	> .modal-trigger {
+		@media @upto-mobile {
+			height: @topHeaderSectionHeightMobile;
+			line-height: @topHeaderSectionHeightMobile;
+		}
+		@media @tablet {
+			height: @topHeaderSectionHeight;
+			line-height: @topHeaderSectionHeight;
+		}
+		
+	}
+}
+
+// equal header items
+
+.header-section.equal-header-items .header-item {
+	width: 33.3%;
+}
+@media @upto-mobile {
+	.header-section.equal-mobile-header-items .header-item {
+		width: 33.3%;
+	}
+}
+@media @tablet-strict {
+	.header-section.equal-tablet-header-items .header-item {
+		width: 33.3%;
+	}
+}
+@media @desktop-strict {
+	.header-section.equal-desktop-header-items .header-item {
+		width: 33.3%;
+	}
+}
+@media @large-desktop {
+	.header-section.equal-large-desktop-header-items .header-item {
+		width: 33.3%;
+	}
+}
+
+/*---------------------------------------------
+    Header Sections MIXINS
+----------------------------------------------*/
+
+.header-general(@class, @headerSection) {
+    
+    .header-section {
+        
+        @heightAux : "@{headerSection}Height";
+        @height : @@heightAux;
+        
+        @heightMobileAux : "@{headerSection}HeightMobile";
+        @heightMobile : @@heightMobileAux;
+        
+        @heightResizedAux : "@{headerSection}HeightResized";
+        @heightResized : @@heightResizedAux;
+        
+        @backgroundAux : "@{headerSection}BackgroundColor";
+        @background : @@backgroundAux;
+        
+        @fontFamilyAux : "@{headerSection}FontFamily";
+        @fontFamily : @@fontFamilyAux;
+        
+        @fontSizeAux : "@{headerSection}FontSize";
+        @fontSize : @@fontSizeAux;
+        
+        @letterSpacingAux : "@{headerSection}LetterSpacing";
+        @letterSpacing : @@letterSpacingAux;
+        
+        @textColorAux : "@{headerSection}TextColor";
+        @textColor : @@textColorAux;
+        
+        @linkColorAux : "@{headerSection}LinkColor";
+        @linkColor : @@linkColorAux;
+        
+        @accentColorAux : "@{headerSection}AccentColor";
+        @accentColor : @@accentColorAux;
+        
+        @shadowAux : "@{headerSection}Shadow";
+        @shadow : @@shadowAux;
+		
+		@itemHeightMobileAux : "@{headerSection}ItemHeightMobile";
+        @itemHeightMobile : @@itemHeightMobileAux;
+		
+		@itemHeightAux : "@{headerSection}ItemHeight";
+        @itemHeight : @@itemHeightAux;
+		
+		@itemGutterAux : "@{headerSection}ItemGutter";
+        @itemGutter : @@itemGutterAux;
+		
+        
+        /* General Settings*/
+        &.@{class} {
+            height: @heightMobile;
+
+            @media @tablet {
+                height: @height;
+            }
+
+            .header-content {
+                background: @background;
+                font-family: @fontFamily;
+				font-size: @fontSize;
+                letter-spacing: @letterSpacing;
+                color: @textColor;
+				
+				& when (@height = @heightMobile) {
+					height: @height;
+				}
+				& when not(@height = @heightMobile) {
+					@media @upto-tablet {
+						height: @heightMobile;
+					}
+					@media @tablet {
+						height: @height;
+					}
+				}
+                
+            }
+        }
+		
+        /* Header Boxed */
+        &.@{class} {
+            &.header-boxed {
+                .header-content > .ui.container {
+					background: @background;
+                }
+                
+                &.header-slide-up.header-sticky.is-sticky  .header-content > .ui.container:before {
+					background: transparent;
+                }
+                
+            }
+        }
+        
+        /* Header Shadow */
+        &.@{class} {
+            &.header-shadow .header-content {
+				box-shadow: @shadow;
+            }
+        }
+		
+		/* Header items */
+		&.@{class} {
+			
+			.item {
+				font-family: @fontFamily;
+			}
+			
+			.item:not(.menu-default),
+			.burger-modal-styles .fltp input[type="text"],
+			.burger-modal-styles .fltp:not(.modal-icons) .ui.dropdown {
+				
+				& when (@itemHeightMobile = @itemHeight) {
+					height: @itemHeight;
+					line-height: @itemHeight;
+				}
+			}
+			.item:not(.menu-default) {
+				margin: 0 @itemGutter;
+			}
+			
+			@media @upto-tablet {
+				.item:not(.menu-default),
+				.burger-modal-styles .fltp input[type="text"],
+				.burger-modal-styles .fltp:not(.modal-icons) .ui.dropdown {
+					& when not(@itemHeightMobile = @itemHeight) {
+						height: @itemHeightMobile;
+						line-height: @itemHeightMobile;
+					}
+				}
+			}
+			
+			@media @tablet {
+				.item:not(.logo):not(.menu-default),
+				.burger-modal-styles .fltp input[type="text"],
+				.burger-modal-styles .fltp:not(.modal-icons) .ui.dropdown {
+					& when not(@itemHeightMobile = @itemHeight) {
+						height: @itemHeight;
+						line-height: @itemHeight;
+					}
+				}
+				
+			}
+			
+			.has-submenu > .submenu .item {
+				margin: 0;
+			}
+			
+			
+			/* COLORS */
+			
+			.item:not(.logo),
+			label,
+			.fltp input,
+			.fltp label,
+			.ui.dropdown:not(.active) .text,
+			.ui.dropdown:not(.active) .dropdown.icon,
+			.fltp .ui.dropdown,
+			.fltp .ui.dropdown.active .text,
+			.fltp .ui.dropdown.active .dropdown.icon,
+			label {
+				color: @textColor;
+			}
+			
+			a.item {
+				&:hover,
+				&:focus {
+					color: @linkColor;
+				}
+			}
+			
+			input {
+				.placeholder-color(multiply(mix(@textColor, @background, 50%), #ffffff));
+			}
+			
+			input,
+			select,
+			.ui.dropdown,
+			input[type="checkbox"] + label:before, 
+			input[type="radio"] + label:before {
+				border-color: multiply(mix(@textColor, @background, 50%), #ffffff);
+			}
+			
+			input:focus,
+			select:focus,
+			.ui.active.dropdown,
+			.ui.active.dropdown .menu,
+			.ui.dropdown .menu .selected.item,
+			input[type="checkbox"]:checked + label:before,
+			input[type="radio"]:checked + label:before {
+				border-color: @linkColor;
+			}
+			
+			input[type="checkbox"]:checked + label:before,
+			input[type="radio"]:checked + label:before {
+				background-color: @linkColor;
+			}
+			
+			select {
+                background-image:
+				  linear-gradient(45deg, transparent 50%, @textColor),
+				  linear-gradient(135deg, @textColor, transparent 50%);
+            }
+			
+			select:focus,
+			select:active {
+				background-image:
+					  linear-gradient(45deg, transparent 50%, @linkColor),
+					  linear-gradient(135deg, @linkColor, transparent 50%);
+			}
+			
+			.ui.dropdown .menu > .item:not(.active):hover {
+				background-color: transparent;
+				color: @linkColor;
+			}
+			
+			.ui.dropdown .menu .selected.item {
+				background-color: @linkColor;
+				color: contrast(@linkColor, black, white, 54%);
+			}
+			
+			.calendar-sq {
+				.ui.table tbody tr td.link.today:before {
+					background: @accentColor;
+					border-color: @accentColor;
+				}
+				.ui.table tbody tr td.link.focus:not(.today),
+				.ui.table tbody tr td.link.range:not(.today) {
+					color: @linkColor;
+				}
+				.ui.table tbody tr td.link.focus:before,
+				.ui.table tbody tr td.link.active:before,
+				.ui.table tbody tr td.link.active.focus:before,
+				.ui.table tbody tr td.link.range.focus:before {
+					border-color: @linkColor;
+				}
+				.ui.table tbody tr td.link.active:before,
+				.ui.table tbody tr td.link.active.focus:before {
+					background: @linkColor;
+				}
+			}
+			
+			.hamburger .hamburger-box .hamburger-inner,
+			.hamburger .hamburger-box .hamburger-inner:before,
+			.hamburger .hamburger-box .hamburger-inner:after {
+				background-color: @textColor;
+            }
+			
+			.price-range-slider .noUi-handle {
+				border-color: @accentColor;
+			}
+			
+			.price-range-slider .noUi-active,
+			.price-range-slider .noUi-connect {
+				background: @accentColor;
+			}
+			
+			.price-range-slider .noUi-background {
+				background: multiply(mix(@textColor, @background, 30%), #ffffff);
+			}
+			
+			
+			.fltp.search-sq input[type="text"]:focus,
+			.fltp.search-sq input[type="text"]:valid {
+				background-color: @background;
+			}
+			
+			@media @upto-tablet {
+				.fltp.search-sq input[type="text"]:focus,
+				.fltp.search-sq input[type="text"]:valid {
+					padding-left: 40px + @itemGutter;
+				}
+			}
+			
+		}
+		
+    }
+}
+
+.header-resize-mixin(@class, @headerSection) {
+    
+    @heightAux : "@{headerSection}Height";
+    @height : @@heightAux;
+    
+    @heightResizedAux : "@{headerSection}HeightResized";
+    @heightResized : @@heightResizedAux;
+	
+	@itemHeightResizedAux : "@{headerSection}ItemHeightResized";
+	@itemHeightResized : @@itemHeightResizedAux;
+	
+	@itemHeightAux : "@{headerSection}ItemHeight";
+	@itemHeight : @@itemHeightAux;
+    
+    &.@{class}.header-resize.is-resized {
+		
+		@media @tablet {
+			.header-content {
+				height: @heightResized;
+			}
+			.item:not(.menu-default) {
+				& when not(@itemHeightResized = @itemHeight) {
+					height: @itemHeightResized;
+					line-height: @itemHeightResized;
+				}
+			}
+			
+			.item.logo.square-sq {
+				width: @itemHeightResized;
+			}
+		}
+		
+		// menu items
+		
+		.menu-default .submenu .item,
+		.menu-default.burger-sidemenu-styles .item:not(.check-radio-container):not(.sidemenu-trigger) {
+			& when not(@itemHeightResized = @itemHeight) {
+				height: @itemHeight;
+				line-height: @itemHeight;
+			}
+		}
+    }
+}
+
+.header-transparent-mixin(@class, @headerSection) {
+    
+    @transparentTextColorAux : "@{headerSection}TransparentTextColor";
+    @transparentTextColor : @@transparentTextColorAux;
+
+    @transparentLinkColorAux : "@{headerSection}TransparentLinkColor";
+    @transparentLinkColor : @@transparentLinkColorAux;
+
+    @transparentAccentColorAux : "@{headerSection}TransparentAccentColor";
+    @transparentAccentColor : @@transparentAccentColorAux;
+    
+    &.@{class} {
+        &.header-transparent.is-transparent {
+			
+			.item,
+			label,
+			.fltp input,
+			.fltp label,
+			.ui.dropdown:not(.active) .text,
+			.ui.dropdown:not(.active) .dropdown.icon,
+			.fltp .ui.dropdown.active .text,
+			.fltp .ui.dropdown.active .dropdown.icon,
+			.fltp .ui.dropdown {
+				color: @transparentTextColor;
+			}
+			
+			a.item {
+				&:hover,
+				&:focus {
+					color: @transparentLinkColor;
+				}
+			}
+			
+			input {
+				.placeholder-color(fade(@transparentTextColor, 50%));
+			}
+			
+			input,
+			select,
+			.ui.dropdown,
+			input[type="checkbox"] + label:before, 
+			input[type="radio"] + label:before {
+				border-color: fade(@transparentTextColor, 50%);
+			}
+			
+			input:focus,
+			select:focus,
+			.ui.active.dropdown,
+			.ui.active.dropdown .menu,
+			.ui.dropdown .menu .selected.item,
+			input[type="checkbox"]:checked + label:before,
+			input[type="radio"]:checked + label:before {
+				border-color: @transparentLinkColor;
+			}
+			
+			input[type="checkbox"]:checked + label:before,
+			input[type="radio"]:checked + label:before {
+				background-color: @linkColor;
+			}
+			
+			select {
+                background-image:
+				  linear-gradient(45deg, transparent 50%, @transparentTextColor),
+				  linear-gradient(135deg, @transparentTextColor, transparent 50%);
+            }
+			
+			select:focus,
+			select:active {
+				background-image:
+					  linear-gradient(45deg, transparent 50%, @transparentLinkColor),
+					  linear-gradient(135deg, @transparentLinkColor, transparent 50%);
+			}
+			
+			.ui.dropdown .menu > .item:not(.active):hover {
+				background-color: transparent;
+				color: @transparentLinkColor;
+			}
+			
+			.ui.dropdown .menu .selected.item {
+				background-color: @transparentLinkColor;
+				color: contrast(@transparentLinkColor, black, white, 54%);
+			}
+			
+			.calendar-sq {
+				.ui.table tbody tr td.link.today:before {
+					background: @transparentAccentColor;
+					border-color: @transparentAccentColor;
+				}
+				.ui.table tbody tr td.link.focus:not(.today),
+				.ui.table tbody tr td.link.range:not(.today) {
+					color: @transparentLinkColor;
+				}
+				.ui.table tbody tr td.link.focus:before,
+				.ui.table tbody tr td.link.active:before,
+				.ui.table tbody tr td.link.active.focus:before,
+				.ui.table tbody tr td.link.range.focus:before {
+					border-color: @transparentLinkColor;
+				}
+				.ui.table tbody tr td.link.active:before,
+				.ui.table tbody tr td.link.active.focus:before {
+					background: @transparentLinkColor;
+				}
+			}
+			
+			.hamburger .hamburger-box .hamburger-inner,
+			.hamburger .hamburger-box .hamburger-inner:before,
+			.hamburger .hamburger-box .hamburger-inner:after {
+				background-color: @transparentTextColor;
+            }
+			
+			// nu am mai inclus .price-range-slider aici
+			
+        }
+    }
+}
+
+/*---------------------------------------------
+    Header Sidemenu MIXIN
+----------------------------------------------*/
+
+.header-sidemenu-burger(@class, @headerSection) {
+    
+    @heightAux : "@{headerSection}Height";
+    @height : @@heightAux;
+	
+	@itemGutterAux : "@{headerSection}ItemGutter";
+    @itemGutter : @@itemGutterAux;
+	
+    @sidemenuBackgroundAux : "@{headerSection}SidemenuBackgroundColor";
+    @sidemenuBackground : @@sidemenuBackgroundAux; 
+
+    @sidemenuTextColorAux : "@{headerSection}SidemenuTextColor";
+    @sidemenuTextColor : @@sidemenuTextColorAux;
+
+    @sidemenuLinkColorAux : "@{headerSection}SidemenuLinkColor";
+    @sidemenuLinkColor : @@sidemenuLinkColorAux;
+
+    @sidemenuAccentColorAux : "@{headerSection}SidemenuAccentColor";
+    @sidemenuAccentColor : @@sidemenuAccentColorAux;
+    
+	&.@{class} .menu-default.burger-sidemenu-styles {
+		&,
+		& > ul {
+			background: @sidemenuBackground;
+		}
+		
+		.item {
+			margin: 0;
+			//margin: @itemGutter 0;
+			.flex-shrink(1);
+		}
+		
+		.item.check-radio-container {
+			height: auto;
+			min-height: @itemHeight;
+		}
+		
+		.sidemenu-trigger.item {
+			height: auto;
+			line-height: normal;
+		}
+		
+		/* COLORS */
+			
+		.item,
+		.submenu .item,
+		label,
+		.fltp input,
+		.fltp label,
+		.ui.dropdown:not(.active) .text,
+		.ui.dropdown:not(.active) .dropdown.icon,
+		.fltp .ui.dropdown.active .text,
+		.fltp .ui.dropdown.active .dropdown.icon,
+		.fltp .ui.dropdown,
+		label {
+			color: @sidemenuTextColor;
+		}
+
+		a.item {
+			&:hover,
+			&:focus {
+				color: @sidemenuLinkColor;
+			}
+		}
+
+		input {
+			.placeholder-color(multiply(mix(@sidemenuTextColor, @sidemenuBackground, 50%), #ffffff));
+		}
+
+		input,
+		select,
+		.ui.dropdown,
+		input[type="checkbox"] + label:before, 
+		input[type="radio"] + label:before,
+		hr,
+		&.profile-priority .profile-item,
+		li.has-submenu .submenu {
+			border-color: multiply(mix(@sidemenuTextColor, @sidemenuBackground, 50%), #ffffff);
+		}
+
+		input:focus,
+		select:focus,
+		.ui.active.dropdown,
+		.ui.active.dropdown .menu,
+		.ui.dropdown .menu .selected.item,
+		input[type="checkbox"]:checked + label:before,
+		input[type="radio"]:checked + label:before {
+			border-color: @sidemenuLinkColor;
+		}
+
+		input[type="checkbox"]:checked + label:before,
+		input[type="radio"]:checked + label:before {
+			background-color: @sidemenuLinkColor;
+		}
+
+		select {
+			background-image:
+			  linear-gradient(45deg, transparent 50%, @sidemenuTextColor),
+			  linear-gradient(135deg, @sidemenuTextColor, transparent 50%);
+		}
+
+		select:focus,
+		select:active {
+			background-image:
+				  linear-gradient(45deg, transparent 50%, @sidemenuLinkColor),
+				  linear-gradient(135deg, @sidemenuLinkColor, transparent 50%);
+		}
+		
+		.ui.dropdown .menu > .item:not(.active):hover {
+			background-color: transparent;
+			color: @sidemenuLinkColor;
+		}
+
+		.ui.dropdown .menu .selected.item {
+			background-color: @sidemenuLinkColor;
+			color: contrast(@sidemenuLinkColor, black, white, 54%);
+		}
+
+		.calendar-sq {
+			.ui.table tbody tr td.link.today:before {
+				background: @sidemenuAccentColor;
+				border-color: @sidemenuAccentColor;
+			}
+			.ui.table tbody tr td.link.focus:not(.today),
+			.ui.table tbody tr td.link.range:not(.today) {
+				color: @sidemenuLinkColor;
+			}
+			.ui.table tbody tr td.link.focus:before,
+			.ui.table tbody tr td.link.active:before,
+			.ui.table tbody tr td.link.active.focus:before,
+			.ui.table tbody tr td.link.range.focus:before {
+				border-color: @sidemenuLinkColor;
+			}
+			.ui.table tbody tr td.link.active:before,
+			.ui.table tbody tr td.link.active.focus:before {
+				background: @sidemenuLinkColor;
+			}
+		}
+
+		.hamburger .hamburger-box .hamburger-inner,
+		.hamburger .hamburger-box .hamburger-inner:before,
+		.hamburger .hamburger-box .hamburger-inner:after {
+			background-color: @sidemenuTextColor;
+		}
+
+		.price-range-slider .noUi-connect,
+		.price-range-slider .noUi-handle {
+			background: @sidemenuAccentColor;
+		}
+
+		.price-range-slider .noUi-active,
+		.price-range-slider .noUi-active {
+			border-color: @sidemenuAccentColor;
+		}
+
+		.price-range-slider .price-range-placeholder {
+			color: @sidemenuTextColor;
+		}
+
+		.price-range-slider .noUi-background {
+			background: multiply(mix(@sidemenuTextColor, @sidemenuBackground, 30%), #ffffff);
+		}
+
+		@media @upto-mobile {
+			.price-range-slider .noUi-connect,
+			.price-range-slider .noUi-background {
+				box-shadow:0px 1px 0px 0px @sidemenuAccentColor, 0px -1px 0px 0px @sidemenuAccentColor; 
+			}
+			.price-range-slider .mobile-big-sq .noUi-background {
+				box-shadow:0px 1px 0px 0px multiply(mix(@sidemenuTextColor, @sidemenuBackground, 20%), #ffffff), 0px -1px 0px 0px multiply(mix(@sidemenuTextColor, @sidemenuBackground, 20%), #ffffff);
+			}
+		}
+		
+		
+		
+	}
+	
+}
+
+/*---------------------------------------------
+    Header Modal MIXIN
+----------------------------------------------*/
+
+.header-modal-burger(@class, @headerSection) {
+    
+	@itemGutterAux : "@{headerSection}ItemGutter";
+    @itemGutter : @@itemGutterAux;
+	
+    @modalBackgroundAux : "@{headerSection}ModalBackgroundColor";
+    @modalBackground : @@modalBackgroundAux; 
+
+    @modalTextColorAux : "@{headerSection}ModalTextColor";
+    @modalTextColor : @@modalTextColorAux;
+
+    @modalLinkColorAux : "@{headerSection}ModalLinkColor";
+    @modalLinkColor : @@modalLinkColorAux;
+
+    @modalAccentColorAux : "@{headerSection}ModalAccentColor";
+    @modalAccentColor : @@modalAccentColorAux;
+	
+	
+	&.@{class} .menu-default.burger-modal-styles {
+		background: @modalBackground;
+		
+		.item {
+			margin: @itemGutter 0;
+			.flex-shrink(1);
+		}
+		
+		.item.check-radio-container {
+			height: auto;
+			min-height: @itemHeight;
+		}
+		
+		/* COLORS */
+		
+		.item,
+		.submenu .item,
+		label,
+		.fltp input,
+		.fltp label,
+		.ui.dropdown:not(.active) .text,
+		.ui.dropdown:not(.active) .dropdown.icon,
+		.fltp .ui.dropdown,
+		label,
+		.fltp.modal-icons .ui.dropdown .menu .item {
+			color: @modalTextColor;
+		}
+		
+		a.item:hover,
+		a.item:focus,
+		.fltp.modal-icons .ui.dropdown .menu .item.selected {
+			color: @modalLinkColor;
+		}
+
+		input {
+			.placeholder-color(multiply(mix(@modalTextColor, @modalBackground, 50%), #ffffff));
+		}
+
+		input,
+		select,
+		.ui.dropdown,
+		input[type="checkbox"] + label:before, 
+		input[type="radio"] + label:before,
+		> ul > li.has-submenu .submenu,
+		 .applied-filters > a,
+		.fltp.modal-icons .ui.dropdown .menu .item {
+			border-color: multiply(mix(@modalTextColor, @modalBackground, 50%), #ffffff);
+		}
+		
+		.fltp .ui.dropdown {
+			border-color: multiply(mix(@modalTextColor, @modalBackground, 50%), #ffffff) !important;
+		}
+		
+		
+		hr {
+			background-color: multiply(mix(@modalTextColor, @modalBackground, 50%), #ffffff);
+		}
+
+		input:focus,
+		select:focus,
+		.ui.active.dropdown,
+		.ui.dropdown:focus,
+		.ui.active.dropdown .menu,
+		.ui.dropdown .menu .selected.item,
+		input[type="checkbox"]:checked + label:before,
+		input[type="radio"]:checked + label:before,
+		.fltp.modal-icons .ui.dropdown .menu .item.selected {
+			border-color: @modalLinkColor;
+		}
+		.fltp .ui.dropdown.active,
+		.fltp .ui.dropdown.active .menu{
+			border-color: @modalLinkColor !important;
+		}
+		
+		input[type="checkbox"]:checked + label:before,
+		input[type="radio"]:checked + label:before {
+			background-color: @modalLinkColor;
+		}
+
+		select {
+			background-image:
+			  linear-gradient(45deg, transparent 50%, @modalTextColor),
+			  linear-gradient(135deg, @modalTextColor, transparent 50%);
+		}
+
+		select:focus,
+		select:active {
+			background-image:
+				  linear-gradient(45deg, transparent 50%, @modalLinkColor),
+				  linear-gradient(135deg, @modalLinkColor, transparent 50%);
+		}
+		
+		.ui.dropdown .menu > .item:not(.active):hover {
+			background-color: transparent;
+			color: @modalLinkColor;
+		}
+
+		.ui.dropdown .menu .selected.item {
+			background-color: @modalLinkColor;
+			color: contrast(@modalLinkColor, black, white, 54%);
+		}
+
+		.calendar-sq {
+			.ui.table tbody tr td.link.today:before {
+				background: @modalAccentColor;
+				border-color: @modalAccentColor;
+			}
+			.ui.table tbody tr td.link.focus:not(.today),
+			.ui.table tbody tr td.link.range:not(.today) {
+				color: @modalLinkColor;
+			}
+			.ui.table tbody tr td.link.focus:before,
+			.ui.table tbody tr td.link.active:before,
+			.ui.table tbody tr td.link.active.focus:before,
+			.ui.table tbody tr td.link.range.focus:before {
+				border-color: @modalLinkColor;
+			}
+			.ui.table tbody tr td.link.active:before,
+			.ui.table tbody tr td.link.active.focus:before {
+				background: @modalLinkColor;
+			}
+		}
+
+		.hamburger .hamburger-box .hamburger-inner,
+		.hamburger .hamburger-box .hamburger-inner:before,
+		.hamburger .hamburger-box .hamburger-inner:after {
+			background-color: @modalTextColor;
+		}
+
+		
+		.price-range-slider .noUi-handle {
+			border-color: @modalAccentColor;
+		}
+
+		.price-range-slider .noUi-active,
+		.price-range-slider .noUi-connect {
+			background: @modalAccentColor;
+		}
+
+		.price-range-slider .noUi-background {
+			background: multiply(mix(@modalTextColor, @modalBackground, 30%), #ffffff);
+		}
+
+		@media @upto-mobile {
+			.price-range-slider .noUi-connect {
+				box-shadow:0px 1px 0px 0px @modalAccentColor, 0px -1px 0px 0px @modalAccentColor; 
+			}
+		}
+		
+		
+		// Megamenu 
+		.has-megamenu > .submenu > .item {
+			height: auto;
+		}
+		
+	}
+    
+}
+
+
+.header-section .item.div-c {
+	height: auto !important;
+	line-height: normal !important;
+}
+
+
+.menu-default.burger-modal-styles.search-visible > .modal-trigger.close-sq {
+	transform: translateY(-50%);
+}
+@media @upto-mobile {
+	.menu-default.burger-modal-styles.search-visible > .modal-trigger.close-sq {
+		top: @topHeaderSectionHeightMobile / 2;
+	}
+}
+
+@media @tablet {
+	.menu-default.burger-modal-styles.search-visible > .modal-trigger.close-sq {
+		top: @topHeaderSectionHeight / 2;
+	}
+}
+    
+/*-------------------------------
+    Header Section Boxed 
+--------------------------------*/
+
+.header-section.header-boxed .header-content {
+	background: transparent !important;
+}
+
+/*-------------------------------
+    Header Section Fullwidth 
+--------------------------------*/
+
+.header-section.header-fullwidth .header-content > .ui.container.grid {
+	width: 100% !important;
+}
+
+/*-------------------------------
+    Header Transparent 
+--------------------------------*/
+
+.header-section.header-transparent.is-transparent .header-content {
+	background: transparent;
+	box-shadow: none;
+}
+
+/*-----------------------------------------------
+    Header - All Transitions
+------------------------------------------------*/
+/* Using for header-resize, header-slide-up, header-menu-default, and header-transparent */
+
+.header-section.header-sticky.is-sticky {
+    .header-content {
+        .transition(~"top @{scrolldownDuration} @{scrolldownEasing}, height @{scrolldownDuration} @{scrolldownEasing}, background @{scrolldownDuration} @{scrolldownEasing}, box-shadow 0s linear");
+    }
+
+    &.reverse .header-content {
+            .transition(~"top @{scrollupDuration} @{scrollupEasing}, height @{scrollupDuration} @{scrollupEasing}, background @{scrollupDuration} @{scrollupEasing}, box-shadow @{scrollupDuration} @{scrollupEasing}");
+        }
+
+    /* bottom have transition on margin */
+	
+	&.bhs .header-content {
+		.transition(~"top @{scrolldownDuration} @{scrolldownEasing}, height @{scrolldownDuration} @{scrolldownEasing}, margin @{scrolldownDuration} @{scrolldownEasing}, background @{scrolldownDuration} @{scrolldownEasing}, box-shadow 0s linear");
+	}
+	
+	&.bhs.reverse .header-content {
+		.transition(~"top @{scrollupDuration} @{scrollupEasing}, height @{scrollupDuration} @{scrollupEasing}, margin @{scrollupDuration} @{scrollupEasing}, background @{scrollupDuration} @{scrollupEasing}, box-shadow @{scrollupDuration} @{scrollupEasing}");
+	}
+}
+
+.header-section.header-sticky.is-sticky {
+	
+	&.mhs .header-content {
+		.transition(~"top @{scrolldownDuration} @{scrolldownEasing}, height @{scrolldownDuration} @{scrolldownEasing}, margin @{scrolldownDuration} @{scrolldownEasing}, background @{scrolldownDuration} @{scrolldownEasing}, box-shadow 0s linear");
+	}
+	
+	&.mhs.reverse .header-content {
+		.transition(~"top @{scrollupDuration} @{scrollupEasing}, height @{scrollupDuration} @{scrollupEasing}, margin @{scrollupDuration} @{scrollupEasing}, background @{scrollupDuration} @{scrollupEasing}, box-shadow @{scrollupDuration} @{scrollupEasing}");
+	}
+	
+}
+
+/* items resize */
+.header-section.header-sticky.is-sticky {
+	.header-item .item:not(.burger-sidemenu-styles),
+	.header-item .item.logo > * {
+		.transition(~"height @{scrolldownDuration} @{scrolldownEasing}, opacity @{scrolldownDuration} @{scrolldownEasing}, min-height @{scrolldownDuration} @{scrolldownEasing}, line-height @{scrolldownDuration} @{scrolldownEasing}, width @{scrolldownDuration} @{scrolldownEasing}");
+	}
+	&.reverse .header-item .item:not(.burger-sidemenu-styles),
+	&.reverse .header-item.logo .item > * { 
+		.transition(~"height @{scrollupDuration} @{scrollupEasing}, line-height @{scrollupDuration} @{scrollupEasing} , width @{scrollupDuration} @{scrollupEasing}");
+		
+	}
+}

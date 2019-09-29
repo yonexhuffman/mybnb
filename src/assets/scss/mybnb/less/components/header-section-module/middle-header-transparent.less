@@ -1,0 +1,29 @@
+// main: ../../semantic.less
+
+
+
+/*-------------------------------------
+    Middle Header Transparent
+--------------------------------------*/
+
+.header-transparent-mixin(mhs,"middleHeaderSection");
+
+// Middle Header Section + ui layout 
+.header-section.mhs.header-transparent + .ui.layout,
+.header-section.mhs.header-transparent + .next-sq {
+    margin-top: -@middleHeaderSectionHeightMobile;
+    
+    @media @mobile {
+        margin-top: -@middleHeaderSectionHeight;
+    }
+}
+
+// Top Header Section + Middle Header Section +  ui layout 
+.header-section.ths.header-transparent + .header-section.mhs.header-transparent + .ui.layout,
+.header-section.ths.header-transparent + .header-section.mhs.header-transparent + .next-sq {
+    margin-top: -@topHeaderSectionHeightMobile - @middleHeaderSectionHeightMobile;
+    
+    @media @mobile {
+        margin-top: -@topHeaderSectionHeight - @middleHeaderSectionHeight;
+    }
+}

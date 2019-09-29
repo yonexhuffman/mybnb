@@ -1,0 +1,15 @@
+// main: ../semantic.less
+
+
+// *** Product Box Variables ***
+
+
+//  Property Box
+@priceTagBackground: rgba(36,43,51,0.90);
+
+@propertyItemTitleFontFamily: @headerFont;
+@propertyItemTitleFontWeight: @boldHeaderFont;
+@propertyItemTitleFontSize: 18px;
+
+@addWishlistColor: rgba(0,0,0,.12);
+@addWishlistColorHover: #fff; //@accentColor; //#4A90E2;

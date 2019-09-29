@@ -1,0 +1,60 @@
+// main: ../semantic.less
+
+// *** Layout ***
+
+@mainColumn               : @mainColumnWidth; //75%; // When used with one sidebar
+@smallMainColumn          : @smallMainColumnWidth; //50%; // When used with two sidebars
+@variableSideColumnWidth  : @variableLayoutSideColumnWidth; //100% - @mainColumn;
+//@variable-widthExtraSideColumn: 100% - @mainColumn;
+
+// *** Paddings ***
+@verticalPadding              : @columnVerticalPadding; //0; //3rem; // Top & bottom padding column content
+//@rowSpacing: 2rem;
+
+@layoutBackgroundColor: transparent;
+
+
+// *** Variations ***
+
+// *** App Layout ***
+@fixedSideColumnWidth     : @fixedLayoutSideColumnWidth; //480px;
+@fixedExtraSideColumnWidth: @fixedLayoutExtraSideColumnWidth; //280px;
+
+
+// *** With Border ***
+@columnBorder:                  @columnBorderWidth @columnBorderStyle @columnBorderColor;
+@columnBorderColor:             lighten(saturate(@borderColor, 20), 12, relative);
+@columnBorderWidth:             1px;
+@columnBorderStyle:             solid;
+
+
+// *** Half Layout ***
+
+@switchViewControllerHeight:     40px;
+@switchViewControllerBackground: #FFF;
+@rightColumnBackground: #fff;
+
+@viewControllersColor: #A0A0A0; 
+@viewControllersColorMobile: #fff; 
+@viewControllersColorActive: @accentColor;
+
+
+//  Animation
+@perspective: 1500px;
+@duration: 500ms;
+@easing: @defaultEasing;
+
+//  Property Box
+@priceTagBackground: rgba(36,43,51,0.90);
+
+@addWishlistColor: rgba(0,0,0,.12);
+@addWishlistColorHover: #fff; //@accentColor; //#4A90E2; 
+
+@propertyStickyBoxWidth: @fixedLayoutSideColumnWidth;
+
+@secondHeaderHeightMobile : @menuHeaderHeightMobile;
+@secondHeaderHeight : @menuHeaderHeight;
+
+
+
+    

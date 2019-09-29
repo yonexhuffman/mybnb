@@ -1,0 +1,32 @@
+// main: ../../semantic.less
+
+
+
+/*-------------------------------------
+    Middle Header Resize
+--------------------------------------*/
+
+.header-resize-mixin(mhs,"middleHeaderSection");
+
+.header-section {
+    
+    //** On resize sticky tops will change **
+    &.header-sticky.is-sticky {
+        
+       // middle 
+        &.mhs {
+            &.ths-is-sticky {
+                &.ths-is-resized {
+                    .header-content {
+                        @media @tablet {
+                            top: @topHeaderSectionHeightResized;
+                        }
+                    }
+                }
+            }
+        }
+        
+        
+    }
+    
+}

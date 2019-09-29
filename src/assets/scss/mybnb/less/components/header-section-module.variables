@@ -1,0 +1,195 @@
+// main: ../semantic.less
+
+// *** Header Section ***
+
+@import (multiple) "floating-placeholder.variables";
+
+
+// *** Top Header Section  ***
+
+//  Typography
+
+@topHeaderSectionFontFamily: @pageFont;
+@topHeaderSectionFontSize: 14px;
+@topHeaderSectionLetterSpacing: 0.3px;
+
+//  Height
+
+@topHeaderSectionHeightMobile:    50px;
+@topHeaderSectionHeight:          70px;  
+@topHeaderSectionHeightResized:   50px;
+
+// Item Height 
+@topHeaderSectionItemHeightMobile: 40px;
+@topHeaderSectionItemHeight: 40px;
+@topHeaderSectionItemHeightResized: 40px;
+
+// Item Gutter
+@topHeaderSectionItemGutter: 20px;
+
+// Backgrounds & Colors
+
+@topHeaderSectionBackgroundColor: #fff; //#240b5d; //#fff;
+@topHeaderSectionTextColor: #1f1f1f; //#fff; //#000;
+@topHeaderSectionLinkColor: #F0114C; //#000;
+@topHeaderSectionAccentColor: #F0114C; //#000;
+
+
+// Transparent Colors 
+
+@topHeaderSectionTransparentTextColor: #fff;
+@topHeaderSectionTransparentLinkColor: #BEBEBE;
+@topHeaderSectionTransparentAccentColor: #F0114C;
+
+
+//  Sidemenu Colors
+
+@topHeaderSectionSidemenuBackgroundColor: #fff;
+@topHeaderSectionSidemenuTextColor: @topHeaderSectionTextColor;
+@topHeaderSectionSidemenuLinkColor: @topHeaderSectionLinkColor;
+@topHeaderSectionSidemenuAccentColor: @topHeaderSectionAccentColor;
+
+
+//  Modal Colors
+
+@topHeaderSectionModalBackgroundColor: @topHeaderSectionBackgroundColor;
+@topHeaderSectionModalTextColor: @topHeaderSectionTextColor; 
+@topHeaderSectionModalLinkColor: @topHeaderSectionLinkColor; 
+@topHeaderSectionModalAccentColor: @topHeaderSectionAccentColor;
+
+//  Shadow
+
+@topHeaderSectionShadow: 1px 0px 1px rgba(0,0,0,0.1); //0 1px 6px rgba(140, 140, 140, 0.08);
+
+
+// *** Middle Header Section  ***
+
+//  Typography
+
+@middleHeaderSectionFontFamily: @pageFont;
+@middleHeaderSectionFontSize: 14px;
+@middleHeaderSectionLetterSpacing: 0.3px;
+
+//  Height
+
+@middleHeaderSectionHeightMobile:    50px;
+@middleHeaderSectionHeight:          70px; 
+@middleHeaderSectionHeightResized:   50px;
+
+// Item Height 
+@middleHeaderSectionItemHeightMobile: 40px;
+@middleHeaderSectionItemHeight: 50px;
+@middleHeaderSectionItemHeightResized: 40px;
+
+// Item Gutter
+@middleHeaderSectionItemGutter: 20px;
+
+// Backgrounds & Colors
+
+@middleHeaderSectionBackgroundColor: #fff; //#f2f2f2;
+@middleHeaderSectionTextColor: #6D6D6D; //#000;
+@middleHeaderSectionLinkColor: #F0114C; //#000;
+@middleHeaderSectionAccentColor: #FD386C; //#000;
+
+
+// Transparent Colors 
+
+@middleHeaderSectionTransparentTextColor: yellow;
+@middleHeaderSectionTransparentLinkColor: red;
+@middleHeaderSectionTransparentAccentColor: #c31b8f;
+
+
+//  Sidemenu Colors
+
+@middleHeaderSectionSidemenuBackgroundColor: #000;
+@middleHeaderSectionSidemenuTextColor: #fff;
+@middleHeaderSectionSidemenuLinkColor: red;
+@middleHeaderSectionSidemenuAccentColor: #fff;
+
+
+//  Modal Colors
+
+@middleHeaderSectionModalBackgroundColor: @middleHeaderSectionBackgroundColor;
+@middleHeaderSectionModalTextColor: @middleHeaderSectionTextColor; 
+@middleHeaderSectionModalLinkColor: @middleHeaderSectionLinkColor; 
+@middleHeaderSectionModalAccentColor: @middleHeaderSectionAccentColor;
+
+
+//  Shadow
+
+@middleHeaderSectionShadow: 1px 0px 1px rgba(0,0,0,0.1); //0 1px 6px rgba(140, 140, 140, 0.08);
+
+
+// *** Bottom Header Section  ***
+
+//  Typography
+
+@bottomHeaderSectionFontFamily: @pageFont;
+@bottomHeaderSectionFontSize: 16px;
+@bottomHeaderSectionLetterSpacing: 0.3px;
+
+
+//  Height
+
+@bottomHeaderSectionHeightMobile:    50px;
+@bottomHeaderSectionHeight:          80px; 
+@bottomHeaderSectionHeightResized:   66px;
+
+// Item Height 
+@bottomHeaderSectionItemHeightMobile: 40px;
+@bottomHeaderSectionItemHeight: 50px;
+@bottomHeaderSectionItemHeightResized: 40px;
+
+// Item Gutter
+@bottomHeaderSectionItemGutter: 16px;
+
+// Backgrounds & Colors
+
+@bottomHeaderSectionBackgroundColor: #D3E7FF;
+@bottomHeaderSectionTextColor: #000; //#000;
+@bottomHeaderSectionLinkColor: #00a04a; //#000;
+@bottomHeaderSectionAccentColor: #c31b8f; //#000;
+
+
+// Transparent Colors 
+
+@bottomHeaderSectionTransparentTextColor: yellow;
+@bottomHeaderSectionTransparentLinkColor: red;
+@bottomHeaderSectionTransparentAccentColor: #c31b8f;
+
+
+//  Sidemenu Colors
+
+@bottomHeaderSectionSidemenuBackgroundColor: #000;
+@bottomHeaderSectionSidemenuTextColor: #fff;
+@bottomHeaderSectionSidemenuLinkColor: red;
+@bottomHeaderSectionSidemenuAccentColor: #fff;
+
+//  Modal Colors
+
+@bottomHeaderSectionModalBackgroundColor: @bottomHeaderSectionBackgroundColor;
+@bottomHeaderSectionModalTextColor: @bottomHeaderSectionTextColor; 
+@bottomHeaderSectionModalLinkColor: @bottomHeaderSectionLinkColor; 
+@bottomHeaderSectionModalAccentColor: @bottomHeaderSectionAccentColor;
+
+
+//  Shadow
+
+@bottomHeaderSectionShadow: 1px 0px 1px rgba(0,0,0,0.1); //0 1px 6px rgba(140, 140, 140, 0.08);
+
+
+
+// *** Animation ***
+
+//  scroll down
+@scrolldownDuration: 0.4s;
+@scrolldownEasing: cubic-bezier(.72,.29,.41,.84);
+
+//  scroll up
+@scrollupDuration: 0.2s; //  recomanded
+@scrollupEasing: cubic-bezier(.72,.29,.41,.84);
+
+
+
+
+

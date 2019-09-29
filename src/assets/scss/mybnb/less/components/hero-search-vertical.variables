@@ -1,0 +1,18 @@
+// main: ../semantic.less
+
+
+// *** Hero Search Vertical ***
+
+@import (multiple) "floating-placeholder.variables";  
+
+
+@h-search-v-background:  #fff;
+@h-search-v-default-padding: 40px;
+@h-search-v-default-width: 180px;
+
+@h-search-v-fltp-height: 40px;
+
+@h-search-v-boxed-width: 400px;
+@h-search-v-narrow-width: 230px;
+@h-search-v-narrow-padding: 40px;
+

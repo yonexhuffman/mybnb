@@ -1,0 +1,164 @@
+// main: ../../semantic.less
+
+
+
+/*-------------------------------------
+    Middle Header Slide Up
+--------------------------------------*/
+
+.header-section {
+    
+    &.header-slide-up {
+        
+        &.header-sticky.is-sticky {
+            
+            // Middle
+            &.mhs {
+                
+                .header-content {
+                    
+                    background: transparent;
+                    
+                    
+                    > .ui.container {
+                        .transition(margin @scrollupDuration @scrollupEasing);
+                        
+                        &:before {
+                            content: '';
+                            height: 100%;
+                            width: 100%;
+                            background: @middleHeaderSectionBackgroundColor;
+                            position: absolute;
+                            left: 0;
+                            z-index: -1;
+                        }
+                    }
+                }
+                
+                &.reverse {
+                    .header-content {
+                        overflow: hidden;
+                        animation: overflow-hidden 0s @scrolldownDuration forwards;
+                    }
+                }
+                
+                &.is-slide-up {
+                    .header-content {
+                        
+                        overflow: hidden;
+                        animation: visibility-keyframe 0s @scrolldownDuration forwards;
+                        box-shadow: none;
+                        
+                        > .ui.container {
+                            
+                            .transition(margin @scrolldownDuration @scrolldownEasing);
+                            
+                            margin-top: -@middleHeaderSectionHeightMobile;
+                            
+                            @media @tablet {
+                                margin-top: -@middleHeaderSectionHeight;
+                            }
+                        }
+                    }
+                    
+                     //when is resized 
+                    &.is-resized {
+                        .header-content {
+                            
+                            > .ui.container {
+                                @media @tablet {
+                                    margin-top: -@middleHeaderSectionHeightResized;
+                                }
+                            }
+                        }
+                    }
+                    
+                }
+                
+            }
+            
+        }
+        
+    }
+    
+    // Defaults
+    &.header-sticky {
+        
+        &.mhs {
+            &.ths-is-slide-up {
+                .header-content {
+                    
+                    margin-top: -@topHeaderSectionHeightMobile;
+                    transform: translateY(@topHeaderSectionHeightMobile);
+                    
+                    @media @tablet {
+                        margin-top: -@topHeaderSectionHeight;
+                        transform: translateY(@topHeaderSectionHeight);
+                    }
+                    
+                }
+                
+                &.ths-is-resized {
+                    .header-content {
+                        margin-top: -@topHeaderSectionHeightResized;
+                        transform: translateY(@topHeaderSectionHeightResized);
+                    }
+                }
+            }
+        }
+        
+    }
+    
+    &.header-sticky.is-sticky {
+        
+        // Middle Section 
+        &.mhs {
+            
+            &.ths-is-sticky {
+                &.ths-is-slide-up {
+                    
+                    .header-content {
+                        margin-top: -@topHeaderSectionHeightMobile;
+                        transform: none;
+                        
+                        @media @tablet {
+                            margin-top: -@topHeaderSectionHeight;
+                        }
+                        
+                        .menu-default {
+                            > ul {
+                                > li {
+                                    &.has-submenu.has-megamenu {
+                                        &.filters-dropdown {
+                                            .submenu {
+                                                top: @middleHeaderSectionHeightMobile;
+                                                height: ~"calc(100% - @{middleHeaderSectionHeightMobile})";
+
+                                                @media @tablet {
+                                                    top: @middleHeaderSectionHeight;
+
+                                                    height: ~"calc(100% - @{middleHeaderSectionHeight})";
+                                                }
+                                            }
+                                        }
+                                    }
+                                } 
+                            }
+                        }
+                    }
+                    
+                    &.ths-is-resized {
+                        .header-content {
+                            @media @tablet {
+                                margin-top: -@topHeaderSectionHeightResized;
+                                transform: none;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+    }
+    
+}

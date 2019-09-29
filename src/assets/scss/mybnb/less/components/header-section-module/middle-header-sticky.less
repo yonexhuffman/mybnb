@@ -1,0 +1,55 @@
+// main: ../../semantic.less
+
+
+
+/*-------------------------------------
+    Middle Header Sticky
+--------------------------------------*/
+.header-section.header-sticky.is-sticky.mhs .header-content {
+	z-index: 102;
+}
+.header-section {
+    &.header-sticky.is-sticky {
+    
+    //** Middle **
+        &.mhs {
+            .header-content {
+                z-index: 101;
+            }
+            
+            // when top header section is sticky 
+            &.ths-is-sticky {
+                .header-content {
+                    top: @topHeaderSectionHeightMobile;
+                    
+                    @media @tablet {
+                        top: @topHeaderSectionHeight;
+                    }
+                    
+                    .menu-default {
+                        > ul {
+                            > li {
+                                &.has-submenu.has-megamenu {
+                                    &.filters-dropdown {
+                                        .submenu {
+                                            top: @topHeaderSectionHeightMobile + @middleHeaderSectionHeightMobile;
+                                            height: ~"calc(100% - @{topHeaderSectionHeightMobile} - @{middleHeaderSectionHeightMobile})";
+                    
+                                            @media @tablet {
+                                                top: @topHeaderSectionHeight + @middleHeaderSectionHeight;
+                                                
+                                                height: ~"calc(100% - @{topHeaderSectionHeight} - @{middleHeaderSectionHeight})";
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    
+    }
+    
+}

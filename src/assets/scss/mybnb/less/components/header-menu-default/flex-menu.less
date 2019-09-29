@@ -1,0 +1,49 @@
+// main: ../../semantic.less
+
+
+/*-------------------------------
+    Flex Menu
+--------------------------------*/
+
+/* flexMenu styles */
+
+.header-section .menu-default.item.flexMenu {
+	//width: 100%;
+	.flex-shrink(1);
+}
+.flexMenu-viewMore {
+  cursor: pointer;
+}
+.flexMenu-viewMore > a {
+  white-space: nowrap;
+  text-transform: uppercase;
+  font-size: 8px;
+  min-width: 30px;
+  //padding: @menuItemPadding;
+}
+.flexMenu-viewMore > i {
+  font-size: 8px;
+}
+
+.flexMenu-viewMore.active > a,
+.flexMenu-viewMore > a:hover {}
+
+.flexMenu-popup {
+  padding: 0;
+  margin: 0;
+  left: 0;
+  top: 100%;
+  display: block !important;
+  
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.1s linear;
+}
+.flexMenu-viewMore.active .flexMenu-popup {
+  visibility: visible;
+  opacity: 1;
+}
+
+.menu-default > ul li.has-submenu.flexMenu-viewMore .item:empty {
+	display: none;
+}

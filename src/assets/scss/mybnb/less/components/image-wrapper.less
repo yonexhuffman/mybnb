@@ -1,0 +1,63 @@
+ /*
+ * # Mybnb - 1.0.0
+ * http://www.seventhqueen.com/
+ *
+ *
+ * Copyright 2012 SeventhQueen
+ * Released under the MIT license
+ * http://opensource.org/licenses/MIT
+ *
+ */
+
+
+// Importing module specific variables
+@import (multiple) "../variables.less";
+@import (less) "./image-wrapper.variables";
+@import (multiple) "../mixins.less";
+
+
+
+
+// *** Theme ***
+
+
+
+
+/*------------------------------------------
+        Image Wrapper
+-------------------------------------------*/
+
+.image-wrapper {
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom:0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    opacity: 0;
+    .transition(opacity .5s ease-out);
+
+    .image-inner {
+        position: relative;
+        display: block;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        
+        > img {
+            position: absolute;
+            max-width: none;
+            pointer-events: auto;
+        }
+    }
+}
+
+.image-relative {
+    position: relative;
+}
+
+
+

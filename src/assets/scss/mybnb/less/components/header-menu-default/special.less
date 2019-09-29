@@ -1,0 +1,59 @@
+// main: ../../semantic.less
+
+
+/*---------------------
+    Menu Vertical
+----------------------*/
+
+/* available only if header section is sticky */
+
+@media @upto-mobile {
+	.header-section.is-sticky .menu-mobile-vertical {
+		width: 100%;
+		
+		> ul {
+			position: absolute;
+			bottom: 0;
+			height: auto;
+			width: 100%;
+			.flex-direction(column);
+			.flex-wrap(nowrap);
+			.flex-align-items(flex-start);
+		}
+		> ul > li {
+			width: 100%;
+		}
+		
+		> ul.anchor-menu > li {
+			display: none;
+			&.active {
+				display: block;
+			}
+		}
+		> ul.anchor-menu > li > a {
+			pointer-events: none;
+		}
+		
+		> ul.anchor-menu.open > li {
+			display: block;
+			> a {
+				pointer-events: all;
+			}
+		}
+	}
+	
+	.mhs.header-section.is-sticky .menu-mobile-vertical > ul > li {
+		height: @middleHeaderSectionHeightMobile;
+		line-height: @middleHeaderSectionHeightMobile;
+		
+		> a {
+			height: 100%;
+			line-height: normal;
+		}
+	}
+	
+}
+
+.mhs .header-content .menu-default li.active > a {
+	color: @middleHeaderSectionLinkColor;
+}

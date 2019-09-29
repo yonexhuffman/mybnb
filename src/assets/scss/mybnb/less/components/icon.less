@@ -1,0 +1,86 @@
+ /*
+ * # Mybnb - 1.0.0
+ * http://www.seventhqueen.com/
+ *
+ *
+ * Copyright 2012 SeventhQueen
+ * Released under the MIT license
+ * http://opensource.org/licenses/MIT
+ *
+ */
+
+
+// Importing module specific variables
+@import (multiple) "../variables.less";
+@import (less) "./icon.variables";
+@import (multiple) "../mixins.less";
+
+
+
+
+
+// *** Theme ***
+
+
+
+
+/*******************************
+             Icon
+*******************************/
+
+
+i.icon {
+	display: inline-block;
+	opacity: @opacity;
+	margin: 0em @distanceFromText 0em 0em;
+	width: auto;
+	//width: @width;
+	height: @height;
+
+	font-family: 'Icons';
+	font-style: normal;
+	font-weight: normal;
+	text-decoration: inherit;
+	text-align: center;
+
+	speak: none;
+	font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased;
+	backface-visibility: hidden;
+	
+}
+
+i.icon:before {
+  background: none !important;
+}
+
+i.icon,
+i.icons {
+  font-size: @medium;
+}
+
+
+/*******************************
+             States
+*******************************/
+
+i.icon.hover {
+  opacity: 1 !important;
+}
+
+i.icon.active {
+  opacity: 1 !important;
+}
+
+i.emphasized.icon {
+  opacity: 1 !important;
+}
+
+i.disabled.icon {
+  opacity: @disabledOpacity !important;
+}
+
+
+
+// *** Theme Overrides ***

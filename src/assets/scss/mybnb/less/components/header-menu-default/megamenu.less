@@ -1,0 +1,164 @@
+// main: ../../semantic.less
+
+
+/*-----------------------------
+    Megamenu
+------------------------------*/
+
+
+.menu-default .has-submenu .item .content,
+.menu-default .has-submenu .item .footer {
+	width: 100%;
+}
+
+
+.menu-default .has-submenu .item .content {
+	overflow-y: auto;
+	.flex-grow(1);
+	height: 100%;
+	
+}
+
+
+@media @tablet {
+	.menu-default .has-megamenu .item .content {
+		padding: @gridGutterWidth @gridGutterWidth 0 @gridGutterWidth;
+	}
+	.menu-default .has-megamenu .item .footer {
+		padding-left: @gridGutterWidth;
+		padding-right: @gridGutterWidth;
+	}
+	.menu-default.burger-modal-styles .has-megamenu .item .content,
+	.menu-default.burger-modal-styles .has-megamenu .item .footer {
+		padding-left: 0;
+		padding-right: 0;
+	}
+}
+
+
+
+.menu-default .has-megamenu .item .footer {
+	@media @upto-tablet {
+		height: auto;
+		padding-bottom: 50px;
+	}
+	@media @desktop {
+		height: 100px;
+	}
+	.flex-shrink(0);
+	
+	.button-sq.float-right-sq {
+		margin-left: 1em;
+	}
+	.button-sq:not(.float-right-sq) {
+		margin-right: 1em;
+	}
+	
+	.div-c {
+		.flex-align-items(center);
+		height: 100%;
+	}
+}
+
+
+// Open inside modal
+
+.menu-default.burger-modal-styles > ul .has-submenu.open-inside-modal {
+	pointer-events: none;
+	> .submenu {
+		display: block;
+		visibility: visible;
+		pointer-events: auto;
+		outline: none;
+	}
+}
+
+
+// Filters Dropdown
+
+.menu-default .has-megamenu.filters-dropdown {
+	position: static;
+	&:before,
+	&:after {
+		display: none;
+	}
+}
+
+.menu-default .has-megamenu.filters-dropdown > .submenu {
+	right: 0;
+	left: inherit;
+	padding: 0;
+	width: 100%;
+
+	position: fixed;
+	max-height: inherit;
+	overflow: hidden;
+	
+	
+	> .item {
+		.flex();
+		.flex-direction(column);
+		height: 100%;
+		line-height: inherit;
+	}
+	.divided-column {
+		margin-bottom: 1em;
+	}
+	
+	.ui.accordion .title {
+		padding-bottom: 0;
+	}
+	.ui.accordion .content {
+		padding-top: 0;
+	}
+	
+	hr {
+		margin-top: 30px;
+		margin-bottom: 30px;
+	}
+}
+
+
+// Special 
+
+@media @desktop-strict {
+	.menu-default .has-megamenu.filters-dropdown > .submenu.special-sq {
+		width: 65%;
+	}
+}
+@media @desktop {
+	.menu-default .has-megamenu.filters-dropdown > .submenu.special-sq {
+		width: 70%;
+	}
+}
+
+.applied-filters {
+    .flex();
+    .flex-direction(row);
+    .flex-wrap(wrap);
+    
+    margin: 20px 0;
+    
+    & > a {
+        border: 1px solid @borderColor;
+        font-size: 0.813em;
+        padding: 0px 10px;
+        margin: 0 5px 6px 5px;
+        color: @textSecondaryColor;
+		display: inline-block;
+		border-radius: 1em;
+        
+        > .icon {
+            margin-left: 10px !important;
+            font-size: 0.75em;
+        }
+    }
+}
+
+.filters-icon-container {
+    > .icon {
+        font-size: 20px;
+        margin-right: 14px !important;
+        color: @linkColor;
+    }
+}

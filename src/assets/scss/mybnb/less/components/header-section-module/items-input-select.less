@@ -1,0 +1,57 @@
+// main: ../../semantic.less
+
+
+/*-------------------------------------
+    Input & Select
+--------------------------------------*/
+
+.header-section {
+    .header-content {
+        .header-item {
+            input[type="text"].item,
+            .item:not(.fpl) input[type="text"],
+            select.item,
+            .item select {
+                //width: auto;
+                min-width: inherit;
+                padding-top: 0;
+                padding-bottom: 0;
+            }
+            
+            input[type="text"].item,
+            /*.item:not(.fpl):not(.divided-container) input[type="text"],*/
+            select.item,
+            .item:not(.divided-container) select {
+                width: auto;
+                @media @upto-desktop {
+                    max-width: 100px;
+                }
+            }
+            
+            .ui.dropdown {
+                min-height: initial;
+                min-width: inherit;
+                padding-top: 0;
+                padding-bottom: 0;
+                
+                .dropdown.icon {
+                    width: 16px;
+                    height: 16px;
+                    top: 50%;
+                    right: 10px;
+
+                    margin: -8px 0 0 0;
+                    padding: 0;
+
+                    @media @tablet {
+                      right: 10px;  
+                    }
+                }
+                
+                > .text {
+                    min-width: 40px;
+                }
+            }
+        }
+    }
+}

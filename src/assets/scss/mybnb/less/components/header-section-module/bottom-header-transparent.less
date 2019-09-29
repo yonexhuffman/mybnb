@@ -1,0 +1,39 @@
+// main: ../../semantic.less
+
+
+
+/*-------------------------------------
+    Bottom Header Transparent
+--------------------------------------*/
+
+.header-transparent-mixin(bhs,"bottomHeaderSection");
+
+/* Bottom Header Section + ui layout */
+.header-section.bhs.header-transparent + .ui.layout,
+.header-section.bhs.header-transparent + .next-sq {
+    margin-top: -@bottomHeaderSectionHeightMobile;
+    
+    @media @mobile {
+        margin-top: -@bottomHeaderSectionHeight;
+    }
+}
+
+/* Middle Header Section + Bottom Header Section +  ui layout */
+.header-section.mhs.header-transparent + .header-section.bhs.header-transparent + .ui.layout,
+.header-section.mhs.header-transparent + .header-section.bhs.header-transparent + .next-sq {
+    margin-top: -@bottomHeaderSectionHeightMobile - @middleHeaderSectionHeightMobile;
+    
+    @media @mobile {
+        margin-top: -@bottomHeaderSectionHeight - @middleHeaderSectionHeight;
+    }
+}
+
+/* Top Header Section + Middle Header Section + Bottom Header Section +  ui layout */
+.header-section.ths.header-transparent + .header-section.mhs.header-transparent + .header-section.bhs.header-transparent + .ui.layout,
+.header-section.ths.header-transparent + .header-section.mhs.header-transparent + .header-section.bhs.header-transparent + .next-sq {
+    margin-top: -@topHeaderSectionHeightMobile - @bottomHeaderSectionHeightMobile - @middleHeaderSectionHeightMobile;
+    
+    @media @mobile {
+        margin-top: -@topHeaderSectionHeight - @middleHeaderSectionHeight - @bottomHeaderSectionHeight;
+    }
+}

@@ -1,0 +1,55 @@
+// main: ../../semantic.less
+
+
+
+/*-------------------------------------
+    Bottom Header Sticky
+--------------------------------------*/
+.header-section.header-sticky.is-sticky.bhs .header-content {
+	z-index: 101;
+}
+
+.header-section {
+    &.header-sticky.is-sticky {
+        
+        //** Bottom **    
+        &.bhs {
+            // when top header and middle section are sticky 
+            &.ths-is-sticky.mhs-is-sticky {
+                .header-content {
+                    top: (@topHeaderSectionHeightMobile + @middleHeaderSectionHeightMobile);
+                    
+                    @media @tablet {
+                        top: (@topHeaderSectionHeight + @middleHeaderSectionHeight);
+                    }
+                }
+            }
+            
+            
+            // when top header section is sticky 
+            &.ths-is-sticky {
+                .header-content {
+                    top: @topHeaderSectionHeightMobile;
+                    
+                    @media @tablet {
+                        top: @topHeaderSectionHeight;
+                       
+                    }
+                }
+                
+            }
+            
+            // when middle header section is sticky 
+            &.mhs-is-sticky {
+                .header-content {
+                    top: @middleHeaderSectionHeightMobile;
+                    
+                    @media @tablet {
+                        top: @middleHeaderSectionHeight;
+                    }
+                }
+            }
+        }
+    }
+    
+}

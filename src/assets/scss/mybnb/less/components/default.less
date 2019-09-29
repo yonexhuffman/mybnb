@@ -1,0 +1,772 @@
+ /*
+ * # Mybnb - 1.0.0
+ * http://www.seventhqueen.com/
+ *
+ *
+ * Copyright 2012 SeventhQueen
+ * Released under the MIT license
+ * http://opensource.org/licenses/MIT
+ *
+ */
+
+
+// Importing module specific variables
+@import (multiple) "../variables.less";
+@import (less) "./default.variables";
+@import (multiple) "../mixins.less";
+
+
+
+
+/*******************************
+      HTML Default Elements
+*******************************/
+
+
+
+
+/*-----------------------------
+      Image
+------------------------------*/
+
+img {
+  height: auto;
+  max-width: 100%;
+  vertical-align: middle;
+}
+
+a img {
+	border: 0;
+}
+
+/*-----------------------------
+      Table
+------------------------------*/
+
+table {
+    margin-bottom: 30px;
+    border: none;
+	width: 100%;
+    thead {
+        th {
+            background: none;
+            color: fade(@textColor, 50%);
+            font-weight: 400;
+			text-align: left;
+        }
+        
+    }
+    
+    th, td {
+        border: none;
+        
+        @media @tablet {
+            border-bottom: 1px solid @borderColor;
+            padding: @tableVerticalPadding @tableHorizontalPadding;
+        }
+        
+        > * {
+            .flex();
+            .flex-direction(row);
+            .flex-align-items(center);
+        }
+        
+    }
+
+    .avatar-sq {
+        margin-bottom: 0;
+        margin-right: 20px;
+    }
+}
+
+
+@media @upto-mobile {
+	table.responsive {
+		thead {
+			 display: none;
+		}
+		 tr {
+			.flex();
+            .flex-direction(column);
+            border-bottom: 1px solid @borderColor;
+            padding: @tableVerticalPadding 0;
+		}
+	}
+}
+
+
+
+
+/*-----------------------------
+      Blockquote
+------------------------------*/
+
+blockquote {
+  font-style: italic;
+  font-size: @big;
+  display: block;
+  width: 80%;
+  margin: 0;
+  padding: 2em 0;
+  letter-spacing: 0.1em;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote cite {
+  font-style: normal;
+  font-size: @tiny;
+}
+
+/*-----------------------------
+      List
+------------------------------*/
+
+ul,
+ol {
+  list-style-type: @listStyleType;
+  margin: @margin;
+  padding: @verticalPadding @horizontalPadding;
+}
+
+ul:first-child,
+ol:first-child {
+  margin-top: 0em;
+  padding-top: 0em;
+}
+
+ul:last-child,
+ol:last-child {
+  margin-bottom: 0em;
+  padding-bottom: 0em;
+}
+
+/* List Item */
+ul li,
+ol li {
+  display: list-item;
+  table-layout: fixed;
+  list-style-type: @listStyleType;
+  list-style-position: @listStylePosition;
+  padding: @itemPadding;
+}
+
+ul > li:first-child:after,
+ol > li:first-child:after {
+  content: '';
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+ul li:first-child,
+ol li:first-child {
+  padding-top: 0em;
+}
+ul li:last-child,
+ol li:last-child {
+  padding-bottom: 0em;
+}
+
+
+/* Child List */
+ul ul,
+ol ol {
+  clear: both;
+  margin: 0em;
+  padding: @childListPadding;
+}
+
+/* Child Item */
+ul ul li,
+ol ol li {
+  padding: @childItemPadding;
+  line-height: @childItemLineHeight;
+}
+
+/* Bulleted */
+ul {
+  margin-left: @bulletDistance;
+}
+ul li {
+  position: relative;
+}
+ul li:before {
+  user-select: none;
+  pointer-events: none;
+  position: absolute;
+  top: auto;
+  left: auto;
+  margin-left: @bulletOffset;
+  content: @bulletCharacter;
+  opacity: @bulletOpacity;
+  color: @bulletColor;
+  vertical-align: @bulletVerticalAlign;
+}
+
+ul ul {
+  padding-left: @bulletChildDistance;
+}
+
+/* Ordered List */
+ol,
+ol ol {
+  counter-reset: ordered;
+  margin-left: @orderedCountDistance;
+  list-style-type: none;
+}
+ol li {
+  list-style-type: none;
+  position: relative;
+}
+ol > li:before {
+  position: relative;
+  top: auto;
+  left: auto;
+  user-select: none;
+  pointer-events: none;
+  margin-left: -(@orderedCountDistance);
+  counter-increment: @orderedCountName;
+  content: @orderedCountContent;
+  text-align: @orderedCountTextAlign;
+  color: @orderedCountColor;
+  vertical-align: @orderedCountVerticalAlign;
+  opacity: @orderedCountOpacity;
+}
+
+/* Definition List */
+dl {}
+dt {
+  font-weight: bold;
+}
+dd {
+  margin: 0 0 1em;
+}
+
+
+
+/*-----------------------------
+      Adress
+------------------------------*/
+
+
+/* Address Tag */
+address {
+  margin: @addressMargin;
+}
+
+
+/*-----------------------------
+      Code
+------------------------------*/
+
+/* Code Tag */
+code {
+  background-color: #eee;
+  padding: 0.125em 0.25em;
+}
+
+/* Mark & Ins Tag */
+mark, ins {
+  background: @accentColor;
+  color: @textOverAccentColor;
+  padding: 0.125em 0.25em;
+  text-decoration: none;
+}
+
+pre {
+    font-family: Consolas, Monaco, "Courier New", Courier, monospace;
+    font-size: 14px;
+    max-width: 100%;
+    width: 100%;
+    overflow: auto;
+    padding: 0;
+    position: relative;
+    white-space: normal;
+    line-height: 22px;
+    
+    code {
+        padding: 25px;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+        letter-spacing: 0.01em;
+        
+    }
+}
+
+
+/* HR */
+
+hr {
+    height: 1px;
+	border: none;
+    border-top: 1px solid @borderColor;
+	width: 100%;
+}
+
+/*-----------------------------
+           Forms
+------------------------------*/
+
+// Form
+form {
+  position: relative;
+  max-width: 100%;
+}
+
+
+/*---------- Label ------------*/
+
+label {
+  display: block;
+  margin: @labelMargin;
+  color: @labelColor;
+  font-size: @labelFontSize;
+  font-weight: @labelFontWeight;
+  text-transform: @labelTextTransform;
+}
+
+
+/*---------- Inputs -----------*/
+
+textarea,
+input:not([type]),
+input[type="date"],
+input[type="datetime-local"],
+input[type="email"],
+input[type="number"],
+input[type="password"],
+input[type="search"],
+input[type="tel"],
+input[type="time"],
+input[type="text"],
+input[type="url"] {
+  width: @inputWidth;
+  vertical-align: top;
+}
+
+/* Set max height on unusual input */
+::-webkit-datetime-edit,
+::-webkit-inner-spin-button {
+  height: @inputLineHeight;
+}
+
+input:not([type]),
+input[type="date"],
+input[type="datetime-local"],
+input[type="email"],
+input[type="number"],
+input[type="password"],
+input[type="search"],
+input[type="tel"],
+input[type="time"],
+input[type="text"],
+input[type="url"] {
+  font-family: @inputFont;
+  margin: 0;
+  outline: none;
+  -webkit-appearance: none;
+  tap-highlight-color:  rgba(255, 255, 255, 0);
+
+  line-height: @inputLineHeight;
+  padding: @inputPadding;
+  font-size: @inputFontSize;
+
+  background: @inputBackground;
+  border: @inputBorder;
+  color: @inputColor;
+  border-radius: @inputBorderRadius;
+  box-shadow: @inputBoxShadow;
+  transition: @inputTransition;
+}
+
+input[type="text"] {
+  &::-webkit-input-placeholder,
+  &::-moz-placeholder,
+  &:-moz-placeholder,
+  &:-ms-input-placeholder {
+    position: relative;
+    color: green !important;
+    &:before {
+      // your code
+      content: 'jkl';
+      top: 2px;
+      left: 4px;
+      position: absolute;
+      font-size: 14px;
+      text-align: center;
+      color: red;
+      z-index: 99999;
+      //opacity: 0;
+    }
+  }
+}
+
+/* Focus */
+
+input:not([type]):focus,
+input[type="date"]:focus,
+input[type="datetime-local"]:focus,
+input[type="email"]:focus,
+input[type="number"]:focus,
+input[type="password"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="time"]:focus,
+input[type="text"]:focus,
+input[type="url"]:focus {
+  color: @inputFocusColor;
+  border-color: @inputFocusBorderColor;
+  border-radius: @inputFocusBorderRadius;
+  background: @inputFocusBackground;
+  box-shadow: @inputFocusBoxShadow;
+}
+
+
+/*--------- Textarea ---------*/
+
+/* Text Area */
+textarea {
+  margin: 0;
+  -webkit-appearance: none;
+  tap-highlight-color:  rgba(255, 255, 255, 0);
+  padding: @textAreaPadding;
+  font-size: @textAreaFontSize;
+  font-family: @pageFont;
+  background: @textAreaBackground;
+  border: @textAreaBorder;
+  outline: none;
+  color: @inputColor;
+  border-radius: @inputBorderRadius;
+  box-shadow: @inputBoxShadow;
+  transition: @textAreaTransition;
+  line-height: @textAreaLineHeight;
+  resize: @textAreaResize;
+}
+
+
+/* Focus */
+textarea:focus {
+  color: @textAreaFocusColor;
+  border-color: @textAreaFocusBorderColor;
+  border-radius: @textAreaFocusBorderRadius;
+  background: @textAreaFocusBackground;
+  box-shadow: @textAreaFocusBoxShadow;
+  -webkit-appearance: none;
+}
+
+
+/*--------- Checkbox and Radio ---------*/
+
+/* HTML Checkbox */
+@font-face {
+  font-family: 'Checkbox';
+  src: url(data:application/x-font-ttf;charset=utf-8;base64,AAEAAAALAIAAAwAwT1MvMg8SBD8AAAC8AAAAYGNtYXAYVtCJAAABHAAAAFRnYXNwAAAAEAAAAXAAAAAIZ2x5Zn4huwUAAAF4AAABYGhlYWQGPe1ZAAAC2AAAADZoaGVhB30DyAAAAxAAAAAkaG10eBBKAEUAAAM0AAAAHGxvY2EAmgESAAADUAAAABBtYXhwAAkALwAAA2AAAAAgbmFtZSC8IugAAAOAAAABknBvc3QAAwAAAAAFFAAAACAAAwMTAZAABQAAApkCzAAAAI8CmQLMAAAB6wAzAQkAAAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAAAAAAAABAAADoAgPA/8AAQAPAAEAAAAABAAAAAAAAAAAAAAAgAAAAAAADAAAAAwAAABwAAQADAAAAHAADAAEAAAAcAAQAOAAAAAoACAACAAIAAQAg6AL//f//AAAAAAAg6AD//f//AAH/4xgEAAMAAQAAAAAAAAAAAAAAAQAB//8ADwABAAAAAAAAAAAAAgAANzkBAAAAAAEAAAAAAAAAAAACAAA3OQEAAAAAAQAAAAAAAAAAAAIAADc5AQAAAAABAEUAUQO7AvgAGgAAARQHAQYjIicBJjU0PwE2MzIfAQE2MzIfARYVA7sQ/hQQFhcQ/uMQEE4QFxcQqAF2EBcXEE4QAnMWEP4UEBABHRAXFhBOEBCoAXcQEE4QFwAAAAABAAABbgMlAkkAFAAAARUUBwYjISInJj0BNDc2MyEyFxYVAyUQEBf9SRcQEBAQFwK3FxAQAhJtFxAQEBAXbRcQEBAQFwAAAAABAAAASQMlA24ALAAAARUUBwYrARUUBwYrASInJj0BIyInJj0BNDc2OwE1NDc2OwEyFxYdATMyFxYVAyUQEBfuEBAXbhYQEO4XEBAQEBfuEBAWbhcQEO4XEBACEm0XEBDuFxAQEBAX7hAQF20XEBDuFxAQEBAX7hAQFwAAAQAAAAIAAHRSzT9fDzz1AAsEAAAAAADRsdR3AAAAANGx1HcAAAAAA7sDbgAAAAgAAgAAAAAAAAABAAADwP/AAAAEAAAAAAADuwABAAAAAAAAAAAAAAAAAAAABwQAAAAAAAAAAAAAAAIAAAAEAABFAyUAAAMlAAAAAAAAAAoAFAAeAE4AcgCwAAEAAAAHAC0AAQAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAOAK4AAQAAAAAAAQAIAAAAAQAAAAAAAgAHAGkAAQAAAAAAAwAIADkAAQAAAAAABAAIAH4AAQAAAAAABQALABgAAQAAAAAABgAIAFEAAQAAAAAACgAaAJYAAwABBAkAAQAQAAgAAwABBAkAAgAOAHAAAwABBAkAAwAQAEEAAwABBAkABAAQAIYAAwABBAkABQAWACMAAwABBAkABgAQAFkAAwABBAkACgA0ALBDaGVja2JveABDAGgAZQBjAGsAYgBvAHhWZXJzaW9uIDIuMABWAGUAcgBzAGkAbwBuACAAMgAuADBDaGVja2JveABDAGgAZQBjAGsAYgBvAHhDaGVja2JveABDAGgAZQBjAGsAYgBvAHhSZWd1bGFyAFIAZQBnAHUAbABhAHJDaGVja2JveABDAGgAZQBjAGsAYgBvAHhGb250IGdlbmVyYXRlZCBieSBJY29Nb29uLgBGAG8AbgB0ACAAZwBlAG4AZQByAGEAdABlAGQAIABiAHkAIABJAGMAbwBNAG8AbwBuAC4AAAADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA) format('truetype');
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  opacity: 0;
+  position: absolute;
+  
++ label {
+    display: block;
+    cursor: pointer;
+    position: relative;
+    font-size:@checkboxFontSize;
+    padding-left:~"calc(@{ui-checkbox-size} + 20px)";
+	padding-right: 20px;
+	margin-bottom: 20px;
+	font-weight: @boldPageFont;
+	line-height: 1.45em;
+    .transition(all .2s ease-out);
+	  
+    &:before {
+      content: '';
+      display: inline-block;
+      vertical-align: middle;
+      position: relative;
+      top: 0.225em;
+	  left: 0;
+      margin-right: 6px;
+      border-radius: @checkbox-radius;
+      height: @ui-checkbox-size;
+      width: @ui-checkbox-size;
+      border: 1px solid @borderColor;
+	  position: absolute;
+      .transition(all .2s ease-out);
+		
+    }
+    &:hover {
+      color: @linkColor;
+      &:before {
+        border-color: @accentColor;
+		border-width: 2px;
+      }
+    }
+  }
+  &:checked {
+    + label {
+      //color: @linkColor;
+      &:before {
+        border-radius: 50%;
+		background: @accentColor;
+		border-color: @accentColor;
+      }
+      &:hover:before {
+         border-color: @accentColor;
+      }
+    }
+  }
+}
+
+
+input[type="checkbox"] {
+  + label {
+    &:after {
+      font-family: 'Checkbox';
+      content: '\e800';
+      top: 0;
+      left: .125em;
+      position: absolute;
+      line-height: 1.45em;
+      text-align: center;
+      color: #fff;
+      opacity: 0;
+	  text-shadow: 1px 1px 0px rgba(0,0,0,.15);
+	  font-weight: 400;
+	  font-size: 0.938em;
+    }
+	 
+  }
+  &:checked {
+    + label {
+      &:after {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+input[type="radio"] {
+  + label {
+    &:after {
+      border-radius: 50%;
+      content: '' !important;
+      height: @ui-checkbox-size;
+      width: @ui-checkbox-size;
+      line-height: @ui-checkbox-size;
+      top: 0.225em;
+      left: 0;
+      transform: scale(0.7);
+      position: absolute;
+      text-align: center;
+      background-color: #fff;
+      opacity: 1;
+	  .transition(all .3s ease-out);
+
+		
+    }
+  }
+  &:checked {
+    + label {
+      &:after {
+        transform: scale(0.4);
+      }
+    }
+  }
+}
+
+
+
+label > input[type="checkbox"],
+label > input[type="radio"] {
+  opacity: 1;
+  vertical-align: middle;
+  position: relative;
+  border: 1px solid @borderColor;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: white;
+  outline: none;
+  width: 22px;
+  height: 22px;
+  margin-right: 4px;
+  -webkit-appearance: none; // Webkit only
+  .transition;
+  &:checked {
+    background-color: @linkColor;
+    border-color: @linkColor;
+  }
+  &:focus {}
+}
+
+.firefox label > input[type="checkbox"],
+.firefox label > input[type="radio"] {
+  margin-right: 0;
+  top: -2px;
+}
+
+input[type="radio"] + label:before,
+label > input[type="radio"] {
+  border-radius: 50%;
+}
+
+/* checkbox symbol */
+
+input[type="checkbox"] {
+    + label {
+        &:hover {
+            &:before {
+                border-radius: 50%;
+            }
+        }
+    }
+}
+
+
+
+/* Checkbox Icon Style*/
+
+input[type="checkbox"],
+input[type="radio"] {
+    &.checkbox-radio-desc-icon-style {
+        + label {
+            padding: 10px;
+            height: 120px;
+            border: 1px solid @borderColor;
+            text-align: center;
+
+            .flex();
+            .flex-justify(center);
+            .flex-align-items(center);
+            .flex-direction(column);
+
+            &:before,
+            &:after {
+                display: none;
+            }
+
+            > i {
+                font-size: 20px;
+                margin-bottom: 15px;
+            }
+        }
+
+        &:checked {
+            + label {
+                border-color: @accentColor;
+                color: @accentColor;
+            }
+        }
+    }
+}
+
+
+/*--------- Select ---------*/
+
+select {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); // TODO - De verificat daca functioneaza
+}
+
+/* Custom selects */
+select {
+  outline: none;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  display: inline-block;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+  cursor: pointer;
+
+  line-height: @inputLineHeight;
+  padding: @inputPadding;
+  font-size: @inputFontSize;
+
+  background-color: @inputBackground;
+  border: @inputBorder;
+  color: @inputColor;
+  border-radius: @inputBorderRadius;
+  box-shadow: @inputBoxShadow;
+
+  /* Remove arrow from firefox */
+  text-indent: 0.01px;
+  text-overflow: "";
+
+  background-image:
+          linear-gradient(45deg, transparent 50%, @textColor),
+          linear-gradient(135deg, @textColor, transparent 50%);
+  background-position:
+          ~"calc(100% - 15px) 50%,
+          calc(100% - 10px) 50%";
+  background-size:
+          5px 5px,
+          5px 5px;
+  background-repeat: no-repeat;
+}
+
+select[multiple] {
+  background-image: none;
+}
+
+select:not([multiple]),
+html.touch select { // TODO - De verificat daca exista clasa 'touch'
+  //background: @inputBackground url("../img/select-arrow.png") 100% 50% no-repeat;
+}
+
+/* Targeting Webkit browsers only. FF will show the dropdown arrow with so much padding. */
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  select { padding-right: 45px !important; }
+}
+
+@-moz-document url-prefix() {
+  select {
+    /*background-image: none;*/
+  }
+}
+
+/* IE Fix */
+select::-ms-expand {
+  display: none;
+}
+
+.lt-ie9 select,
+.lt-ie10 select {
+  background: none;
+  padding-right: 3px !important;
+}
+
+
+
+/*-----------------------------
+      Special Sections
+------------------------------*/
+
+#page-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+    
+  > * {
+      .flex-shrink(0);
+      .flex-grow(0);
+      &:nth-last-child(2):not(.header-section) {
+          .flex-grow(1);
+      }
+      &:last-child:not(#footer) {
+          .flex-grow(1);
+      }
+  }
+}
+
+#header,
+#footer {
+  flex: none; /* 2 */
+}
+
+

@@ -1,0 +1,27 @@
+// main: ../semantic.less
+
+
+// *** Calendar ***
+
+@calendarDisabledColor: rgba(40, 40, 40, .3);
+
+@calendarRangeBackground: rgba(0, 0, 0, .05);
+@calendarRangeColor: rgba(0, 0, 0, .95);
+
+@calendarInvertedBackground: rgba(255, 255, 255, .08);
+@calendarInvertedColor: #fff;
+
+@calendarBoxShadow: inset 0 0 0 1px #85B7D9;
+
+
+//  Focus
+@calendarFocusColor: @borderColor;
+
+//  Active
+@calendarActiveColor: @accentColor;
+
+//  Range
+@calendarRangeColor: @accentColor;
+
+//  Today
+@calendarTodayColor: @textColor;

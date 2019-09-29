@@ -1,0 +1,54 @@
+// main: ../../semantic.less
+
+
+/*-------------------------------------
+    Top Header Slide Up
+--------------------------------------*/
+
+
+.header-section {
+    &.header-slide-up {
+        &.header-sticky.is-sticky {
+            // Top
+            &.ths {
+                
+                //when is slide-up 
+                &.is-slide-up {
+                    .header-content {
+                        top: -@topHeaderSectionHeightMobile;
+                        
+                        @media @tablet {
+                            top: -@topHeaderSectionHeight;
+                        }
+                    }
+                    
+                    &.is-resized {
+                        .header-content {
+                            @media @tablet {
+                                top: -@topHeaderSectionHeightResized;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+    }
+    
+}
+
+/* Keyframes */
+
+.keyframes(overflow-hidden, {
+    0%   { overflow: hidden; }
+    100% { overflow: visible; }
+});
+
+
+.keyframes(visibility-keyframe, {
+    0%   { visibility: visible; }
+    100% { visibility: hidden; }
+});
+
+
+

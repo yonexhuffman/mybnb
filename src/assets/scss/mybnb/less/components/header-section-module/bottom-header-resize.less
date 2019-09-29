@@ -1,0 +1,82 @@
+// main: ../../semantic.less
+
+
+/*-------------------------------------
+    Bottom Header Resize
+--------------------------------------*/
+
+.header-resize-mixin(mhs,"middleHeaderSection");
+
+.header-section {
+    
+    &.header-sticky {
+        
+        &.bhs {
+            &.mhs-is-resized {
+                .header-content {
+                    @media @tablet {
+                        margin-top: -(@middleHeaderSectionHeight - @middleHeaderSectionHeightResized);
+                    
+                        transform: translateY(@middleHeaderSectionHeight - @middleHeaderSectionHeightResized);
+                    }
+                }
+            }
+        }
+    }
+    
+     /*** On resize sticky tops will change ***/
+    &.header-sticky.is-sticky {
+        
+        /* bottom */
+        &.bhs {
+            
+            &.ths-is-sticky.mhs-is-sticky {
+                
+                //when top header section is resized 
+                &.ths-is-resized {
+                    .header-content {
+                        @media @tablet {
+                           top: (@topHeaderSectionHeightResized + @middleHeaderSectionHeight);
+                        }
+                    }
+                }
+                
+                // when middle header section is resized 
+                &.mhs-is-resized {
+                    .header-content {
+                        @media @tablet {
+                           margin-top: -(@middleHeaderSectionHeight - @middleHeaderSectionHeightResized);
+                           
+                        }
+                        
+                    }
+                }
+            }
+            
+            &.ths-is-sticky {
+                &.ths-is-resized {
+                    .header-content {
+                        @media @tablet {
+                            top: @topHeaderSectionHeightResized;
+                        }
+                    }
+                }
+            }
+            
+            &.mhs-is-sticky {
+                &.mhs-is-resized {
+                    .header-content {
+                        @media @tablet {
+                            margin-top: -(@middleHeaderSectionHeight - @middleHeaderSectionHeightResized);
+                            
+                            transform: none;
+                        }
+                    }
+                }
+            }
+        }
+        
+        
+    }
+    
+}

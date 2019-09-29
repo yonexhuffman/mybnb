@@ -1,0 +1,127 @@
+ /*
+ * # Mybnb - 1.0.0
+ * http://www.seventhqueen.com/
+ *
+ *
+ * Copyright 2012 SeventhQueen
+ * Released under the MIT license
+ * http://opensource.org/licenses/MIT
+ *
+ */
+
+
+// Importing module specific variables
+@import (multiple) "../variables.less";
+@import (less) "./slick-full-page-search.variables";
+@import (multiple) "../mixins.less";
+
+
+
+
+// *** Theme ***
+
+
+
+
+/*------------------------------------------
+     Slick full Page Search 
+-------------------------------------------*/
+
+.hero-search-full-page {
+    position: relative;
+    width: 100%;
+    .flex();
+    .flex-direction(column-reverse);
+    
+    
+    @media @tablet {
+        .flex-direction(row);
+        .flex-justify(center);
+        .flex-align-items(center);
+        .flex-align-content(center);
+        height: 100%;
+		min-height: 480px;
+    }
+    
+    /* shadow in the same way for both - horizontal and vertical */
+    
+    .shadow-sq {
+        &:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+        
+        .hero-search-form {
+            position: relative;
+            z-index: 10;
+        }
+
+        &.animate-sq {
+            &:before {
+                animation: fade-in-shadow 1s 2.2s forwards;
+            }
+            &:after {
+                background: transparent;
+            }
+			&.h-search-h:after {
+				animation: background-fade-in 1s 1.6s forwards;
+			}
+			&.h-search-v:after {
+				animation: background-fade-in-v 1s 1.6s forwards;
+			}
+        }
+        
+        &.colored-sq {
+            /* colored shadow */
+            &:after {
+                background: multiply(fade(@linkColor,90%), #ffffff);
+            }
+            
+            /* colored animate shadow */
+            &.animate-sq{
+                &:before {
+                    animation: fade-in-shadow 1s 2.2s forwards;
+                }
+                &:after {
+                    background: transparent;
+                    animation: background-fade-in-colored 1s 1.6s forwards;
+                }
+            }
+        }
+    }
+	
+	&.low-sq {
+        
+        @media @tablet {
+            height: auto;
+            min-height: 650px;
+			
+			+ * {
+				margin-top: 150px;
+			}
+        }
+		
+	}
+	
+}
+
+/* Animation Keyframes*/
+
+/* fade-in-shadow */
+
+.keyframes(fade-in-shadow, {
+    0%   { box-shadow: 0 0 0 rgba(0,0,0,0);
+         background: rgba(0,0,0,0);
+        }
+    100% { box-shadow: 0 30px 100px rgba(0,0,0,.15);
+         background: rgba(0,0,0,.15);
+        }
+});
+

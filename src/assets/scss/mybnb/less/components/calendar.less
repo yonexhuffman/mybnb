@@ -1,0 +1,469 @@
+ /*
+ * # Mybnb - 1.0.0
+ * http://www.seventhqueen.com/
+ *
+ *
+ * Copyright 2012 SeventhQueen
+ * Released under the MIT license
+ * http://opensource.org/licenses/MIT
+ *
+ */
+
+
+// Importing module specific variables
+@import (multiple) "../variables.less";
+@import (less) "./calendar.variables";
+@import (multiple) "../mixins.less";
+
+
+
+
+// *** Theme ***
+
+
+
+
+.calendar-sq .ui.popup {
+     max-width: none;
+     padding: 0;
+     border: none;
+     -webkit-user-select: none;
+     -moz-user-select: none;
+     -ms-user-select: none;
+     user-select: none
+ }
+ .calendar-sq .calendar:focus {
+     outline: 0;
+ }
+ .calendar-sq .ui.table.minute,
+ .calendar-sq .ui.table.month,
+ .calendar-sq .ui.table.year {
+     min-width: 15em;
+ }
+ .calendar-sq .ui.table.day {
+     min-width: 18em;
+ }
+ .calendar-sq .ui.table.hour {
+     min-width: 20em
+ }
+ .calendar-sq .ui.table tr td,
+ .calendar-sq .ui.table tr th {
+     padding: .5em;
+     white-space: nowrap;
+ }
+ .calendar-sq .ui.table tr th {
+     border-left: none;
+ }
+ .calendar-sq .ui.table tr th .icon {
+     margin: 0;
+ }
+ .calendar-sq .ui.table tr:first-child th {
+     position: relative;
+     padding-left: 0;
+     padding-right: 0;
+ }
+ .calendar-sq .ui.table.day tr:first-child th {
+     border: none;
+ }
+ .calendar-sq .ui.table.day tr:nth-child(2) th {
+     padding-top: .2em;
+     padding-bottom: .3em;
+ }
+ .calendar-sq .ui.table tr td {
+     padding-left: .1em;
+     padding-right: .1em;
+ }
+ .calendar-sq .ui.table tr .link {
+     cursor: pointer
+ }
+ .calendar-sq .ui.table tr .prev.link {
+     width: 14.28571429%;
+     position: absolute;
+     left: 0;
+ }
+ .calendar-sq .ui.table tr .next.link {
+     width: 14.28571429%;
+     position: absolute;
+     right: 0
+ }
+ .calendar-sq .ui.table tr .disabled {
+     pointer-events: none;
+     color: @calendarDisabledColor;
+ }
+ .calendar-sq .ui.table tr td.today {
+     font-weight: @boldPageFont;
+ }
+ .calendar-sq .ui.table tr td.range {
+     background: @calendarRangeBackground;
+     color: @calendarRangeColor;
+     box-shadow: none;
+ }
+ .calendar-sq .ui.table.inverted tr td.range {
+     background: @calendarInvertedBackground;
+     color: @calendarInvertedColor;
+     box-shadow: none;
+ }
+ .calendar-sq .calendar.active .ui.table tbody tr td.focus,
+ .calendar-sq .calendar.active .ui.table.inverted tbody tr td.focus,
+ .calendar-sq .calendar:focus .ui.table tbody tr td.focus,
+ .calendar-sq .calendar:focus .ui.table.inverted tbody tr td.focus {
+     box-shadow: @calendarBoxShadow;
+ }
+
+// main: ../semantic.less
+
+/*!
+ * # Semantic UI - Calendar
+ * http://github.com/semantic-org/semantic-ui/
+ *
+ *
+ * Copyright 2015 Contributors
+ * Released under the MIT license
+ * http://opensource.org/licenses/MIT
+ *
+ */
+
+.calendar-sq {
+    &.popup {
+        box-shadow: 0 0px 3px @headerBorderColor;
+        margin: 0 !important;
+        
+        &:before {
+            content: '';
+            position: absolute;
+            transform: none;
+            width: 0;
+            height: 0;
+            background: transparent;
+            box-shadow: none;
+            margin: 0;
+            background: transparent !important;
+            box-shadow: none !important;
+        }
+        
+        &:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 0;
+            z-index: 6;
+            background: transparent !important;
+            box-shadow: none !important;
+        }
+        
+        /* Top */
+        &.top {
+            &:before  {
+                border-left: 7px solid transparent;
+                border-right: 7px solid transparent;
+                border-top: 5px solid @headerBorderColor;
+                bottom:-6px;
+            }
+            
+            &:after {
+                border-left: 7px solid transparent;
+                border-right: 7px solid transparent;
+                border-top: 5px solid #fff;
+                bottom: -4px;
+            }
+            
+            &.left {
+                &:before,
+                &:after {
+                    left: 20px;
+                }
+            }
+            
+            &.right {
+                &:before,
+                &:after {
+                    right: 20px;
+                }
+            }
+            
+            &.center {
+                &:before,
+                &:after {
+                    left: 50%;
+                    margin-left: -7px;
+                }
+            }
+        }
+        
+        /* Bottom */        
+        &.bottom {
+            &:before {
+                border-left: 7px solid transparent;
+                border-right: 7px solid transparent;
+                border-bottom: 5px solid @headerBorderColor;
+                top:-6px;
+                box-shadow: none;
+            }
+            &:after {
+                border-left: 7px solid transparent;
+                border-right: 7px solid transparent;
+                border-bottom: 5px solid #fff;
+                top: -4px;
+            }
+            
+            &.left {
+                &:before,
+                &:after {
+                    left: 20px;
+                }
+            }
+            
+            &.right {
+                &:before,
+                &:after {
+                    right: 20px;
+                }
+            }
+            
+            &.center {
+                &:before,
+                &:after {
+                    left: 50%;
+                    margin-left: -7px;
+                }
+            }
+        }
+        
+        /* Center */
+        &.center {
+            &.left {
+                &:before {
+                    border-top: 7px solid transparent;
+                    border-bottom: 7px solid transparent;
+                    border-left: 5px solid @headerBorderColor;
+                    box-shadow: none;
+                    background: transparent;
+                    right: -5px;
+                }
+                
+                &:after {
+                    border-top: 7px solid transparent;
+                    border-bottom: 7px solid transparent;
+                    border-left: 5px solid #fff;
+                    right: -4px;
+                }
+                
+                &:before,
+                &:after {
+                    top: 50%;
+                    margin-top: -7px;
+                }
+            }
+            
+            &.right {
+                &:before {
+                    border-top: 7px solid transparent;
+                    border-bottom: 7px solid transparent;
+                    border-right: 5px solid @headerBorderColor;
+                    box-shadow: none;
+                    background: transparent;
+                    left: -5px;
+                }
+                
+                &:after {
+                    border-top: 7px solid transparent;
+                    border-bottom: 7px solid transparent;
+                    border-right: 5px solid #fff;
+                    left: -4px;
+                }
+                
+                &:before,
+                &:after {
+                    top: 50%;
+                    margin-top: -7px;
+                }
+            }
+        }
+        
+    }
+    
+    &.ui.popup {
+         padding: 30px;
+     }
+    
+    .ui.table {
+        border: none;
+		display: block;
+		
+		
+		&.day {
+			min-width: auto;
+		}
+		
+		tr {
+			.flex();
+			.flex-direction(row);
+			.flex-align-items(center);
+			border: none;
+		}
+		tr td,
+		tr th {
+			//text-indent: -1px;
+			text-align: center;
+			letter-spacing: 0px;
+			box-shadow: none;
+			padding: 0;
+		}
+		
+		tr td {
+			height: 40px;
+			line-height: 40px;
+		}
+		tr th {
+			width: 40px;
+		}
+        
+        thead {
+			display: block;
+			
+            th {
+                background: transparent;
+                padding-bottom: 25px;
+            }
+            tr {
+                &:first-child {
+                    th {
+						width: 100%;
+                        .link {
+                            font-size: 16px;
+                            font-weight: 700;
+                        }
+                        .prev,
+                        .next {
+                            font-size: 12px;
+                            font-weight: 400;
+							.icon {
+								padding: 0;
+							}
+                        }
+                    }
+                }
+                
+                &:nth-child(2) {
+                    th {
+                        font-size: 8px;
+						width: 14.28%;
+						padding: 0;
+                    }
+                }
+            }
+        }
+        
+        tbody {
+			display: block;
+            tr{
+                td {
+					
+                    &.link {
+                        position: relative;
+                        z-index: 1;
+                        border:none;						
+                        
+                        &:before {
+                            content: '';
+                            display: block;
+                            position: absolute;
+                            top: 50%;
+                            left: 50%;
+                            margin: -15px 0 0 -15px;
+                            z-index: -1;
+                            width: 29px;
+                            height: 29px;
+                            border-radius: 50%;
+                            border: 1px solid rgba(0,0,0,0);
+                        }
+                        
+                        
+                        &.focus {
+                            background: transparent;
+                            color: @calendarFocusColor;
+                            &:before {
+                                border-color: @calendarFocusColor;
+                            }
+                        }
+                        
+                        &.active,
+                        &.active.focus {
+                            background: transparent !important;
+                            color: contrast(@calendarActiveColor, #000000, #ffffff, 100%) !important;
+                            font-weight: 700;
+                            
+                            &:before {
+                                background: @calendarActiveColor;
+                                border-color: @calendarActiveColor;
+                            }
+                        }
+                        
+                        &.range,
+                        &.range.focus {
+                            background: transparent;
+                            color: @calendarRangeColor;
+                            &:before {
+                                border-color: @calendarRangeColor;
+                            }
+                        }
+                        
+                        &.today,
+                        &.today.focus {
+                            color: contrast(@textColor, #000000, #ffffff, 100%);
+                            
+                            &:before {
+                                background: @textColor;
+                                border-color: @textColor;
+                            }
+                        }
+                        
+                    }
+                }
+            }
+        }
+		
+		
+		th > *, 
+		td > * {
+			display: inline;
+		}
+        
+		&.day tr td {
+			width: 40px !important;
+		}
+		
+        &.month,
+        &.year {
+            tbody {
+                tr {
+                    td  {
+                        &:before {
+                            left: 0;
+                            margin: -13px 0 0 5px;
+                            width: ~"calc(100% - 10px)";
+                            border-radius: 13px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+}
+
+ .calendar-sq .calendar-sq.active .ui.table tbody tr td.focus,
+ .calendar-sq .calendar-sq.active .ui.table.inverted tbody tr td.focus,
+ .calendar-sq .calendar-sq:focus .ui.table tbody tr td.focus,
+ .calendar-sq .calendar-sq:focus .ui.table.inverted tbody tr td.focus {
+     box-shadow: none;
+ }
+
+.item.calendar-sq {
+    .flex();
+    .flex-direction(row);
+    .flex-align-items(center);
+    height: 100%;
+}
+ 
+

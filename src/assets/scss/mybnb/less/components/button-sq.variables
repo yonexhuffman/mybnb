@@ -1,0 +1,18 @@
+// main: ../semantic.less
+
+
+// *** General Variables ***
+
+
+@buttonVerticalMargin: 0.25em;
+@buttonHorizontalMargin: 0.25em;
+
+@buttonVerticalPadding: @inputVerticalPadding;
+@buttonHorizontalPadding: 1.5em;
+
+@buttonBackgroundColor: @linkColor;
+@buttonColor: #fff;
+
+@buttonLetterSpacing: 0.075em;
+
+@cancelButtonBackground: #EAEAEA;

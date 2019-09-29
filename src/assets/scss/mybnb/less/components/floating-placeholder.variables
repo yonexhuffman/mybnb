@@ -1,0 +1,26 @@
+// main: ../semantic.less
+
+// *** Floating Placeholder ***
+
+
+@fltp-height: 50px;
+@fltp-maximized-font-size: 16px;
+@fltp-maximized-font-weight: 400;
+@fltp-label-font-family: @pageFont;
+    
+@fltp-minimized-font-size: 10px;
+
+@fltp-input-font-size: 14px;
+@fltp-input-font-weight: 700;
+@fltp-input-font-family: @pageFont;
+
+@fltp-label-color: @textColor; //red;
+@fltp-input-color: @textColor; //green;
+
+
+// Flat Style
+
+@fltp-flat-background: #fafafa;
+@fltp-flat-padding: 10px;
+@fltp-flat-border-radius: 3px;
+@fltp-flat-border-color: #f2f2f2;

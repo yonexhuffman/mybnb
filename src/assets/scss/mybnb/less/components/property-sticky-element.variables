@@ -1,0 +1,7 @@
+// main: ../semantic.less
+
+
+// *** Property Sticky Element Variables ***
+
+@priceTagBackground: rgba(36,43,51,0.90);
+@propertyStickyBoxWidth: @fixedLayoutSideColumnWidth;

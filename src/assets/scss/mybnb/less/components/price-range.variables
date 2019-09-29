@@ -1,0 +1,16 @@
+// main: ../semantic.less
+
+// *** Price Range ***
+
+@priceRangeBackgound: #fff;
+@priceRangeHeight: 100px;
+
+
+@priceRangeBaseBackgound: #E6E6E6;
+@priceRangeTooltipBackgound: #E8E8E8;
+@priceRangeRangeBackgound: #d34eb4;
+
+@priceRangeHandleBorderColor: #8C8C8C;
+@priceRangeHandleBackground: #fff;
+
+@priceRangeSliderBackgroundMobile: #fff;

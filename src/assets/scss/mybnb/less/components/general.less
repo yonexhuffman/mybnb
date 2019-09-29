@@ -1,0 +1,752 @@
+ /*
+ * # Mybnb - 1.0.0
+ * http://www.seventhqueen.com/
+ *
+ *
+ * Copyright 2012 SeventhQueen
+ * Released under the MIT license
+ * http://opensource.org/licenses/MIT
+ *
+ */
+
+
+// Importing module specific variables
+@import (multiple) "../variables.less";
+@import (less) "./general.variables";
+@import (multiple) "../mixins.less";
+
+
+
+
+// *** Theme ***
+
+
+
+
+/*********************************************
+       General Classes
+**********************************************/
+
+/*-------------------------------
+    Display 
+--------------------------------*/
+
+.block-sq {
+    display: block !important;
+}
+
+/*-------------------------------
+    Width 
+--------------------------------*/
+
+.fullwidth-sq {
+    width: 100%;
+}
+
+/*-------------------------------
+    Height 
+--------------------------------*/
+
+.image-full-height {
+    position: relative;
+    height: 100%;
+    min-height: 300px;
+    
+}
+
+/*-------------------------------
+    Lists
+--------------------------------*/
+
+.list-default-sq {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    
+    > li {
+        &:before {
+            display: none;
+        }
+    }
+}
+
+.list-style-sidebar-sq {
+    //padding: 0 30px 0 30px;
+    
+    > li {
+        .flex();
+        .flex-direction(column);
+        .flex-align-items(flex-start);
+        .flex-justify(center);
+        
+        > a {
+            .flex();
+            .flex-align-items(center);
+            width: 100%;
+            height: 100%;
+            font-size: 16px;
+        }
+        
+        &.active {
+            > a {
+                font-size: 20px;
+                font-weight: 700;
+            }
+        }
+        
+    }
+}
+
+.list-style-inline-sq {
+    .flex();
+    .flex-direction(row);
+    .flex-align-items(flex-start);
+    .flex-justify(flex-start);
+    
+    > li {
+        padding: 0 20px;
+        
+        &:first-child {
+            padding-left: 0;
+        }
+        &:last-child {
+            padding-right: 0;
+        }
+    }
+}
+
+.inline-menu-sq {
+    
+    li {
+        margin-bottom: 20px;
+        
+        a {
+            display: block;
+            color: @textColor;
+            opacity: .6;
+            padding: 0 0 17px 0;
+            .transition(opacity .2s ease-in);
+            
+            &:hover {
+                opacity: 1;
+            }
+        }
+        
+        &.active {
+            a {
+                opacity: 1;
+                position: relative;
+                
+                &:after {
+                    content: '';
+                    position: absolute;
+                    left: 0;
+                    bottom: 0;
+                    height: 1px;
+                    width: 100%;
+                    background: @linkColor;
+                    box-shadow: 0 0 5px 0 fade(@linkColor, 30%);
+                    
+                }
+            }
+        }
+        
+    }
+}
+
+.description-list {
+    margin: 0 0 6px 0;
+    padding: 0;
+    
+    li {
+        padding: 6px 0;
+        position: relative;
+        
+        &:before {
+            display: none;
+        }
+        .icon {
+            font-size: 20px;
+            margin-right: 15px;
+            position: absolute;
+            top: 5px;
+            left: 0;
+        }
+        p {
+            display: inline;
+            margin-right: 20px;
+        }
+        
+        .icon + div {
+            padding-left: 40px;
+            display: block;
+        }
+        
+        &:first-child {
+            .icon {
+                top: 0;
+            }
+        }
+        &:last-child {
+            padding-bottom: 6px !important;
+        }
+    }
+    
+    
+    
+    /*------------------------------------------
+            Description List with Icons
+    -------------------------------------------*/
+    
+    &.desc-icon-style {
+        margin-bottom: 30px;
+        .flex();
+        /*.flex-justify(flex-start);
+        .flex-align-items(flex-start);*/
+        .flex-direction(row);
+        .flex-wrap(wrap);
+        border-bottom: 1px solid @borderColor;
+        
+        
+        li {
+            .flex();
+            .flex-justify(center);
+            .flex-align-items(center);
+            .flex-direction(column);
+            border: 1px solid @borderColor;
+            border-bottom: none;
+            min-height: 160px;
+            padding: 10px;
+            
+            .icon {
+                margin-right: 0;
+                margin-bottom: 10px;
+                position: static;
+            }
+            span {
+                font-weight: 700;
+                padding-left: 0;
+            }
+            em  {
+                font-style: normal;
+                font-size: 12px;
+                opacity: .6;
+            }
+        }
+        
+        
+        &.inline-2 {
+            li {
+                
+                @media @small-mobile {
+                    width: 100%;
+                }
+                
+                @media @mobile {
+                    width: 50%;
+                }
+                
+            
+                &:nth-child(2n+1) {
+                    @media @mobile {
+                        border-right: none;
+                    }
+                }
+            }
+            
+        }
+    }
+}
+
+
+/*-------------------------------
+    Colors
+--------------------------------*/
+
+.text-color {
+  color: @textColor;
+}
+.text-secondary-color {
+  color: @textSecondaryColor;
+}
+.accent-color {
+  color: @accentColor;
+}
+.heading-color, h1, h2, h3, h4, .ui.header {
+  color: @headingColor;
+}
+.background-color {
+  background-color: @backgroundColor;
+}
+.link-color {
+  color: @linkColor;
+  &:hover {
+    color: @linkHoverColor;
+  }
+}
+
+.border-color {
+  border-color: @borderColor;
+}
+
+/*-------------------------------
+    Float
+--------------------------------*/
+
+.float-left-sq {
+    float: left;
+}
+
+.float-right-sq {
+    float: right;
+}
+
+.float-none-sq {
+    float: none;
+}
+.clear-both {
+    clear: both;
+}
+
+/*-------------------------------
+    Text Align
+--------------------------------*/
+
+.text-align-left-sq {
+    text-align: left;
+}
+
+.text-align-center-sq {
+    text-align: center;
+}
+
+.text-align-justify-sq {
+    text-align: justify;
+}
+
+.text-align-right-sq {
+    text-align: right;
+}
+
+
+/*** Text Transform ***/
+
+.text-transform-none-sq {
+    text-transform: none !important;
+}
+
+.text-transform-lowercase-sq {
+    text-transform: lowercase;
+}
+
+.text-transform-uppercase-sq {
+    text-transform: uppercase;
+}
+
+/* Font Weight */
+
+.font-weight-normal-sq {
+    font-weight: normal;
+}
+.font-weight-medium-sq {
+    font-weight: 500;
+}
+
+.font-weight-semibold-sq {
+    font-weight: 600;
+}
+
+.font-weight-bold-sq {
+    font-weight: 700;
+}
+
+.font-weight-extrabold-sq {
+    font-weight: 900;
+}
+
+
+.label-sq {
+	opacity: .5;
+	margin-bottom: 0 !important;
+	display: block;
+}
+
+
+/*-------------------------------
+    Flex Class Options
+--------------------------------*/
+
+/**** Alignment ****/
+
+/* Left */
+            
+/* general */ 
+.flex-align-left {
+    .flex-justify(flex-start);
+}
+
+/* mobile */
+.flex-align-mobile-left {
+    @media @upto-mobile {
+        .flex-justify(flex-start);
+    }
+}
+
+/* tablet */
+.flex-align-tablet-left {
+    @media @tablet-strict {
+        .flex-justify(flex-start);
+    }
+}
+
+/* desktop */
+.flex-align-desktop-left {
+    @media @desktop-strict {
+        .flex-justify(flex-start);
+    }
+}
+
+/* large-desktop */
+.flex-align-large-desktop-left {
+    @media @large-desktop {
+        .flex-justify(flex-start);
+    }
+}
+
+/* Right */
+
+/* general */
+.flex-align-right {
+    .flex-justify(flex-end);
+}
+
+/* mobile */
+.flex-align-mobile-right {
+    @media @upto-mobile {
+        .flex-justify(flex-end);
+    }
+}
+
+/* tablet */
+.flex-align-tablet-right {
+    @media @tablet-strict {
+        .flex-justify(flex-end);
+    }
+}
+
+/* desktop */
+.flex-align-desktop-right {
+    @media @desktop-strict {
+        .flex-justify(flex-end);
+    }
+}
+
+/* desktop */
+.flex-align-large-desktop-right {
+    @media @large-desktop {
+        .flex-justify(flex-end);
+    }
+}
+
+/* Center */
+.flex-justify-center {
+    .flex-justify(center);
+}
+
+
+
+
+/**** Order ****/
+
+/* mobile */
+.flex-order-mobile-first {
+    @media @upto-mobile {
+        .flex-order(1);
+    }
+}
+
+.flex-order-mobile-second {
+    @media @upto-mobile {
+        .flex-order(2);
+    }
+}
+
+.flex-order-mobile-third {
+    @media @upto-mobile {
+        .flex-order(3);
+    }
+}
+
+/* tablet */
+.flex-order-tablet-first {
+    @media @tablet-strict {
+        .flex-order(1);
+    }
+}
+
+.flex-order-tablet-second {
+    @media @tablet-strict {
+        .flex-order(2);
+    }
+}
+
+.flex-order-tablet-third {
+    @media @tablet-strict {
+        .flex-order(3);
+    }
+}
+
+/* desktop */
+.flex-order-desktop-first {
+    @media @desktop-strict {
+        .flex-order(1);
+    }
+}
+
+.flex-order-desktop-second {
+    @media @desktop-strict {
+        .flex-order(2);
+    }
+}
+
+.flex-order-desktop-third {
+    @media @desktop-strict {
+        .flex-order(3);
+    }
+}
+
+
+/* large-desktop */
+.flex-order-large-desktop-first {
+    @media @large-desktop {
+        .flex-order(1);
+    }
+}
+
+.flex-order-large-desktop-second {
+    @media @large-desktop {
+        .flex-order(2);
+    }
+}
+
+.flex-order-large-desktop-third {
+    @media @large-desktop {
+        .flex-order(3);
+    }
+}
+
+
+/**** Grow ****/
+
+/* true */
+.flex-grow-true {
+    .flex-grow(1);
+}
+
+.flex-grow-mobile-true {
+    @media @upto-mobile {
+        .flex-grow(1);
+    }
+}
+
+.flex-grow-tablet-true {
+    @media @tablet-strict {
+        .flex-grow(1);
+    }
+}
+
+.flex-grow-desktop-true {
+    @media @desktop-strict {
+        .flex-grow(1);
+    }
+}
+
+.flex-grow-large-desktop-true {
+    @media @large-desktop {
+        .flex-grow(1);
+    }
+}
+
+/* false */
+.flex-grow-false {
+    .flex-grow(0);
+}
+
+.flex-grow-mobile-false {
+    @media @upto-mobile {
+        .flex-grow(0);
+    }
+}
+
+.flex-grow-tablet-false {
+    @media @tablet-strict {
+        .flex-grow(0);
+    }
+}
+
+.flex-grow-desktop-false {
+    @media @desktop-strict {
+        .flex-grow(0);
+    }
+}
+
+.flex-grow-large-desktop-false {
+    @media @large-desktop {
+        .flex-grow(0);
+    }
+}
+
+/* Shrink */
+
+/* true */
+
+.flex-shrink-true {
+    .flex-shrink(1);
+}
+
+.flex-shrink-mobile-true {
+    @media @upto-mobile {
+        .flex-shrink(1);
+    }
+}
+
+.flex-shrink-tablet-true {
+    @media @tablet-strict {
+        .flex-shrink(1);
+    }
+}
+
+.flex-shrink-desktop-true {
+    @media @desktop-strict {
+        .flex-shrink(1);
+    }
+}
+
+.flex-shrink-large-desktop-true {
+    @media @large-desktop {
+        .flex-shrink(1);
+    }
+}
+
+/* false */
+.flex-shrink-false {
+    .flex-shrink(0);
+}
+
+.flex-shrink-mobile-false {
+    @media @upto-mobile {
+        .flex-shrink(0);
+    }
+}
+
+.flex-shrink-tablet-false {
+    @media @tablet-strict {
+        .flex-shrink(0);
+    }
+}
+
+.flex-shrink-desktop-false {
+    @media @desktop-strict {
+        .flex-shrink(0);
+    }
+}
+
+.flex-shrink-large-desktop-false {
+    @media @large-desktop {
+        .flex-shrink(0);
+    }
+}
+
+
+
+/*-------------------------------
+    Visibility Options
+--------------------------------*/
+
+/*de pus in general*/
+
+/* Visible */
+
+.visible-mobile {
+    @media @upto-mobile {
+        display: block !important;
+    }
+}
+
+.visible-tablet {
+    @media @tablet-strict {
+        display: block !important;
+    }
+}
+
+.visible-desktop {
+    @media @desktop-strict {
+        display: block !important;
+    }
+}
+
+.visible-large-desktop {
+    @media @large-desktop {
+        display: block !important;
+    }
+}
+
+/* Visible Flex */
+
+.flex-visible-mobile {
+    @media @upto-mobile {
+        .flex("important");
+    }
+}
+
+.flex-visible-tablet {
+    @media @tablet-strict {
+        .flex("important");
+    }
+}
+
+.flex-visible-desktop {
+    @media @desktop-strict {
+        .flex("important");
+    }
+}
+
+.flex-visible-large-desktop {
+    @media @large-desktop {
+        .flex("important");
+    }
+}
+
+/* Hidden */
+
+.hidden-mobile {
+    @media @upto-mobile {
+        display: none !important;
+    }
+}
+
+.hidden-tablet {
+    @media @tablet-strict {
+        display: none !important;
+    }
+}
+
+.hidden-desktop {
+    @media @desktop-strict {
+        display: none !important;
+    }
+}
+
+.hidden-large-desktop {
+    @media @large-desktop {
+        display: none !important;
+    }
+}
+.margin-auto-vertical {
+    margin: 0 auto;
+}
+
+.margin-null-sq {
+    margin: 0;
+}
+

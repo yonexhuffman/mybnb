@@ -1,0 +1,5 @@
+// main: ../semantic.less
+
+// *** Progressbar ***
+
+@progressbarHeight: 3px;

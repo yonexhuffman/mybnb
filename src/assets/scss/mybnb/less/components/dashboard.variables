@@ -1,0 +1,7 @@
+// main: ../semantic.less
+
+
+// *** Vendor ***
+
+@dashboardTableVerticalPadding: 30px;
+@dashboardTableHorizontalPadding: 20px;

@@ -1,0 +1,80 @@
+ /*
+ * # Mybnb - 1.0.0
+ * http://www.seventhqueen.com/
+ *
+ *
+ * Copyright 2012 SeventhQueen
+ * Released under the MIT license
+ * http://opensource.org/licenses/MIT
+ *
+ */
+
+
+// Importing module specific variables
+@import (multiple) "../variables.less";
+@import (less) "./logo.variables";
+@import (multiple) "../mixins.less";
+
+
+
+
+
+// *** Theme ***
+
+
+
+
+/*******************************
+          Logo
+*******************************/
+
+.logo,
+.logo.item {
+	display: block;
+	height: @logoHeight;
+	line-height: @logoHeight;
+	background: @logoBackground;
+	color: @logoColor;
+	font-family: @logoFontFamily;
+	font-size: @logoFontSize;
+	font-weight: @logoFontWeight;
+	padding: 0 @logoPadding;
+	
+	.icon {
+		font-size: @logoFontSize;
+		margin: 0;
+	}
+	/* Logo Image */
+	img {
+		width: auto;
+		height: 100%;
+		vertical-align: top;
+		border: 0;
+	}
+
+	&.rounded-sq {
+		border-radius: @logoBorderRadius;
+	}
+	&.square-sq  {
+		width: @logoHeight;
+		text-align: center;
+	}
+}
+
+.logo-transparent {
+	display: none;
+}
+
+.header-transparent.is-transparent .logo {
+	background: transparent;
+	.logo-transparent + img {
+		display: none;
+		opacity: 0;
+	}
+	.logo-transparent {
+		display: inline-block;
+		opacity: 1;
+	}
+}
+
+// *** Theme Overrides ***

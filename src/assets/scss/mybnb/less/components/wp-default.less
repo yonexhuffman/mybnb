@@ -1,0 +1,452 @@
+ /*
+ * # Mybnb - 1.0.0
+ * http://www.seventhqueen.com/
+ *
+ *
+ * Copyright 2012 SeventhQueen
+ * Released under the MIT license
+ * http://opensource.org/licenses/MIT
+ *
+ */
+
+
+// Importing module specific variables
+@import (multiple) "../variables.less";
+@import (less) "./wp-default.variables";
+@import (multiple) "../mixins.less";
+
+
+
+
+/*******************************
+           WP Default
+*******************************/
+
+
+
+
+/*-----------------------------
+      HTML Default Elements
+------------------------------*/
+
+/* Tags Links */
+.tags-links {
+  font-size: @mini;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.tags-links a {
+  background: #fafafa none repeat scroll 0 0;
+  border-radius: 2px;
+  padding: 0.1em 0.5em;
+}
+
+/* Page Links */
+.page-links {
+  clear: both;
+  margin: 0 0 1em;
+  font-weight: bold;
+}
+.page-links a,
+.page-links > span {
+  border: 1px solid #d1d1d1;
+  border-radius: 2px;
+  display: inline-block;
+  font-size: 0.8125rem;
+  height: 1.84615em;
+  line-height: 1.69231em;
+  margin-right: 0.307692em;
+  text-align: center;
+  width: 1.84615em;
+}
+.page-links a {
+  background-color: #1a1a1a;
+  border-color: #1a1a1a;
+  color: #fff;
+}
+.page-links a:hover,
+.page-links a:focus {
+  background-color: #007acc;
+  border-color: transparent;
+  color: #fff;
+}
+.page-links > .page-links-title {
+  border: 0 none;
+  color: #1a1a1a;
+  height: auto;
+  margin: 0;
+  padding-right: 0.615385em;
+  width: auto;
+}
+
+/*-----------------------------
+         Alignment
+------------------------------*/
+
+.alignleft {
+  display: inline;
+  float: left;
+  margin-right: 1.5em;
+}
+.alignright {
+  display: inline;
+  float: right;
+  margin-left: 1.5em;
+}
+.aligncenter {
+  clear: both;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Text meant only for screen readers */
+.assistive-text {
+  clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+  clip: rect(1px, 1px, 1px, 1px);
+  position: absolute !important;
+}
+
+/*-----------------------------
+           Media
+------------------------------*/
+
+.entry-content img,
+.comment-content img,
+.widget img {
+  max-width: 100%; /* Fluid images for posts, comments, and widgets */
+}
+img[class*="align"],
+img[class*="wp-image-"] {
+  height: auto; /* Make sure images with WordPress-added height and width attributes are scaled correctly */
+}
+.entry-content img,
+img.size-full {
+  max-width: 100%;
+  width: auto; /* Prevent stretching of full-size images with height and width attributes in IE8 */
+}
+.entry-content img.wp-smiley,
+.comment-content img.wp-smiley {
+  border: none;
+  margin-bottom: 0;
+  margin-top: 0;
+  padding: 0;
+}
+.wp-caption {
+  //border: 1px solid #ccc;
+  max-width: 100%;
+}
+.wp-caption.aligncenter,
+.wp-caption.alignleft,
+.wp-caption.alignright {
+  margin-bottom: 1.5em;
+}
+.wp-caption img {
+  display: block;
+  /*margin: 1.2% auto 0;
+  max-width: 98%;*/
+}
+.wp-caption-text {
+  text-align: center;
+  font-style: italic;
+}
+.wp-caption .wp-caption-text {
+  margin: 0.8075em 0;
+}
+
+
+/*-----------------------------
+           Galleries
+------------------------------*/
+
+.gallery {
+  margin: 0 -1.1666667% 1.75em;
+}
+
+.gallery-item {
+  display: inline-block;
+  max-width: 33.33%;
+  padding: 0 1.1400652% 2.2801304%;
+  text-align: center;
+  vertical-align: top;
+  width: 100%;
+  margin: 0;
+}
+
+.gallery-columns-1 .gallery-item {
+  max-width: 100%;
+}
+
+.gallery-columns-2 .gallery-item {
+  max-width: 50%;
+}
+
+.gallery-columns-4 .gallery-item {
+  max-width: 25%;
+}
+
+.gallery-columns-5 .gallery-item {
+  max-width: 20%;
+}
+
+.gallery-columns-6 .gallery-item {
+  max-width: 16.66%;
+}
+
+.gallery-columns-7 .gallery-item {
+  max-width: 14.28%;
+}
+
+.gallery-columns-8 .gallery-item {
+  max-width: 12.5%;
+}
+
+.gallery-columns-9 .gallery-item {
+  max-width: 11.11%;
+}
+
+.gallery-icon img {
+  margin: 0 auto;
+}
+
+.gallery-caption {
+  color: #686868;
+  display: block;
+  font-size: 13px;
+  font-size: 0.8125rem;
+  font-style: italic;
+  line-height: 1.6153846154;
+  padding-top: 0.5384615385em;
+}
+
+.gallery-columns-6 .gallery-caption,
+.gallery-columns-7 .gallery-caption,
+.gallery-columns-8 .gallery-caption,
+.gallery-columns-9 .gallery-caption {
+  display: none;
+}
+
+/* Make sure embeds and iframes fit their containers */
+embed,
+iframe,
+object {
+  max-width: 100%;
+}
+
+/*-----------------------------
+           Widgets
+------------------------------*/
+
+.widget {
+  margin: 0 0 1.5em;
+}
+
+/* Search widget */
+#searchsubmit {
+  display: none;
+}
+
+/* Text meant only for screen readers. */
+.screen-reader-text {
+  clip: rect(1px, 1px, 1px, 1px);
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+}
+
+.screen-reader-text:focus {
+  background-color: #f1f1f1;
+  border-radius: 3px;
+  box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+  clip: auto !important;
+  color: #21759b;
+  display: block;
+  font-size: 14px;
+  font-size: 0.875rem;  // New browsers read this
+  font-weight: bold;
+  height: auto;
+  left: 5px;
+  line-height: normal;
+  padding: 15px 23px 14px;
+  text-decoration: none;
+  top: 5px;
+  width: auto;
+  z-index: 100000; /* Above WP toolbar. */
+}
+
+
+/*******************************
+        Posts and pages
+*******************************/
+
+.post-thumbnail img {
+  margin: 0 auto;
+  display: block;
+}
+.post-navigation .post-title,
+.entry-title,
+.comments-title {
+  -ms-word-wrap: break-word;
+  word-wrap: break-word;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  hyphens: auto;
+}
+
+
+/*******************************
+            Comment
+*******************************/
+
+/*-----------------------------
+    Pingbacks And Trackbacks
+------------------------------*/
+
+.comment-list {
+  list-style: outside none none;
+  margin: 0;
+}
+.comment-list article,
+.comment-list .pingback,
+.comment-list .trackback {
+  border-top: 1px solid @borderColor;
+  padding: 1.75em 0;
+}
+.comment-list .children {
+  list-style: outside none none;
+  margin: 0;
+  padding: 0;
+}
+.comment-list .children > li {
+  padding-left: 0.875em;
+}
+.comment-list li::before {
+  content: none;
+}
+.comment-author {
+  color: #1a1a1a;
+  margin-bottom: 0.4375em;
+}
+.comment-author .avatar {
+  float: left;
+  height: 28px;
+  margin-right: 0.875em;
+  position: relative;
+  width: 28px;
+  border-radius: 100%;
+}
+
+/*-----------------------------
+         Page Comments
+------------------------------*/
+.comment-list .comment-metadata {
+  font-size: @small;
+}
+.comment-list .reply {
+  font-size: @tiny; // 0.814286rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin: 1em 0 0;
+  font-weight: bold;
+}
+
+
+/*------------------------------------------
+       Checkout
+-------------------------------------------*/
+
+.product-payment-item {
+    .product-details {
+        .flex();
+        .flex-direction(row);
+        margin-bottom: 25px;
+        
+        .product-image {
+            width: 40px;
+            height: 40px;
+            margin-right: 25px;
+        }
+        .product-title {
+            font-weight: 700;
+            font-size: 0.875em;
+            line-height: 16px;
+            letter-spacing: 0;
+        }
+    }
+    
+    .product-dates {
+        .flex();
+        .flex-direction(row);
+        .flex-wrap(wrap);
+        margin-bottom: 20px;
+        
+        > p {
+            font-size: 0.875em;
+            margin-bottom: 0;
+            
+            > span {
+                min-width: 60px;
+                display: inline-block;
+            }
+        }
+        
+        .product-from {
+            width: 100%;
+        }
+        .product-to {
+            .flex-grow(1);
+        }
+        .total-per {
+            font-weight: 700;
+        }
+        
+    }
+    
+    .product-extra {
+        .extra-row {
+            .flex();
+            .flex-direction(row);
+            padding: 20px 0;
+            border-top: 1px solid @borderColor;
+            
+            > p {
+                margin: 0;
+                font-size: 0.875em;
+            }
+            .extra-title {
+                .flex-grow(1);
+            }
+            .extra-price {
+                font-weight: 700;
+            }
+            &.link-sq {
+                > p {
+                    color: @linkColor;
+                }
+            }
+            &.total-sq {
+                > p {
+                    font-weight: 700;
+                }
+            }
+        }
+    }
+}
+
+.payment-methods {
+    label {
+        width: 100%;
+        img {
+            height: 30px;
+            float: right;
+        }
+    }
+}
+
+.neutral-section {
+    margin: 0;
+    padding: 0;
+}
+

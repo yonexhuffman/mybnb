@@ -1,0 +1,93 @@
+ /*
+ * # Mybnb - 1.0.0
+ * http://www.seventhqueen.com/
+ *
+ *
+ * Copyright 2012 SeventhQueen
+ * Released under the MIT license
+ * http://opensource.org/licenses/MIT
+ *
+ */
+
+
+// Importing module specific variables
+@import (multiple) "../variables.less";
+@import (less) "./promo-section.variables";
+@import (multiple) "../mixins.less";
+
+
+
+
+// *** Theme ***
+
+
+
+
+
+/*------------------------------------------
+       Promo Section
+-------------------------------------------*/
+
+.promo-section {
+    position: relative;
+    
+    .promo-content {
+        position: relative;
+        z-index: 10;
+        text-align: center;
+        
+        @media @upto-mobile {
+            padding: 40px;
+            margin: 60px 0;
+        }
+        
+        @media @tablet {
+            padding: 90px;
+            margin: 150px 0;
+        }
+        
+        background: rgba(143,128,98,0.30);
+        box-shadow: 0 0 40px 0 rgba(0,0,0,0.19);
+        
+        h2, p, .button-sq {
+          color: #fff; 
+        }
+        .button-sq:hover {
+           color: @linkColor; 
+        }
+        
+        h2, p {
+            margin-bottom: 50px;
+        }
+        
+        &.style-01 {
+            background: @promoBackgroundStyle01;
+            box-shadow: @promoBoxShadowStyle01;
+			
+			a,
+			a.button-sq {
+				&:hover,
+				&:focus {
+					color: @promoBoxHoverColor01;
+					border-color: @promoBoxHoverColor01;
+				}
+			}
+        }
+        
+        &.style-02 {
+            background: @promoBackgroundStyle02;
+            box-shadow: @promoBoxShadowStyle02;
+			
+			a,
+			a.button-sq {
+				&:hover,
+				&:focus {
+					color: @promoBoxHoverColor02;
+					border-color: @promoBoxHoverColor02;
+				}
+			}
+        }
+    }
+    
+}
+

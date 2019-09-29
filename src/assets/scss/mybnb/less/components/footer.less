@@ -1,0 +1,110 @@
+ /*
+ * # Mybnb - 1.0.0
+ * http://www.seventhqueen.com/
+ *
+ *
+ * Copyright 2012 SeventhQueen
+ * Released under the MIT license
+ * http://opensource.org/licenses/MIT
+ *
+ */
+
+
+// Importing module specific variables
+@import (multiple) "../variables.less";
+@import (less) "./footer.variables";
+@import (multiple) "../mixins.less";
+
+
+
+
+// *** Theme ***
+
+
+
+
+/*******************************
+        Footer
+*******************************/
+
+#footer {
+    .footer-top {
+        padding-bottom: 20px;
+        > .ui.grid:first-child {
+            > .row {
+                border-top: 1px solid @borderColor;
+                padding-top: 45px;
+
+            }
+        }
+        
+        .ui.column {
+            padding-bottom: 40px;
+        }
+    }
+	
+	.footer-top.borderless-sq > .ui.grid:first-child > .row {
+		border:none;
+	}
+    
+    .footer-bottom {
+        background: #252B33;
+        padding: 30px 0 0 0;
+    }
+    
+    h5 {
+        //font-size: 16px;
+        font-weight: @boldHeaderFont;
+    }
+    
+    .list-default-sq {
+        li {
+            padding: 0.1em 0;
+            a {
+                font-size: 0.875em;
+                color: fade(@textColor, 70%);
+                letter-spacing: 0;
+                .transition(text-decoration 0.3s ease-out);
+                
+                &:hover,
+                &:focus {
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+    
+    p {
+        color: fade(@textColor, 70%);
+		font-size: 0.875em;
+    }
+    
+    .footer-logo {
+        margin-bottom: 25px;
+        display: inline-block;
+        img {
+            height: 37px;
+            width: auto;
+            margin-right: 25px;
+            
+        }
+        color: rgba(255,255,255,0.5);
+    }
+    
+    .social-links-sq {
+        li {
+            margin-right: 15px;
+            a {
+                color: rgba(255,255,255,0.5);
+                
+                &:hover {
+                    color: @linkColor;
+                }
+                i {
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+}
+

@@ -1,0 +1,484 @@
+ /*
+ * # Mybnb - 1.0.0
+ * http://www.seventhqueen.com/
+ *
+ *
+ * Copyright 2012 SeventhQueen
+ * Released under the MIT license
+ * http://opensource.org/licenses/MIT
+ *
+ */
+
+
+// Importing module specific variables
+@import (multiple) "../variables.less";
+@import (less) "./layout.variables";
+@import (multiple) "../mixins.less";
+
+
+
+
+// *** Theme ***
+
+
+
+
+/* vezi aici */
+/******************************************
+    De refăcut structura - de simplificat
+******************************************/
+
+.ui.app.layout.left,
+.ui.app.layout.right {
+  &.side {
+    .main-column {
+        @media @upto-mobile {
+            width: 100%;
+        }
+    }
+
+    .side-column {
+        @media @upto-mobile {
+            width: 100%;
+        }
+    }
+  }
+}
+
+.ui.layout .main-column {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+
+/*-------------------------------
+    UI Layout General
+--------------------------------*/
+
+
+.ui.layout {
+  background: @layoutBackgroundColor;
+  flex: 1 0 auto !important;  
+    
+  .main-column,
+  .side-column,
+  .extra-side-column {
+	  padding-top: 0;
+	  padding-bottom: 0;
+    //padding-top: @verticalPadding;
+    //padding-bottom: @verticalPadding;
+
+    > .segment {
+      padding-top: @verticalPadding;
+      padding-bottom: @verticalPadding;
+      padding-left: @columnHorizontalPadding;
+      padding-right: @columnHorizontalPadding;
+    }
+  }
+}
+
+.ui.layout.right {
+  &.side {
+    .main-column {
+      width: @mainColumn;
+    }
+    .side-column {
+      width: @variableSideColumnWidth;
+    }
+  }
+  &.sides {
+    .main-column {
+      width: @smallMainColumn;
+    }
+    .side-column {
+      width: (100% - @smallMainColumn) / 2;
+    }
+    .extra-side-column {
+      width: (100% - @smallMainColumn) / 2;
+    }
+  }
+}
+
+.ui.layout.left {
+  &.side {
+    .main-column {
+      width: @mainColumn;
+      order: 1;
+    }
+    .side-column {
+      width: @variableSideColumnWidth;
+      order: 0;
+    }
+  }
+  &.sides {
+    .main-column {
+      width: @smallMainColumn;
+      order: 1;
+    }
+    .side-column {
+      width: (100% - @smallMainColumn) / 2;
+      order: 0;
+    }
+    .extra-side-column {
+      width: (100% - @smallMainColumn) / 2;
+      order: 0;
+    }
+  }
+}
+
+.ui.layout.left.right.sides {
+  .main-column {
+    width: @smallMainColumn;
+    order: 1;
+  }
+  .side-column {
+    width: (100% - @smallMainColumn) / 2;
+    order: 0;
+  }
+  .extra-side-column {
+    width: (100% - @smallMainColumn) / 2;
+    order: 2;
+  }
+}
+
+/*******************************
+        App Layout
+*******************************/
+
+.ui.app.layout.right {
+  &.side {
+    .main-column {
+      width: calc(~"100%" - @fixedSideColumnWidth);
+    }
+    .side-column {
+      width: @fixedSideColumnWidth;
+    }
+  }
+  &.sides {
+    .main-column {
+      width: calc(~"100%" - (@fixedSideColumnWidth + @fixedExtraSideColumnWidth));
+    }
+    .side-column {
+      width: @fixedSideColumnWidth;
+    }
+    .extra-side-column {
+      width: @fixedExtraSideColumnWidth;
+    }
+  }
+}
+
+.ui.app.layout.left {
+  &.side {
+    .main-column {
+      width: calc(~"100%" - @fixedSideColumnWidth);
+    }
+    .side-column {
+      width: @fixedSideColumnWidth;
+    }
+  }
+  &.sides {
+    .main-column {
+      width: calc(~"100%" - (@fixedSideColumnWidth + @fixedExtraSideColumnWidth));
+    }
+    .side-column {
+      width: @fixedSideColumnWidth;
+    }
+    .extra-side-column {
+      width: @fixedExtraSideColumnWidth;
+    }
+  }
+}
+
+.ui.app.layout.left.right.sides {
+  .main-column {
+    width: calc(~"100%" - (@fixedSideColumnWidth + @fixedExtraSideColumnWidth));
+  }
+  .side-column {
+    width: @fixedSideColumnWidth;
+  }
+  .extra-side-column {
+    width: @fixedExtraSideColumnWidth;
+  }
+}
+
+
+/*-------------------------------
+    Half Layout
+--------------------------------*/
+
+.switch-view-controller {
+    position: fixed;
+    bottom: 40px;
+    z-index: 98;
+    height: @switchViewControllerHeight;
+    background: @switchViewControllerBackground;
+    border-radius: @switchViewControllerHeight/2;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    padding: 0 10px;
+    list-style: none;
+
+    .transition(~"left 0.15s ease-in");
+
+    .flex();
+    .flex-direction(row);
+    .flex-align-items(center);
+    transform: translateX(-50%);
+
+    @media @upto-tablet {
+        left: 50%;
+
+    }
+    @media @desktop-strict {
+        left: 17.5%;
+    }
+
+    @media @desktop {
+        left: 15%;
+    }
+
+    #only-list-trigger {
+        @media @upto-mobile {
+            display: none;
+        }
+    }
+
+    > .item {
+        padding: 0 15px;
+        .flex();
+        .flex-direction(row);
+        .flex-align-items(center);
+        font-size: 12px;
+        text-transform: uppercase;
+        border-right: 1px solid fade(@textColor, 10%);
+        color: @textColor;
+
+        &:hover,
+        &:focus {
+           color: @linkColor; 
+        }
+
+        &:last-child {
+            border-right: none;
+        }
+
+        @media @desktop {
+            &:nth-last-child(2) {
+                border-right: none;
+            }
+        }
+
+        > .icon {
+            font-size: 16px;
+        }
+
+        &.modal-trigger {
+            > .icon {
+                color: @linkColor;
+            }
+            span {
+                font-weight: 700;
+            }
+        }
+    }
+
+}
+
+.ui.half-layout {
+    .flex();
+    .flex-justify(flex-start);
+    .flex-align-items(flex-start);
+    .flex-direction(column);
+    width: 100%;
+    height: auto;
+    
+    @media @tablet-strict {
+        position: static;
+        height: auto;
+    }
+    
+    @media @desktop {
+        height: 100%;
+         margin-top: 0;
+        .flex-direction(row);
+        .flex-justify(flex-end);
+    }
+    
+    /****** NEW *******/
+    
+    > .ui.column {
+        .transition(~"width 0.15s ease-in, top 0.15s ease-in, height 0.15s ease-in, margin-top 0.15s ease-in");
+        
+       /* height: 100%;*/
+        
+        @media @upto-tablet {
+            width: 100%;
+        }
+        
+        > .row {
+            height: 100%;
+        }
+        
+        &.map {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            z-index: 96;
+            
+            @media @large-desktop {
+                width: 30%;
+            }
+            
+            @media @desktop-strict {
+                width: 35%;
+            }
+            
+            @media @upto-mobile {
+                top: -100%;
+            }
+            @media @tablet-strict {
+                height: 400px;
+                border-bottom: 1px solid #fff;
+            }
+        }
+        
+        &.variable {
+            padding: 2px 2px 0 2px;
+            
+            @media @large-desktop {
+                width: 70%;
+            }
+            @media @desktop-strict {
+                width: 65%;
+            }
+        }
+    }
+    
+    /* Only List */
+    &.only-list {
+
+		> .ui.column {
+            
+            &.map {
+                @media @tablet-strict {
+                    top: -400px;
+                }
+
+                @media @desktop {
+                    left: -50%;
+                }
+            }
+            
+            &.variable {
+                
+                    @media @tablet-strict {
+                        margin: 0;
+                    }
+
+                    @media @desktop {
+                        width: 100%;
+                    }
+                
+                
+                .ui.grid {
+                    >.row {
+                        .ui.column {
+                            
+                            
+                            
+                            @media @mlarge-desktop {
+                                width: 25% !important;
+                            }
+                            
+                            @media @large-desktop {
+                                width: 25% !important;
+                            }
+                            
+                            @media @xlarge-desktop {
+                                width: 16.6% !important;
+                            }
+                            
+                            @media @desktop-strict {
+                                width: 33.3% !important;
+                            }
+                            
+                            
+                        }
+                    }
+                }
+                    
+                    
+            }
+        }
+        
+        .switch-view-controller {
+            
+            @media @desktop {
+                left: 50%;
+            }
+            
+            #only-map-trigger {
+                @media @upto-mobile {
+                    .flex();
+                }
+            }
+            
+            #only-list-trigger {
+                @media @upto-mobile {
+                    display: none;
+                }
+            }
+        }
+    }
+    
+    
+    /* Only Map*/
+    &.only-map {
+        > .ui.column {
+            
+            &.map {
+                top: 0;
+                @media @tablet-strict {
+                    top: 60px;
+                    height: ~"calc(100% - 60px)";
+                }
+
+                @media @desktop {
+                    width: 100%;
+                }
+            }
+            
+            &.variable {
+                @media @tablet-strict {
+                   height: 0;
+                   overflow: hidden;
+                }
+
+                @media @desktop {
+                    right: -50%;
+                }
+            }
+            
+        }
+        
+        .switch-view-controller {
+
+            @media @desktop {
+                left: 50%;
+            }
+            
+            #only-list-trigger {
+                @media @upto-mobile {
+                    .flex();
+                }
+            }
+            
+            #only-map-trigger {
+                @media @upto-mobile {
+                    display: none;
+                }
+            }
+        }
+    }
+    
+}

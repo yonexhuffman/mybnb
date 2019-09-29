@@ -1,0 +1,11 @@
+// main: ../semantic.less
+
+
+// *** Hero Search Horizontal ***
+
+@import (multiple) "floating-placeholder.variables";  
+
+@h-search-h-background:  #fff;
+@h-search-h-default-height:  70px; //@fltp-height;
+@h-search-h-default-padding: 30px;
+

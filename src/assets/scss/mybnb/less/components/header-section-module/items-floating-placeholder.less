@@ -1,0 +1,227 @@
+// main: ../../semantic.less
+
+
+/* Used Classes */
+
+/* 
+
+.search-sq 
+
+
+*/
+
+
+/*-------------------------------------
+    Floating Placeholders
+--------------------------------------*/
+
+
+.header-section {
+    
+    /* General Settings */
+    .header-content {
+        .fpl {
+            .flex();
+            .flex-direction(row);
+            .flex-align-items(center);
+            .flex-align-content(center);
+			.flex-short();
+            height: 100%;
+
+            > label.placeholder {
+                height: 100%;
+            }
+
+            input[type="text"] {
+                
+                &:focus + label.placeholder,
+                &:valid + label.placeholder {
+                    font-size: @fpl-minimized-font-size;
+                }
+            }
+
+            .ui.selection.dropdown {
+                height: 100%;
+                
+                @media @upto-desktop {
+                    min-width: 100px;
+                    max-width: 110px;
+                }
+                
+                @media @large-desktop {
+                    min-width: 10em;
+                    max-width: 200px;
+                }
+
+                .text {
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    padding-right: 35px;
+                }
+                
+                &.valid,
+                &.active.visible {
+                    & + .placeholder {
+                        font-size: @fpl-minimized-font-size;
+                    }
+                }
+            }
+
+            .ui.calendar-sq {
+                &.popup.visible {
+                    .transition(~"top .3s ease-out, bottom .3s ease-out");
+                    &.top {
+                        bottom: 100% !important;
+                    }
+                    &.bottom {
+                        top: 100% !important;
+                    }
+                }
+            }
+        }
+
+        .item.calendar-sq {
+            
+            .icon {
+                margin-right: 30px;
+            }
+            
+            
+        }
+        
+        .fpl {
+            input[type="text"] {
+                @media @upto-desktop {
+                    width: 100px;
+                }
+            }
+        }
+    }
+    
+    &.header-resize {
+        &.is-resized {
+            .header-content {
+                .header-item {
+                    .fpl {
+                        > label.placeholder,
+                        .ui.selection.dropdown {
+                            .transition(~"font-size .2s ease-out, letter-spacing .2s ease-out, transform .2s ease-out, line-height @{scrolldownDuration} @{scrolldownEasing}");
+                        }
+                    }
+                }
+            }
+        }
+        &.reverse {
+            .header-content {
+                .header-item {
+                    .fpl {
+                        > label.placeholder,
+                        .ui.selection.dropdown {
+                            .transition(~"font-size .2s ease-out, letter-spacing .2s ease-out, transform .2s ease-out, line-height @{scrollupDuration} @{scrollupEasing}");
+                        }
+                    }
+                }
+            }
+        }
+        
+    }
+    
+    /* Special Case - Search */
+    &.floating-search-is-valid {
+        
+        .header-content {
+            .header-item {
+                .fpl {
+
+                    /* For Search */
+                    &.search-sq {
+                        > .icon {
+                            @media @upto-tablet {
+                                position: absolute;
+                                z-index: 111;
+                            }
+                            
+                            @media @upto-mobile {
+                                /*left: @headerItemLeftRightPadding;*/
+                            }
+                            @media @tablet-strict {
+                                left: 50%;
+                                /*margin-left: ~"calc(-@{tabletWidth}/2 - @{gridGutterWidth}/2 + @{headerItemLeftRightPadding})";*/
+                            }
+                            
+                        }
+                        
+                        > label.placeholder {
+                            @media @upto-tablet {
+                                position: absolute;
+                                z-index: 111;
+                            }
+                            
+                            @media @upto-mobile {
+                                /*left: @headerItemLeftRightPadding;*/
+                            }
+                            
+                            @media @tablet-strict {
+                                left: 50%;
+                                /*margin-left: ~"calc(-@{tabletWidth}/2 - @{gridGutterWidth}/2 + @{headerItemLeftRightPadding})";*/
+                            }
+                        }
+                        
+                        input[type="text"] {
+                            @media @upto-tablet {
+                                /*padding-left: @headerItemLeftRightPadding + 40px;*/
+                                z-index: 105;
+                            }
+                        }
+
+                    }
+
+                    /* General Settings */
+                    .icon ~ input[type="text"] {
+                        @media @upto-tablet {
+                            /*padding-left: @headerItemLeftRightPadding + 40px;*/
+                        }
+                    }
+                    
+                    
+                }
+            }
+        }
+        
+        &.header-transparent.is-transparent {
+            .header-content {
+                .header-item {
+                    
+                    @media @upto-tablet {
+                        > .item {
+                            opacity: 0;
+                        }
+                        .item.hamburger {
+                            opacity: 1;
+                        }
+                    }
+                    
+                    
+                    
+                    .fpl {
+                        &.search-sq {
+                            @media @upto-tablet {
+                                opacity: 1;
+                            }
+                            
+                            input[type="text"] {
+                                .transition(~"height .3s ease-out, background @{scrolldownDuration} @{scrolldownEasing} @{scrolldownDuration}");
+                            }
+                        }
+                    }
+                    
+                    
+                }
+            }
+        }
+        
+    }
+    
+}
+

@@ -1,0 +1,14 @@
+// main: ../semantic.less
+
+
+// *** General Variables ***
+
+@logoHeight: 44px; //120px;
+@logoPadding: 0;
+
+@logoBackground: transparent;
+@logoColor: #888888;
+@logoFontFamily: @headerFont;
+@logoFontSize: 24px;
+@logoFontWeight: 700;
+@logoBorderRadius: 10px;

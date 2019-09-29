@@ -1,0 +1,537 @@
+ /*
+ * # Mybnb - 1.0.0
+ * http://www.seventhqueen.com/
+ *
+ *
+ * Copyright 2012 SeventhQueen
+ * Released under the MIT license
+ * http://opensource.org/licenses/MIT
+ *
+ */
+
+
+// Importing module specific variables
+@import (multiple) "../variables.less";
+@import (less) "./price-range.variables";
+@import (multiple) "../mixins.less";
+
+
+
+
+// *** Theme ***
+
+
+
+
+/*******************************
+        Price Range General
+*******************************/
+
+.noUi-target,
+.noUi-target * {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -ms-touch-action: none;
+    touch-action: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.noUi-target {
+	position: relative;
+	direction: ltr;
+}
+.noUi-base {
+	width: 100%;
+	height: 100%;
+	position: relative;
+	z-index: 1; /* Fix 401 */
+}
+.noUi-origin {
+	position: absolute;
+	right: 0;
+	top: 0;
+	left: 0;
+	bottom: 0;
+}
+.noUi-handle {
+	position: relative;
+	z-index: 1;
+}
+
+.noUi-stacking .noUi-handle {
+/* This class is applied to the lower origin when
+   its values is > 50%. */
+	z-index: 10;
+}
+.noUi-state-tap .noUi-origin {
+-webkit-transition: left 0.3s, top 0.3s;
+	transition: left 0.3s, top 0.3s;
+}
+.noUi-state-drag * {
+	cursor: inherit !important;
+}
+
+/* Painting and performance;
+ * Browsers can paint handles in their own layer.
+ */
+.noUi-base,
+.noUi-handle {
+	-webkit-transform: translate3d(0,0,0);
+	transform: translate3d(0,0,0);
+}
+
+/* Slider size and handle placement;
+ */
+
+.noUi-horizontal {
+	height: 1px;
+    /*@media @tablet {
+        height: 1px;
+    }*/
+    
+    .noUi-handle {
+        left: 0;
+        width: 19px;
+        height: 19px;
+        top: -9px;
+        
+        @media @tablet {
+            width: 11px;
+            height: 11px;
+            top: -5px;
+        }
+    }
+}
+
+.noUi-vertical {
+	width: 18px;
+    .noUi-handle {
+        width: 28px;
+        height: 34px;
+        left: -6px;
+        top: -17px;
+    }
+}
+
+/* Styling;
+ */
+.noUi-background {
+	background: @priceRangeBaseBackgound;
+    
+    @media @upto-mobile {
+        box-shadow:0px 1px 0px 0px @priceRangeSliderBackgroundMobile, 0px -1px 0px 0px @priceRangeSliderBackgroundMobile;
+    }
+    
+}
+.noUi-connect {
+	background: @priceRangeRangeBackgound;
+    -webkit-transition: background 450ms;
+	transition: background 450ms;
+    
+    @media @upto-mobile {
+        box-shadow:0px 1px 0px 0px @headerAccentColor, 0px -1px 0px 0px @priceRangeRangeBackgound;
+    }
+    
+}
+
+
+.noUi-origin {
+	border-radius: 2px;
+}
+.noUi-target {
+	border-radius: 4px;
+	/*border: 1px solid #D3D3D3;*/
+	/*box-shadow: inset 0 1px 1px #F0F0F0, 0 3px 6px -5px #BBB;*/
+}
+.noUi-target.noUi-connect {
+	/*box-shadow: inset 0 0 3px rgba(51,51,51,0.45), 0 3px 6px -5px #BBB;*/
+}
+
+
+/* Handles and cursors;
+ */
+.noUi-draggable {
+	cursor: w-resize;
+}
+.noUi-vertical .noUi-draggable {
+	cursor: n-resize;
+}
+.noUi-handle {
+	border: 1px solid @priceRangeHandleBorderColor;
+	border-radius: 50%;
+	background: @priceRangeHandleBackground;
+	cursor: default;
+    
+	
+}
+.noUi-active {
+	background: @headerAccentColor;
+    border-color: @headerAccentColor;
+}
+
+/* Disabled state;
+ */
+[disabled].noUi-connect,
+[disabled] .noUi-connect {
+	background: #B8B8B8;
+}
+[disabled].noUi-origin,
+[disabled] .noUi-handle {
+	cursor: not-allowed;
+}
+
+/* Tooltips */
+
+.noUi-tooltip {
+	display: block;
+	position: absolute;
+	border-radius: 3px;
+	background: @priceRangeTooltipBackgound;
+	text-align: center;
+    font-family: @fontName;
+    color: @headerTextColor;
+    
+    font-size: 11px;
+    padding: 0 5px;
+    height: 20px;
+    line-height: 20px;
+    min-width: inherit;
+	white-space: nowrap;
+}
+
+.noUi-horizontal {
+    
+    .noUi-tooltip {
+        
+        &:before {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 50%;
+            margin-top: -4px;
+            left: initial;
+            width: 0;
+            height: 0;
+        }
+    }
+    
+    .noUi-handle-lower .noUi-tooltip {
+        
+        top: -1px;
+        right: 30px; 
+        
+        @media @tablet {
+            top: -6px;
+            left: initial;
+            right: 20px;  
+        }
+
+        &:before {
+            right: -5px;
+            left: initial;
+            border-top: 4px solid transparent;
+            border-left: 5px solid #E8E8E8;
+            border-bottom: 4px solid transparent;
+            border-right: none;
+        }
+    }
+    
+    .noUi-handle-upper .noUi-tooltip {
+        top: -1px;
+        left: 30px;
+        
+        @media @tablet {
+            top: -6px;
+            left: 20px;
+        }
+        
+
+        &:before {
+            left: -5px;
+            right: initial;
+            border-top: 4px solid transparent;
+            border-right: 5px solid #E8E8E8;
+            border-bottom: 4px solid transparent;
+            border-left: none;
+        }
+    }
+}
+
+
+.noUi-vertical {
+    .noUi-handle-lower .noUi-tooltip {
+        left: 120%;
+    }
+}
+.noUi-vertical {
+    .noUi-handle-upper .noUi-tooltip {
+        right: 120%;
+    }
+}
+
+
+/*******************************
+        Price Range Custom 
+*******************************/
+
+.price-range-slider {
+    width: 100%;
+    
+    .price-range-slider-base {
+        margin: @priceRangeHeight/4 0;
+    }
+    
+    .price-range-placeholder {
+        font-size: 12px;
+        color: @textColor;
+        font-weight: 400;
+        opacity: .8;
+        margin-bottom: 5px;        
+        width: 100%;
+    }
+    
+}
+
+
+/*********************************************
+        Price Range Header Section Special 
+**********************************************/
+
+.price-range-placeholder {
+    font-size: 12px;
+    color: @textColor;
+    font-weight: 400;
+    opacity: .8;
+    width: 100%;
+}
+    
+.header-section {
+    .price-range-slider {
+            //width: 100%;
+            .flex();
+            .flex-direction(row);
+            .flex-align-items(center);
+            .flex-justify(center);
+            
+            .price-range-placeholder {
+                margin-bottom: 0;
+                display: inline-block;
+                width: auto;
+                .flex-shrink(0);
+            }
+            
+            .price-range-slider-base {
+                //margin: 0 50px;
+                width: 100%;
+                @media @upto-desktop {
+                    min-width: 100px;
+                }
+                
+                @media @large-desktop {
+                    min-width: 200px;
+                }
+            }
+            
+            /* Special Class - hide on tablet */
+            &.special {
+                
+                @media @upto-tablet {
+                    position: relative;
+                    margin-left: 20px;
+                    height: 1px;
+                    max-width: 200px;
+                    background: transparent; 
+                    .transition(none);
+                }
+                
+                
+                .price-range-slider-base {
+                    
+                    margin: 0;
+                    
+                    .noUi-tooltip {
+                        @media @upto-mobile {
+                            font-size: 12px;
+                            font-weight: 700;
+                            min-width: 40px;
+                        }
+
+                        @media @tablet-strict {
+                            display: none;
+                        }
+
+                    }
+                    
+                    .noUi-horizontal {
+                        .noUi-handle-lower .noUi-tooltip {
+                            @media @upto-mobile {
+                                top: 30px;
+                                left: -5px;
+                            }
+                        }
+                        .noUi-handle-upper .noUi-tooltip {
+                            @media @upto-mobile {
+                                top: 30px;
+                                left: -5px;
+                            }
+                        }
+                    }
+                    
+                }
+                
+                .price-range-placeholder {
+                    margin-bottom: 5px; 
+                    width: 100%;
+                    position: absolute;
+                    left: 0;
+
+                    width: 100%;
+                    font-size: 10px;
+                    .flex();
+                    .flex-justify(center);
+                    .flex-align-items(center);
+                    .flex-direction(column);
+                    text-align: center;
+
+                    @media @desktop {
+                        display: none;
+                    }
+                }
+                
+                .price-range-trigger {
+                    
+                    @media @upto-tablet {
+                        background: transparent;
+                        width: 100%;
+                        position: absolute;
+                        z-index: 10;
+                        
+                        &:before,
+                        &:after {
+                            content: '';
+                            position: absolute;
+                            display: block;
+                            top: 50%;
+                            left: 50%;
+                            margin-left: -16px;
+                            width: 22px;
+                            height: 1px;
+                            background-color: @headerTextColor;
+                            opacity: 0;
+                            .transition(~"transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55)");
+                        }
+
+                    }
+                    
+                    &.active {
+                        @media @upto-tablet {
+                            position: relative;
+                            top: 0;
+                            
+                            .flex-order(2);
+                            margin-left: @sidePadding;
+
+                            &:before,
+                            &:after {
+                                opacity: .5;
+                            }
+
+                            &:before {
+                                -ms-transform: rotate(-135deg); 
+                                -webkit-transform: rotate(-135deg); 
+                                transform: rotate(-135deg);
+                            }
+
+                            &:after {
+
+                                -ms-transform: rotate(135deg);
+                                -webkit-transform: rotate(135deg); 
+                                transform: rotate(135deg);
+                            }
+
+                        }
+                    }
+                }
+                
+                
+                &.visible {
+                    @media @upto-tablet {
+                        position: absolute;
+                        left: 0;
+                        margin: 0;
+                        
+                        background: @priceRangeBackgound;
+                        
+                        z-index: 112;
+                        height: 100%;
+                        max-width: none;
+                        .flex-order(1);
+                            
+                        .price-range-placeholder {
+                            display: none;
+                        }
+                        
+                        .price-range-slider-base {
+                            /* De inlocuit cu item padding */
+                            margin-left: 20px;
+                        }
+
+                        .noUi-tooltip {
+                            display: block;
+                        }
+                    }
+                }
+                
+            }
+            
+            
+            /* Under the modal on mobile */
+            &.mobile-big-sq {
+                
+                @media @upto-mobile {
+                    //.flex-wrap(wrap);
+                
+                    .price-range-trigger {
+                        display: none;
+                    }
+
+                    .price-range-placeholder {
+                        position: static;
+                        height: auto;
+                        display: block;
+                        text-align: left;
+                    }
+
+                    .price-range-slider-base {
+                        margin: 50px 0;
+
+                        .noUi-tooltip {
+                                top: 30px;
+                                left: -5px;
+                                right: inherit;
+                                height: auto;
+                                padding: 5px 10px;
+
+                                &:before {
+                                    content: '';
+                                    display: block;
+                                    position: absolute;
+                                    top: -5px;
+                                    left: 10px;
+                                    border-left: 4px solid transparent;
+                                    border-bottom: 5px solid #E8E8E8;
+                                    border-right: 4px solid transparent;
+                                }
+
+                        }
+                    }
+                }
+                
+            }
+        }
+}
+

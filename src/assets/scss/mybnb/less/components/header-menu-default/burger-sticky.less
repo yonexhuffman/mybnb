@@ -1,0 +1,206 @@
+// main: ../../semantic.less
+
+
+/* 
+
+.burger-sticky
+.burger-mobile-sticky
+.burger-tablet-sticky
+.burger-desktop-sticky
+.burger-large-desktop-sticky
+
+.dropdown-fullwidth
+.dropdown-mobile-fullwidth
+.dropdown-tablet-fullwidth
+.dropdown-desktop-fullwidth
+.dropdown-large-desktop-fullwidth
+
+.dropdown-icons-left
+.dropdown-icons-right
+
+*/
+
+
+/*---------------------
+    Burger Sticky
+----------------------*/
+
+/* Only for header non sticky */
+
+/* Burger sticky mixins */
+
+.header-section:not(.header-sticky) {
+    .menu-default {
+        &.burger-default-styles {
+
+            &.burger-sticky-styles {
+                
+                &.is-sticky {
+                    min-width: @menuIconFontSize + (2 * @itemLeftRightPadding);
+
+                    > ul {
+                        position: fixed;
+                        top: 0;
+                        z-index: 100;
+                        margin-left: -@itemLeftRightPadding;
+                    }
+
+                    &.dropdown-fullwidth,
+                    &.dropdown-mobile-fullwidth,
+                    &.dropdown-tablet-fullwidth,
+                    &.dropdown-desktop-fullwidth,
+                    &.dropdown-large-desktop-fullwidth {
+                        
+                        > ul {
+                            > li.has-submenu {
+                                > a {
+                                    z-index: 103;
+                                    &:before {
+                                        display: none;
+                                    }
+                                }
+                                > .submenu {
+                                    position: fixed;
+                                    top: 0;
+                                    left: 0;
+                                    max-height: 100%;
+
+                                    padding: 100px 0;
+
+                                    a {
+                                        .flex-justify(center);
+                                    }
+
+                                    .has-submenu {
+                                        a:after {
+                                            .flex-grow(0);
+                                        }
+                                    }
+
+                                }
+
+                            }
+
+                        }
+                    }
+                    
+                }
+                
+                
+
+            }
+        }
+    }
+
+    /* Top */
+    &.ths {
+        .menu-default {
+            &.burger-default-styles {
+                &.burger-sticky-styles {
+                    > ul {
+                        @media @upto-mobile {
+                            height: @topHeaderSectionHeightMobile;
+                        }
+
+                        @media @tablet {
+                            height: @topHeaderSectionHeight;
+                        }
+
+                    }
+                    &.dropdown {
+                        &[class*="all fullwidth"],
+                        &[class*="mobile fullwidth"],
+                        &[class*="tablet fullwidth"],
+                        &[class*="desktop fullwidth"],
+                        &[class*="large fullwidth"]  {
+                            > ul > li.has-submenu > submenu {
+                                @media @upto-mobile {
+                                     padding: @topHeaderSectionHeightMobile 0;
+                                }
+
+                                @media @tablet {
+                                    padding: @topHeaderSectionHeight 0;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    /* Middle */
+    &.mhs {
+        .menu-default {
+            &.burger-default-styles {
+                &.burger-sticky-styles {
+                    > ul {
+                        @media @upto-mobile {
+                            height: @middleHeaderSectionHeightMobile;
+                        }
+
+                        @media @tablet {
+                            height: @middleHeaderSectionHeight;
+                        }
+
+                    }
+                    &.dropdown {
+                        &[class*="all fullwidth"],
+                        &[class*="mobile fullwidth"],
+                        &[class*="tablet fullwidth"],
+                        &[class*="desktop fullwidth"],
+                        &[class*="large fullwidth"]  {
+                            > ul > li.has-submenu > submenu {
+                                @media @upto-mobile {
+                                    padding: @middleHeaderSectionHeightMobile 0;
+                                }
+
+                                @media @tablet {
+                                    padding: @middleHeaderSectionHeight 0;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    /* Bottom */
+    &.bhs {
+        .menu-default {
+            &.burger-default-styles {
+                &.burger-sticky-styles {
+                    > ul {
+                        @media @upto-mobile {
+                            height: @bottomHeaderSectionHeightMobile;
+                        }
+
+                        @media @tablet {
+                            height: @bottomHeaderSectionHeight;
+                        }
+
+                    }
+                    
+                    &.dropdown-fullwidth,
+                    &.dropdown-mobile-fullwidth,
+                    &.dropdown-tablet-fullwidth,
+                    &.dropdown-desktop-fullwidth,
+                    &.dropdown-large-desktop-fullwidth {
+                        
+                        > ul > li.has-submenu > submenu {
+                            @media @upto-mobile {
+                                padding: @bottomHeaderSectionHeightMobile 0;
+                            }
+
+                            @media @tablet {
+                                padding: @bottomHeaderSectionHeight 0;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+    

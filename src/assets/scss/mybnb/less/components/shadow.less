@@ -1,0 +1,68 @@
+ /*
+ * # Mybnb - 1.0.0
+ * http://www.seventhqueen.com/
+ *
+ *
+ * Copyright 2012 SeventhQueen
+ * Released under the MIT license
+ * http://opensource.org/licenses/MIT
+ *
+ */
+
+
+// Importing module specific variables
+@import (multiple) "../variables.less";
+@import (less) "./shadow.variables";
+@import (multiple) "../mixins.less";
+
+
+
+
+
+// *** Theme ***
+
+
+
+
+/*******************************
+          Button SQ
+*******************************/
+
+.shadow-sq {
+    position: relative;
+    &:before {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        width: 85%;
+        height: 80%;
+        box-shadow: 0 30px 100px rgba(0,0,0,.15);
+        background: rgba(0,0,0,.15);
+        z-index: -1;
+    }
+    
+    &.light-shadow-sq {
+        &:before {
+            width: 75%;
+            box-shadow: 0 30px 75px rgba(0,0,0,.1);
+            background: rgba(0,0,0,.1);
+        }
+    }
+}
+
+.shadow-sq {
+    
+    &.animate-sq {
+        &:before {
+            box-shadow: 0 30px 100px rgba(0,0,0,0);
+            background: rgba(0,0,0,0);
+            animation: fade-in-shadow 1s 2s forwards;
+        }
+    }
+}
+
+
+// *** Theme Overrides ***

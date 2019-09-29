@@ -1,0 +1,60 @@
+// main: ../semantic.less
+
+// *** Header Menu Default ***
+
+
+@import (multiple) "header-section-module.variables";
+
+@menuFontFamily: @headerFont;
+@menuFontSize: 14px;
+@menuColor: #252B33;
+@menuLetterSpacing: 0.3px;
+
+@menuIconFontSize: 20px;
+
+@menuItemPadding: 20px;
+
+
+// *** Dropdown ***
+
+@menuDropdownBackgroundColor: #fff;
+@menuDropdownBorderColor: @headerBorderColor;
+@menuDropdownItemPadding: 1em;
+
+
+// *** Sidemenu ***
+
+@sidemenuBackgroundColor: #d5e5ff;
+@sidemenuWidth: 300px;
+@sidemenuWidthMobile: 85%;
+@sidemenuPadding: 50px;
+@sidemenuItemPadding: 20px;
+
+@sidemenuDuration : 500ms;
+@sidemenuEasing: @defaultEasing;
+
+
+// *** Modal ***
+
+@modalPadding: 30px;
+@modalItemPadding: 20px;
+@modalBackground: #fff;
+
+
+// *** Dimmer ***
+
+@dimmerColor: rgba(0, 0, 0, 0.65);
+@dimmerTransition: opacity @sidemenuEasing;
+
+
+//  Shadow
+@boxShadow: 0px 0px 20px @borderColor;
+@horizontalBoxShadow: @boxShadow;
+@verticalBoxShadow: @boxShadow;
+
+//  Layering
+@dimmerLayer: 200;
+
+
+
+

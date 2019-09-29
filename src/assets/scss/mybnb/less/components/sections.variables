@@ -1,0 +1,7 @@
+// main: ../semantic.less
+
+
+// *** Various Sections Variables ***
+
+@lightSectionBackgroundColor: #fff;
+@darkSectionBackgroundColor: #fafafa;
